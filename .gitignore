@@ -39,3 +39,7 @@ Thumbs.db
 *.ed25519.key
 *.pem
 !tokenizers/seed-bpe4096-v1/cluster_prior.pt
+
+# Published starter weights (fp16, well under the 50 MB repo limit)
+!organs/**/*.safetensors
+!pool1/router.pt

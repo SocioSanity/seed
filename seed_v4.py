@@ -748,6 +748,7 @@ def load_tree(js_path, device="cpu"):
     if man["kind"] != "tree":
         raise ValueError("not a tree part")
     m = SeedV4.from_structure(man["structure"])
+    t = {k: v.float() if getattr(v, "is_floating_point", lambda: False)() else v for k, v in t.items()}
     m.load_state_dict(t)
     return m.to(device), man
 
@@ -995,6 +996,7 @@ def load_model_any(path, use_ema=True, device="cpu"):
     path = Path(path)
     if path.suffix == ".json":
         m, man = load_tree(path)
+        m.decode_prior = load_decode_prior(m)
         return m.to(device).eval(), dict(kind="tree", src=str(path), step=man.get("step"), ema=man.get("ema"))
     c = torch.load(path, map_location="cpu", weights_only=False)
     m = SeedV4.from_structure(c["structure"])
@@ -1043,6 +1045,7 @@ def find_tokenizer(model, override=None):
     tdir = model.tokenizer.get("dir")
     if tdir:
         cands.append(Path(tdir) / "tokenizer.json")
+        cands.append(HERE / tdir / "tokenizer.json")
     cands += [HERE / "data" / "tokenizer_4096.json", HERE / "tokenizers" / "seed-bpe4096-v1" / "tokenizer.json"]
     for cnd in cands:
         if cnd and Path(cnd).exists():
@@ -1178,12 +1181,13 @@ def harvest_bundle(model, k, stem, calib_tokens, meta=None, log=print, signer=No
         return None
     n_par = int(sum(v.numel() for n, v in t.items() if not n.startswith(("calib.", "cache."))))
     meta = dict(meta or {})
+    meta.pop("price", None)
     oid = model.organ_ids[k]
     om = model.organ_meta.get(oid, {})
     man = dict(format=ORGAN_FORMAT, socket=model.socket,
                name=meta.pop("name", om.get("name", f"organ-{oid}-{model.lineage}")), version=meta.pop("version", "0.1.0"),
                description=meta.pop("description", om.get("description", "")), author=meta.pop("author", "unknown"),
-               license=meta.pop("license", "CC-BY-4.0"), price=meta.pop("price", None),
+               license=meta.pop("license", "CC-BY-4.0"),
                tokenizer=dict(id=model.tokenizer.get("id"), sha256=model.tokenizer.get("sha256")),
                anchor_sha256=model.anchor.get("sha256"), width=model.d,
                cell_profile=dict(n_head=model.ckw["n_head"], head_dim=model.ckw["head_dim"], mlp=model.ckw["mlp"],
@@ -1586,7 +1590,7 @@ def synth_cache(model, k, calib_tokens, dev, n=256, T=128, prefix=8, cap=512, lo
 
 def cache_manifest(cache, tok_info, included=True, mode="full", note="", reason=None):
     if not included or cache is None:
-        return dict(included=False, mode="none", reason=reason or "seller chose not to ship training data",
+        return dict(included=False, mode="none", reason=reason or "author chose not to ship training data",
                     fallback="synthetic rehearsal sampled from the organ itself at import")
     st = cache.stats()
     return dict(included=True, mode=mode, count=st["count"], cap=cache.cap, T=cache.T, bytes=st["bytes"],

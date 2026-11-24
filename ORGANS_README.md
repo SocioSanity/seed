@@ -2,6 +2,14 @@
 
 The idea: everyone trains the **parts they care about** (an "organ" = a group of cells trained together on one task) on their own PC, and gets the rest from others. Organs are portable between independently trained Seeds because every socket Seed shares the standard socket (`SOCKET_SPEC.md`).
 
+## Starter organs in this repo
+
+- `organs/seeds/run3-trunk-final` — fluent TinyStories trunk (whole frozen seed, fp16 tree part). Chat with `python chat.py organs/seeds/run3-trunk-final.json`.
+- `organs/seeds/run4-tools-reasoning-final` — tools and reasoning whole seed.
+- `organs/run4-tools-reasoning-1.0.1` — run4's organ column with a rehearsal cache. Transplant with `python parts_tool.py import organs/run4-tools-reasoning-1.0.1 --host HOST.pt --out merged.pt`.
+
+These starter organs are free. The tools in `parts_tool.py` and `seed_organs.py` are what you use to harvest, verify, and transplant organs of your own.
+
 All commands run from the Seed folder with the CUDA Python:
 ```
 cd .
@@ -37,15 +45,13 @@ python parts_tool.py harvest --host SEED.pt --organ o3 --out organs/my\name-1.0.
 ```
 Without `--organ`, the organ whose router usage is most specialised to `--task` (compared with core text) is picked.
 
-## 4. Share or "buy": the local library
-- `organs/library\NAME\VERSION\` holds the bundle files, and `organs/library\index.json` is the catalog (name, version, description, author, license, price placeholder, size, cost, sha, signed, scores).
+## 4. Share: the local library
+- `organs/library\NAME\VERSION\` holds the bundle files, and `organs/library\index.json` is the catalog (name, version, description, author, license, size, cost, sha, signed, scores).
 - Publish: `python parts_tool.py publish BUNDLE.json`. List: `python parts_tool.py list`.
 - Anything you download goes into the same layout. Always run `verify` first:
   ```
   python parts_tool.py verify BUNDLE.json      (checks the weights sha256 and the ed25519 signature)
   ```
-- `price` and `license` are placeholders for a future marketplace. There is no payment code.
-
 ## 5. Adopt (transplant) an organ into YOUR Seed
 ```
 python parts_tool.py import my-ability@1.0.0 --host runs/run2/latest.pt --out organs/hosts\run2_plus_my-ability.pt --steps 400
@@ -106,7 +112,7 @@ Bundles are never overwritten: strip and rebuild write a new bundle (signature r
   - A cache holds what the organ needed *on its donor*. Hard cases that only show up in a new host aren't in it.
   - The synthetic fallback rehearses the organ's own outputs from generic prefixes, so it preserves an ability but can't improve one, and it barely triggers abilities that need special prompts.
   - Rehearsal costs a few percent of training throughput.
-  - A shipped cache is real data: sellers must declare its provenance and license, or ship `--cache-mode none`.
+  - A shipped cache is real data: the author must declare its provenance and license, or ship `--cache-mode none`.
 - **Core cost**: an always-on organ costs a little core loss. The plug-in gate and the KL-to-host training reduce this but do not guarantee zero, which is why adoption has a tolerance.
 - **One socket only**: organs never cross socket versions, tokenizers or anchors. A different anchor means a different ecosystem.
 - **Security**: a signature proves who made the bundle and that it wasn't changed. It does not prove the organ is harmless. The core-loss check is a quality gate, not a safety audit.

@@ -1,0 +1,10 @@
+task,region,tokens,mean_w_run4,frac_w4_gt_0p5
+fact,answer,1737,0.9981,1.0
+fact,think,393,0.9996,1.0
+fact,tool_call,922,0.9999,1.0
+fact,tool_result,6824,0.991,1.0
+math,answer,190,1.0,1.0
+math,think,403,0.9988,1.0
+math,tool_call,397,1.0,1.0
+math,tool_result,156,0.9999,1.0
+story,story,203,0.1381,0.103

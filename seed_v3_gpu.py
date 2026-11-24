@@ -231,7 +231,7 @@ def duplicate_cell(model, li, ci, step, noise=0.02, exact=False):
     parent = model.layers[li][ci]
     child = copy.deepcopy(parent)
     child.cid, child.parent, child.born = model.new_id(), parent.cid, step
-    child.protected = False  # a bought/protected parent's twin is a normal cell
+    child.protected = False  # a protected parent's twin is a normal cell
     for c in (parent, child):  # split outputs: parent/2 + child/2 == old parent
         c.proj.weight.mul_(0.5); c.down.weight.mul_(0.5)
     if exact:  # v3 --exact-split: antisymmetric output noise (+E / -E) cancels exactly, still breaks symmetry
@@ -1096,7 +1096,7 @@ def main():
     else:
         model = SeedLM(meta["vocab"], a.d, a.ctx, cell_kw)
         opt = rebuild_optimizer(model, None, a.lr, a.wd)
-        if a.init_parts:  # marketplace path: fresh base cell + bought part(s), each function-preserving (fades in from 0)
+        if a.init_parts:  # optional parts: fresh base cell + imported part(s), each function-preserving (fades in from 0)
             from import_part import import_part_into
             v0 = evaluate(model, val_batches)
             c0 = dict(model=model.state_dict(), opt=None, structure=model.structure(), next_id=model.next_id, organs=[],

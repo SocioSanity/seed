@@ -62,7 +62,7 @@ Manifest fields:
   - `cell_profile{n_head,head_dim,mlp,rank,kv_heads}`, `gate`.
   - `n_cells`, `depth_hints`, `calib{n_seq,T}`.
 - **Size and cost**: `n_params`, `cost{ram_mb, train_vram_mb_est}`.
-- **Identity**: `name`, `version`, `description`, `author`, `license`, `price` (marketplace placeholder only, with no payment code).
+- **Identity**: `name`, `version`, `description`, `author`, `license`.
 - **Provenance**: `donor{shape,lineage,organ_id}`, `training{...}` (data summary, steps, seconds).
 - **Scores**: `eval{reference_host, core_before/after, task_before/after}`.
 - **Integrity**: `file`, `sha256` (64-hex of the weights), `created`.
@@ -77,7 +77,7 @@ An organ carries its **hardest training material** so it can relearn in a new ho
   - `cache.score`: fp16 [N].
   - `cache.source`: uint8 [N] (0 task, 1 core, 2 synthetic, 3 bundle, 4 harvest).
 - **Size**: about 0.27 KB per 128-token sequence. The default cap is min(1024 sequences, 4 MB), so roughly 280 KB at T=128.
-- **Manifest `rehearsal`**: `included`, `mode` (full | synthetic | none), `count`, `cap`, `T`, `bytes`, `sources`, `selection` (the rule below), `heldout_rule`, `tokenizer`, `data_provenance` and `data_license` (the seller declares where the data comes from), `baseline` (the donor's held-out cache loss with and without the organ), `score_range`.
+- **Manifest `rehearsal`**: `included`, `mode` (full | synthetic | none), `count`, `cap`, `T`, `bytes`, `sources`, `selection` (the rule below), `heldout_rule`, `tokenizer`, `data_provenance` and `data_license` (the author declares where the data comes from), `baseline` (the donor's held-out cache loss with and without the organ), `score_range`.
   - With `included: false`, a `reason` and a `fallback` are given instead.
 - **Selection**: every candidate sequence is scored by the organ itself, `score = (loss without organ - loss with organ) + 0.5 x loss with organ`, on its target tokens only. That favours where the organ matters most and what is still hard. Then:
   - drop sequences where the organ doesn't help (gap ≤ 0);
@@ -88,6 +88,6 @@ An organ carries its **hardest training material** so it can relearn in a new ho
 
   After training, the online pool plus fresh batches are re-scored with the finished organ.
 - **Held-out split**: rows with `minhash[0] % 10 == 0` (about 10%, stable by content) are never tuned on. They are the yardstick for adoption and for the refresher.
-- **No-cache option**: sellers who can't share data ship `mode none` (or strip the cache later). Importers then fall back to a **synthetic** cache: the host with the organ samples from calibration-set prefixes, and the samples where the organ matters most are kept. This is weaker; see the limits in ORGANS_README.
+- **No-cache option**: authors who can't share data ship `mode none` (or strip the cache later). Importers then fall back to a **synthetic** cache: the host with the organ samples from calibration-set prefixes, and the samples where the organ matters most are kept. This is weaker; see the limits in ORGANS_README.
 
 Version rules: a host accepts only bundles whose socket, tokenizer sha, anchor sha, width and head_dim match exactly. Smaller n_head, mlp or rank is padded; larger is refused. Different depth is remapped, with a warning.

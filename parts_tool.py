@@ -57,7 +57,6 @@ def main():
     ap.add_argument("--host"); ap.add_argument("--task"); ap.add_argument("--task-eval"); ap.add_argument("--organ")
     ap.add_argument("--name"); ap.add_argument("--version", default="0.1.0"); ap.add_argument("--description", default="")
     ap.add_argument("--author", default="unknown"); ap.add_argument("--license", default="CC-BY-4.0")
-    ap.add_argument("--price", default=None, help="marketplace placeholder (no payment code)")
     ap.add_argument("--sign-key", default=None, help="ed25519 key file from keygen")
     ap.add_argument("--steps", type=int, default=0); ap.add_argument("--batch", type=int, default=32)
     ap.add_argument("--tol", type=float, default=0.02); ap.add_argument("--min-gain", type=float, default=0.02)
@@ -66,7 +65,7 @@ def main():
     ap.add_argument("--library", default=str(HERE / "organs" / "library")); ap.add_argument("--rejected-dir", default=str(HERE / "organs" / "rejected"))
     ap.add_argument("--cache-mode", default="full", choices=["full", "synthetic", "none"], help="rehearsal cache shipped in the bundle")
     ap.add_argument("--cache-seqs", type=int, default=1024); ap.add_argument("--cache-mb", type=float, default=4.0)
-    ap.add_argument("--data-provenance", default=None, help="seller's declaration of where the cached data comes from")
+    ap.add_argument("--data-provenance", default=None, help="author's declaration of where the cached data comes from")
     ap.add_argument("--data-license", default=None); ap.add_argument("--no-task-files", action="store_true", help="train-organ: ship no tune/eval JSONL")
     ap.add_argument("--report-eval", default=None, help="import: extra eval JSONL for reporting only")
     ap.add_argument("--ignore-task-files", action="store_true", help="import: do not use the bundle's shipped tune/eval files")
@@ -133,7 +132,7 @@ def organ_cmd(a):
     dev = "cuda" if (a.device == "cuda" and torch.cuda.is_available()) else "cpu"
     signer = O.make_signer(a.sign_key, a.author) if a.sign_key else None
     meta = lambda: {k: v for k, v in dict(name=a.name, version=a.version, description=a.description, author=a.author,
-                                           license=a.license, price=a.price).items() if v is not None}
+                                           license=a.license).items() if v is not None}
     res = None
     if a.cmd == "make-socket":
         from tokenizers import Tokenizer
@@ -189,7 +188,7 @@ def organ_cmd(a):
     elif a.cmd == "list":
         idx = O.lib_index(a.library)
         for o in idx["organs"]:
-            print(f"{o['name']}@{o['version']}  {o['n_params']/1e6:.2f}M  {o.get('license')}  price={o.get('price')}  "
+            print(f"{o['name']}@{o['version']}  {o['n_params']/1e6:.2f}M  {o.get('license')}  "
                   f"signed={o['signed']}  task={o.get('task_after')}  - {o.get('description')}")
         res = dict(count=len(idx["organs"]))
     print(json.dumps(res, indent=1, default=str))

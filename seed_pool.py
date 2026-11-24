@@ -13,7 +13,7 @@ hot add / remove at runtime (others untouched), per-seed usefulness = running av
 useful seed when the budget is tight), optional prefetch of candidates to CPU RAM.
 
 CLI (from the Seed folder):
-  python seed_pool.py init                      # registry with run3 + run4 in D:\\seed_v4\\pool1
+  python seed_pool.py init                      # registry with the starter run3 + run4 seeds
   python seed_pool.py train [--max-steps 4000]  # router only; seeds frozen; stops when the val curve flattens
   python seed_pool.py chat [--prompt "..."] [--tools]
   python seed_pool.py list | add NAME PATH [--desc ...] | remove NAME | calibrate NAME [--steps 200]
@@ -27,8 +27,32 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import seed_v4 as S
 
-POOL_DIR = Path(r"D:\seed_v4\pool1")
+def default_pool_dir():
+    env = os.environ.get("SEED_POOL_DIR")
+    if env:
+        return Path(env)
+    pub = HERE / "pool1"
+    legacy = Path(r"D:\seed_v4\pool1")
+    if (pub / "registry.json").exists() or not legacy.exists():
+        return pub
+    return legacy
+
+POOL_DIR = default_pool_dir()
 SEP = "<|endoftext|>"
+
+
+def resolve_seed_path(path, pool_dir=None):
+    """Accept a repo-relative path (as in the published registry) or an absolute path."""
+    p = Path(path)
+    if p.is_file():
+        return p
+    for b in (HERE, Path(pool_dir) if pool_dir else None, Path.cwd()):
+        if b is None:
+            continue
+        q = b / path
+        if q.is_file():
+            return q
+    return p
 
 
 # ----------------------------------------------------------------------------- one seed: logits + final hidden state
@@ -139,7 +163,11 @@ class SeedPool(nn.Module):
         if name not in self.router.keys:
             ks = [self.router.keys[n].detach() for n in self.router.keys if n in self.seeds and n != name]
             self.router.add_key(name, torch.stack(ks).mean(0) if (ks and key_init == "mean") else None)
-        self.meta[name] = dict(name=name, description=description, path=str(path), params=sum(p.numel() for p in m.parameters()),
+        try:
+            rel = str(Path(path).resolve().relative_to(HERE)).replace("\\", "/")
+        except ValueError:
+            rel = str(path)
+        self.meta[name] = dict(name=name, description=description, path=rel, params=sum(p.numel() for p in m.parameters()),
                                weights_mb=round(need, 1), shape=m.shape_str(), ctx=m.ctx, step=info.get("step"), active=True)
         self.stats.setdefault(name, 1.0 / max(1, len(self.names)))
         self.ctx = max(s.ctx for s in self.seeds.values())
@@ -220,7 +248,7 @@ def load_pool(d=POOL_DIR, device="cuda", budget_mb=None, only=None):
         pool.stats.update(st.get("stats", {}))
     for n, s in reg["seeds"].items():
         if (only is None and s.get("active", True)) or (only is not None and n in only):
-            pool.add_seed(n, s["path"], s.get("description", ""))
+            pool.add_seed(n, resolve_seed_path(s["path"], d), s.get("description", ""))
     pool.meta.update({n: s for n, s in reg["seeds"].items() if n not in pool.meta})
     return pool
 
@@ -327,8 +355,14 @@ def main():
     a = ap.parse_args(); d = Path(a.dir); d.mkdir(parents=True, exist_ok=True)
     if a.cmd == "init":
         pool = SeedPool(a.budget_mb or 2048, a.device).to(a.device)
-        pool.add_seed("run3", r"D:\seed_v4\run3\latest.pt", "fluent TinyStories trunk (Seed v4 run3, 4x2, organs o1+o2)")
-        pool.add_seed("run4", r"D:\seed_v4\run4\latest.pt", "tools + reasoning seed (Seed v4 run4, 6x1): wiki_search/calculator calls, gsm8k-style steps")
+        p3 = HERE / "organs" / "seeds" / "run3-trunk-final.json"
+        p4 = HERE / "organs" / "seeds" / "run4-tools-reasoning-final.json"
+        if not p3.is_file():
+            p3 = Path(r"D:\seed_v4\run3\latest.pt")
+        if not p4.is_file():
+            p4 = Path(r"D:\seed_v4\run4\latest.pt")
+        pool.add_seed("run3", p3, "fluent TinyStories trunk (Seed v4 run3, 4x2, organs o1+o2)")
+        pool.add_seed("run4", p4, "tools + reasoning seed (Seed v4 run4, 6x1): wiki_search/calculator calls, gsm8k-style steps")
         pool.save(d); print(json.dumps(pool.meta, indent=1)); return
     pool = load_pool(d, a.device, a.budget_mb)
     if a.cmd == "list":
@@ -342,7 +376,7 @@ def main():
             print(s, flush=True); logf.write(f"[{time.strftime('%H:%M:%S')}] {s}\n"); logf.flush()
         r = train_router(pool, d, max_steps=a.max_steps, log=lg); pool.save(d); lg(json.dumps(r))
     elif a.cmd == "add":
-        pool.add_seed(a.name, a.path, a.desc); pool.save(d)
+        pool.add_seed(a.name, resolve_seed_path(a.path, d), a.desc); pool.save(d)
     elif a.cmd == "remove":
         pool.remove_seed(a.name); pool.save(d)
     elif a.cmd == "calibrate":
@@ -356,15 +390,24 @@ def main():
         def turn(q):
             if not a.tools:
                 return reply(q)
-            sys.path.insert(0, r"D:\tiny100m\src"); import chat100m as C
             import re
+            C = None
+            for td in (HERE / "comparison" / "tiny100m", Path(r"D:\tiny100m\src")):
+                if (td / "chat100m.py").exists():
+                    sys.path.insert(0, str(td))
+                    import chat100m as C
+                    break
+            if C is None:
+                raise SystemExit("tool helpers not found (expected comparison/tiny100m/chat100m.py)")
+            ws = os.environ.get("SEED_WORKSPACE", str(HERE / "workspace"))
+            Path(ws).mkdir(parents=True, exist_ok=True)
             text = "<|system|>You are a helpful assistant. You can call these tools:\n" + "\n".join(json.dumps(v) for v in C.SPECS.values()) + "<|end|>\n"
             text += f"<|user|>{q}<|end|>\n<|assistant|>"; full = ""
             for _ in range(3):
                 new = reply(text); text += new; full += new
                 mt = re.search(r"<tool_call>(.*?)</tool_call>$", new, re.S)
                 if not mt: break
-                res = C.run_tool(mt.group(1), r"D:\tiny100m\workspace"); piece = f"<tool_result>{res}</tool_result>"; text += piece; full += piece
+                res = C.run_tool(mt.group(1), ws); piece = f"<tool_result>{res}</tool_result>"; text += piece; full += piece
             return full
         if a.prompt:
             print(turn(a.prompt)); return

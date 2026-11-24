@@ -1,0 +1,102 @@
+{
+ "kind": "tree",
+ "id": "tree-3c45802c81ff",
+ "name": "run3-trunk-final",
+ "description": "Fluent TinyStories trunk (Seed v4 run3). Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 512,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 4,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c5"
+   ],
+   [
+    "c4",
+    "c6"
+   ],
+   [
+    "c2",
+    "c7"
+   ],
+   [
+    "c3",
+    "c8"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 9,
+  "next_organ": 3,
+  "lineage": "3c45802c81ff",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "3c45802c81ff",
+ "format": "seed-part/1",
+ "file": "run3-trunk-final.safetensors",
+ "sha256": "1b818950da460008",
+ "sha256_full": "1b818950da460008d35b7219f7a2b3f3b9259ea5fd9d8feca504ce6c5d9b13d9",
+ "n_params": 4430728,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 74300,
+ "created": "2026-11-24 12:08:50",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "4x2",
+ "organs": [
+  "o1",
+  "o2"
+ ],
+ "best_tinystories_ema_loss": 1.5627,
+ "best_tinystories_bpb": 0.57,
+ "source": "run3 final at step 74300; STOP left in place; nothing deleted"
+}

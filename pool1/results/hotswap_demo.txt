@@ -1,0 +1,33 @@
+1) start: active ['run3', 'run4']
+  run3+run4                    story: weights run3=0.829 run4=0.171 | next token top: ' She'
+  run3+run4                    tool : weights run3=0.004 run4=0.996 | next token top: ' C'
+2) hot-add run2 (an older socket seed, never seen by the router; key = mean of existing keys)
+[pool] added run2 (4x1, 11.5 MB); active ['run3', 'run4', 'run2']
+   add took 0.3s
+  after add, uncalibrated      story: weights run3=0.487 run4=0.111 run2=0.402 | next token top: ' She'
+  after add, uncalibrated      tool : weights run3=0.004 run4=0.994 run2=0.002 | next token top: ' C'
+3) key calibration for run2 only (router weights untouched, 100 steps)
+[router] step 1 train 1.0191 | val ts 1.5678 tool 0.8708 | weights ts run3=0.62 run4=0.02 run2=0.36 | tool run3=0.02 run4=0.97 run2=0.01 | 1s
+[router] step 50 train 1.1510 | val ts 1.5469 tool 0.8698 | weights ts run3=0.72 run4=0.02 run2=0.26 | tool run3=0.02 run4=0.97 run2=0.01 | 11s
+[router] step 100 train 1.1734 | val ts 1.5298 tool 0.8690 | weights ts run3=0.82 run4=0.02 run2=0.15 | tool run3=0.02 run4=0.97 run2=0.01 | 21s
+   {'steps': 100, 'seconds': 21, 'val': 1.1333015277981757}
+  after key calibration        story: weights run3=0.693 run4=0.145 run2=0.162 | next token top: ' She'
+  after key calibration        tool : weights run3=0.004 run4=0.995 run2=0.001 | next token top: ' C'
+4) hot-remove run2
+[pool] removed run2 (manual); active ['run3', 'run4']
+  run3+run4 again              story: weights run3=0.829 run4=0.171 | next token top: ' She'
+  run3+run4 again              tool : weights run3=0.004 run4=0.996 | next token top: ' C'
+   story: max |logprob diff| vs before add = 0.00e+00
+   tool: max |logprob diff| vs before add = 0.00e+00
+5) budget: set budget to 32 MB and re-add run2 -> least-useful seed is evicted automatically
+   usefulness {"run3": 0.977, "run4": 0.503, "run2": 0.333}
+[pool] removed run4 (budget); active ['run3']
+[pool] added run2 (4x1, 11.5 MB); active ['run3', 'run2']; evicted ['run4']
+  budget 32 MB                 story: weights run3=0.799 run2=0.201 | next token top: ' She'
+  budget 32 MB                 tool : weights run3=0.640 run2=0.360 | next token top: ','
+6) prefetch run4 to CPU and re-add it (budget back to 2048 MB)
+   prefetch 0.1s
+[pool] added run4 (6x1, 14.2 MB); active ['run3', 'run2', 'run4']
+   add from prefetch 0.01s
+  run3+run4+run2               story: weights run3=0.693 run2=0.162 run4=0.145 | next token top: ' She'
+  run3+run4+run2               tool : weights run3=0.004 run2=0.001 run4=0.995 | next token top: ' C'

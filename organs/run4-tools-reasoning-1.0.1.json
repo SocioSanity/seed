@@ -1,0 +1,103 @@
+{
+ "format": "seed-organ/1.1",
+ "socket": "seed-socket-v1",
+ "name": "run4-tools-reasoning",
+ "version": "1.0.1",
+ "description": "Seed v4 run4 o1: tool use (wiki_search, calculator, read_file, glaive functions), step-by-step reasoning (gsm8k/calc), instructions. Trained 2 h on the tiny100m tool/reasoning corpus.",
+ "author": "colby",
+ "license": "Apache-2.0",
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "sha256": "42ca2e21f41c629d"
+ },
+ "anchor_sha256": "a8438384b2c1b973",
+ "width": 384,
+ "cell_profile": {
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "rank": 8,
+  "kv_heads": 1
+ },
+ "n_cells": 6,
+ "depth_hints": [
+  0.0833,
+  0.25,
+  0.4167,
+  0.5833,
+  0.75,
+  0.9167
+ ],
+ "alpha_at_export": [
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0,
+  1.0
+ ],
+ "n_params": 2140800,
+ "gate": "softmax",
+ "calib": {
+  "n_seq": 16,
+  "T": 128
+ },
+ "cost": {
+  "ram_mb": 8.17,
+  "train_vram_mb_est": 96.7
+ },
+ "donor": {
+  "shape": "6x1",
+  "lineage": "2eb6fd802e2e",
+  "organ_id": "o1"
+ },
+ "protected": false,
+ "file": "run4-tools-reasoning-1.0.1.safetensors",
+ "sha256": "57d27444928dace874971e2166248d0ca3435d9a24cf4dd97d7e678ab9e07d8d",
+ "created": "2026-11-24 10:31:14",
+ "rehearsal": {
+  "included": true,
+  "mode": "full",
+  "count": 1024,
+  "cap": 1024,
+  "T": 1024,
+  "bytes": 2233344,
+  "tensors": [
+   "cache.tokens (int16 [N,T+1])",
+   "cache.maskbits (uint8 packbits [N,ceil(T/8)], 1 = target token)",
+   "cache.score (fp16 [N])",
+   "cache.source (uint8 [N])"
+  ],
+  "sources": {
+   "task": 1024
+  },
+  "source_codes": {
+   "task": 0,
+   "core": 1,
+   "synthetic": 2,
+   "bundle": 3,
+   "harvest": 4
+  },
+  "selection": "per-sequence organ gap: score = (loss without organ - loss with organ) + 0.5 * loss with organ, masked to the organ's target tokens; only sequences where the organ helps (gap > 0); garbage filter = loss-with-organ above the running 98th percentile is dropped; near-duplicates (MinHash of token 3-grams, >= 0.8 similar) keep only the higher score; coverage = 8 difficulty strata (running score quantiles) with equal quotas; inside a stratum a weighted reservoir (A-Res key u^(1/score)) decides who stays",
+  "heldout_rule": "minhash[0] % 10 == 0 (never tuned on)",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "sha256": "42ca2e21f41c629d"
+  },
+  "data_provenance": "run4 training data (tiny100m corpus): wiki_tool, calc, gsm8k, tools_misc, glaive, instruct",
+  "data_license": "mixed",
+  "baseline": 1.236702774337596,
+  "score_range": [
+   18.6069,
+   23.0725,
+   27.774
+  ],
+  "note": "built at harvest from run4 task transcripts (T=1024)"
+ },
+ "signature": null,
+ "training": {
+  "run": "D:\\seed_v4\\run4",
+  "steps": 19822,
+  "data": "tiny100m corpus: wiki_tool, glaive, instruct, calc, tools_misc, gsm8k"
+ }
+}

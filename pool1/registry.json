@@ -1,0 +1,27 @@
+{
+ "seeds": {
+  "run3": {
+   "name": "run3",
+   "description": "fluent TinyStories trunk (Seed v4 run3, 4x2, organs o1+o2)",
+   "path": "organs/seeds/run3-trunk-final.json",
+   "params": 4430720,
+   "weights_mb": 16.9,
+   "shape": "4x2",
+   "ctx": 512,
+   "step": 74300,
+   "active": true
+  },
+  "run4": {
+   "name": "run4",
+   "description": "tools + reasoning seed (Seed v4 run4, 6x1): wiki_search/calculator calls, gsm8k-style steps",
+   "path": "organs/seeds/run4-tools-reasoning-final.json",
+   "params": 3718656,
+   "weights_mb": 14.2,
+   "shape": "6x1",
+   "ctx": 1024,
+   "step": 19822,
+   "active": true
+  }
+ },
+ "budget_mb": 2048.0
+}

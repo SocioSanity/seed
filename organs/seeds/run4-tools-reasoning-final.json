@@ -1,0 +1,101 @@
+{
+ "kind": "tree",
+ "id": "tree-2eb6fd802e2e",
+ "name": "run4-tools-reasoning-final",
+ "description": "Tools and reasoning seed (Seed v4 run4): wiki_search / calculator calls and step-by-step math. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 6,
+  "K": 1,
+  "organ_ids": [
+   "o1"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1"
+   ],
+   [
+    "c4"
+   ],
+   [
+    "c6"
+   ],
+   [
+    "c2"
+   ],
+   [
+    "c3"
+   ],
+   [
+    "c5"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 7,
+  "next_organ": 2,
+  "lineage": "2eb6fd802e2e",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "2eb6fd802e2e",
+ "format": "seed-part/1",
+ "file": "run4-tools-reasoning-final.safetensors",
+ "sha256": "93150f4867e989c6",
+ "sha256_full": "93150f4867e989c6bb4dbe79ba022ee22428e0d9f320226f8732aa52654519f2",
+ "n_params": 3718662,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 19822,
+ "created": "2026-11-24 12:08:50",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "6x1",
+ "organs": [
+  "o1"
+ ],
+ "tool_chat_val": 1.0001,
+ "source": "run4 final at step 19822; STOP left in place; nothing deleted"
+}

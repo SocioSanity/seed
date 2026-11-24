@@ -271,7 +271,7 @@ def train_organ(host_path, task_path, eval_path, out_stem, data_dir, socket_dir,
         f"(+ its router rows) train; host trunk frozen ({model.n_params():,} total)")
 
     cap = S.cache_cap(cache_seqs, cache_mb, ctx)
-    prov = provenance or f"seller task file {Path(task_path).name} ({len(task.rows)} examples)"
+    prov = provenance or f"task file {Path(task_path).name} ({len(task.rows)} examples)"
     pool = S.RehearsalCache(cap=cap, T=ctx, pinned=True, provenance=prov, data_license=data_license or "") if cache_mode == "full" else None
     n_task = [0]
 
@@ -302,7 +302,7 @@ def train_organ(host_path, task_path, eval_path, out_stem, data_dir, socket_dir,
         cache = build_task_cache(model, k, task, ctx, dev, rng, cap, pool=pool, provenance=prov, data_license=data_license or "")
     elif cache_mode == "synthetic":
         cache = S.synth_cache(model, k, calib, dev, n=min(cap, 512), T=ctx, cap=cap, log=log)
-        cache.provenance = "synthetic: sampled from the organ on the donor (no seller data)"
+        cache.provenance = "synthetic: sampled from the organ on the donor (no task-file data)"
     else:
         cache = None
     if cache is not None:
@@ -537,7 +537,7 @@ def publish(bundle_js, lib=LIB_DEFAULT):
     idx["organs"] = [o for o in idx["organs"] if not (o["name"] == man["name"] and o["version"] == man["version"])]
     ev = man.get("eval", {})
     idx["organs"].append(dict(name=man["name"], version=man["version"], description=man.get("description"), author=man.get("author"),
-                              license=man.get("license"), price=man.get("price"), socket=man["socket"], width=man["width"],
+                              license=man.get("license"), socket=man["socket"], width=man["width"],
                               n_params=man["n_params"], cost=man.get("cost"), sha256=man["sha256"], signed=ver["signed"],
                               task_after=ev.get("task_after"), core_delta=None if "core_after" not in ev else round(ev["core_after"] - ev["core_before"], 4),
                               path=str((d / src.name).relative_to(lib)), added=time.strftime("%Y-%m-%d %H:%M:%S")))
@@ -610,7 +610,7 @@ def cache_view(js, n=5):
     return out
 
 
-def cache_strip(js, out_stem, signer=None, reason="stripped: seller does not share training data"):
+def cache_strip(js, out_stem, signer=None, reason="stripped: author does not share training data"):
     man, t, ver = verify_bundle(js)
     t2 = {k: v for k, v in t.items() if not k.startswith("cache.")}
     tok = man.get("tokenizer") or {}
