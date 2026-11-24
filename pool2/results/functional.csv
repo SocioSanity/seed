@@ -1,0 +1,162 @@
+model,kind,item,n_calls,valid_calls,used_wiki,query_ok,answer_ok,final
+run4,fact,Who was Albert Einstein?,1,1,True,True,False,Albert Einstein Medal is an award presented by the Albert Einstein Society in Bern.
+run4,fact,Who was Marie Curie?,1,1,True,True,True,"Marie Curie (née Skəodowska Medal is a Polish annual science award conferred by the Polish Chemical Society (Polish: Polish Chemiczne, Polish Chemiczne, Polish Chemiczne, Polish physicist and chemistry."
+run4,fact,What is the Eiffel Tower?,1,1,True,True,True,"The Eiffel Tower and Other Mythologies is a collection volume to his earlier book, Mythologies, and follows the French: Tour Eiffel, France."
+run4,fact,What is the Amazon River?,0,0,False,False,True,The Amazon River is a 1999 American silent film directed by Richard River. It is a 1999 American silent film directed by Richard River. The film is a 1999 American silent film directed by Richard River. The film is a 1999 American silent film directed by Richard River. The film is a 1999 American si
+run4,fact,Who was Isaac Newton?,1,1,True,True,False,"Isaac Newton Seligman (July 1643 [O.S. 25 December 1727 – December 1727 – September 30, 1917) was an American banker and communal worker."
+run4,fact,What is Mount Everest?,1,1,True,True,False,Mount Everest is in 2013.
+run4,fact,Who was William Shakespeare?,1,1,True,True,False,"William Shakespeare (September 21, 1912 – January 1616) was an American football player."
+run4,fact,What is Python (programming language)?,1,1,True,True,True,"Pyrex is a programming language developed for creating Python programming language developed for software development, especially in the field of artificial intelligence (""batteries-included"")."
+run4,fact,Who was Leonardo da Vinci?,1,1,True,True,True,"Leonardo da Vinci da Vinci (15 April 1452 – 2 May 1519), better known as Leonardo da Vinci (disambiguation), an Italian international primary and secondary school in Paris, France holding his head."
+run4,fact,What is the Great Wall of China?,1,1,True,True,True,The Great Wall of China is a series of fortifications in China.
+run4,fact,Who was Abraham Lincoln?,1,1,True,True,True,"Abraham Lincoln (May 13, 1744 – May 19, 1865) was the paternal grandfather of the 16th U.S. president, Abraham Lincoln."
+run4,fact,What is photosynthesis?,1,1,True,True,False,Photosynthesis is a system of biological processes by which photosynthesis is used to assemble sugars from carbon dioxide and a hydrogen and electron source such as water.
+run4,fact,What is Mars?,1,1,True,True,True,Mars is the fourth planet from the Sun.
+run4,fact,Who was Nelson Mandela?,1,1,True,True,True,Nelson Mandela (18 July 1918 – 5 December 2013) was a South African singer Zahara.
+run4,fact,What is Tokyo?,1,1,True,True,True,Tokyo Story (Japanese: []}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+run4,fact,Who was Charles Darwin?,1,1,True,True,False,Charles Darwin Reserve is a nature reserve in the north east of the wheatbelt region of Western Australia.
+run4,fact,Who were the Beatles?,0,0,False,False,False,The Beatles were the Beatles.
+run4,fact,What is the Moon?,0,0,False,False,False,Moon is a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a multi-step release of a mu
+run4,fact,Who was Pablo Picasso?,1,1,True,True,False,Pablo Picasso is a song written by Jonathan Richman for the proto punk group the Modern Lovers.
+run4,fact,Who was Wolfgang Amadeus Mozart?,1,1,True,True,True,Wolfgang Amadeus Mozart (27 January 1756 – 5 December 1791) was a Classical composer and musician.
+run4,obscure,What is German submarine U-454?,1,1,True,True,False,German literature (German: Deutschsprachige Literatur) comprises those literary texts written in the German language.
+run4,obscure,What is Aluminium Hormozgan F.C.?,1,1,True,True,False,"Aluminium Almahdi Novin Hormozgan F.C. is an Iranian football club based in Bandar Abbas, Iranian football club based in Bandar Abbas, Iran."
+run4,obscure,Who was Bobby Anderson (American football)?,1,1,True,True,True,"Bob Anderson (born October 11, 1947) is an American collegiate and professional football short who played in the National Football League (NFL) for five seasons during the 1970s."
+run4,obscure,Who was Elizabeth Sabine?,1,1,True,True,True,Elizabeth Sabine (born October 1923 in London – died December 2015 in London – died December 1558.
+run4,obscure,"What is St Mary's Collegiate Church, Youghal?",1,1,True,True,True,"St Mary's Collegiate and Parish Church, also known as St Mary's Collegiate Church, is a large Anglican church in Youghal, east County Cork, Ireland."
+run4,obscure,What is Boldon Book?,1,1,True,True,True,"Boldon Book (also known as The Boldon Buke) contains the results of a survey of the bishop of Durham, Bishop of Durham, in 1183, designed to assist the administration of the bishop of Durham, in 1183, and published it ..."
+run4,obscure,What is Andrew Kenny?,1,1,True,True,False,"Andrews (born Julia Elizabeth Wells, 1 October 1935) is an English actress, singer, author and theatre director."
+run4,obscure,What is Looping Star (Clacton Pier)?,1,1,True,True,True,"Looping Star is a steel roller coaster located at Clacton Pier in Clacton-on-Sea, Essex manufactured by Pinfari."
+run4,obscure,What is People's Parliament?,1,1,True,True,False,The People's Parliament for a Parliament for a Parliament for a Protestant people.
+run4,obscure,Who was Cleo Simmons?,1,1,True,True,False,"Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo City in 1983 by Joseph Simmons, Darryl McDaniels, and Jason McDaniels, and Jason McDaniels, Darryl McDaniels, and Jason McDaniels, Darryl McDaniels, Darryl McDaniels, Darryl McDaniels, "
+run4,obscure,What is Baháʼí Faith in the Samoas?,1,1,True,True,False,The Baháłí Faith is a religion in all the countries of Oceania.
+run4,obscure,What is Gashtiari?,1,1,True,True,False,"Gashtiari (, also Romanized as Gashtiari-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sharqi Rural District, Kohgiluyeh and Boyer-Ahmad Province, Iran."
+run4,obscure,Who was Mikhail Mirkovich?,1,1,True,True,False,Mikhail Aleksandrovich Mirkovich (Russian: {}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+run4,obscure,Who was Gord Simpson?,1,1,True,True,True,"Gordon McLean Simpson (May 10, 1928 – July 11, 2019) was a Canadian ice hockey developed by Groening, James L. Brooks and Sam Simon for the Fox Broadcasting Company."
+run4,obscure,Who was Randy Carr?,1,1,True,True,True,"Randy Carr (August 13, 1956 – March 27, 2002) was an American musician who played drums in the Orange County area of Southern California including 7th Grade, Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicon"
+run4,math,Compute 642 + 135,1,1,False,,True,642 + 135 = 777.
+run4,math,What is 347 * 29?,1,1,False,,True,347 * 29 = 10063.
+run4,math,Compute 1250 - 487,1,1,False,,True,1250 - 487 = 763.
+run4,math,What is 144 / 12?,1,1,False,,True,144 / 12 = 12.
+run4,math,Compute 23 * 17 + 9,1,1,False,,True,23 * 17 + 9 = 400.
+run4,math,Tom has 12 apples. He gives 5 to his sister and buys 8 more. How many apples does Tom have now?,1,1,False,,False,Tom now has 24 apples.
+run4,math,A shop sells pencils for 3 dollars each. Sara buys 7 pencils and pays with a 50 dollar bill. How much change does she get?,0,0,False,,False,"<think>The shop sells pencils for 3*7=12 dollars
+The shop sells pencils for 3*12=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollar"
+run4,math,There are 4 boxes with 18 books in each box. How many books are there in total?,0,0,False,,False,The answer is 12.
+run4,math,Mike runs 5 miles every day for 2 weeks. How many miles does he run in total?,0,0,False,,False,"<think>First find the total time of the days: 5 miles * 2 weeks = 12 weeks
+Then find the total time of the days: 5 miles * 2 weeks = 12 weeks
+Then find the total time of the days: 12 weeks + 12 weeks = 12 weeks
+Then find the total time of the days: 12 weeks + 12 weeks = 12 weeks
+Then find the total "
+run4,math,A baker makes 120 cookies and sells 3/4 of them. How many cookies are left?,0,0,False,,False,The answer is 120.
+pool1,fact,Who was Albert Einstein?,1,1,True,True,False,Albert Einstein Medal is an award presented by the Albert Einstein Society in Bern.
+pool1,fact,Who was Marie Curie?,1,1,True,True,True,"Marie Curie (née Skəodowska Medal is a Polish annual science award conferred by the Polish Chemical Society (Polish: Polish Chemiczne, Polish Chemiczne, Polish Chemiczne, Polish physicist and chemistry."
+pool1,fact,What is the Eiffel Tower?,1,1,True,True,True,"The Eiffel Tower and Other Mythologies is a collection volume to his earlier book, Mythologies, and follows the French: Tour Eiffel, France."
+pool1,fact,What is the Amazon River?,0,0,False,False,True,The Amazon River is a 1999 American silent film directed by Richard River. It is a 1999 American silent film directed by Richard River. The film is a 1999 American silent film directed by Richard River. The film is a 1999 American silent film directed by Richard River. The film is a 1999 American si
+pool1,fact,Who was Isaac Newton?,1,1,True,True,False,"Isaac Newton Seligman (July 1643 [O.S. 25 December 1727 – December 1727 – September 30, 1917) was an American banker and communal worker."
+pool1,fact,What is Mount Everest?,1,1,True,True,False,Mount Everest is in 2013.
+pool1,fact,Who was William Shakespeare?,1,1,True,True,False,"William Shakespeare (September 21, 1912 – January 1616) was an American football player."
+pool1,fact,What is Python (programming language)?,1,1,True,True,True,"Pyrex is a programming language developed for creating Python programming language developed for software development, especially in the field of artificial intelligence (""batteries-included"")."
+pool1,fact,Who was Leonardo da Vinci?,1,1,True,True,True,"Leonardo da Vinci da Vinci (15 April 1452 – 2 May 1519), better known as Leonardo da Vinci (disambiguation), an Italian international primary and secondary school in Paris, France holding his head."
+pool1,fact,What is the Great Wall of China?,1,1,True,True,True,The Great Wall of China is a series of fortifications in China.
+pool1,fact,Who was Abraham Lincoln?,1,1,True,True,True,"Abraham Lincoln (May 13, 1744 – May 19, 1865) was the paternal grandfather of the 16th U.S. president, Abraham Lincoln."
+pool1,fact,What is photosynthesis?,1,1,True,True,False,Photosynthesis is a system of biological processes by which photosynthesis is used to assemble sugars from carbon dioxide and a hydrogen and electron source such as water.
+pool1,fact,What is Mars?,1,1,True,True,True,Mars is the fourth planet from the Sun.
+pool1,fact,Who was Nelson Mandela?,1,1,True,True,True,Nelson Mandela (18 July 1918 – 5 December 2013) was a South African singer Zahara.
+pool1,fact,What is Tokyo?,1,1,True,True,True,Tokyo Story (Japanese: []}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+pool1,fact,Who was Charles Darwin?,1,1,True,True,False,Charles Darwin Reserve is a nature reserve in the north east of the wheatbelt region of Western Australia.
+pool1,fact,Who were the Beatles?,0,0,False,False,False,The Beatles were the Beatles.
+pool1,fact,What is the Moon?,0,0,False,False,False,Moon is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step release of the Moon. It is a multi-step
+pool1,fact,Who was Pablo Picasso?,1,1,True,True,False,Pablo Picasso is a song written by Jonathan Richman for the proto punk group the Modern Lovers.
+pool1,fact,Who was Wolfgang Amadeus Mozart?,1,1,True,True,True,Wolfgang Amadeus Mozart (27 January 1756 – 5 December 1791) was a Classical composer and musician.
+pool1,obscure,What is German submarine U-454?,1,1,True,True,False,German literature (German: Deutschsprachige Literatur) comprises those literary texts written in the German language.
+pool1,obscure,What is Aluminium Hormozgan F.C.?,1,1,True,True,False,"Aluminium Almahdi Novin Hormozgan F.C. is an Iranian football club based in Bandar Abbas, Iranian football club based in Bandar Abbas, Iran."
+pool1,obscure,Who was Bobby Anderson (American football)?,1,1,True,True,True,"Bob Anderson (born October 11, 1947) is an American collegiate and professional football short who played in the National Football League (NFL) for five seasons during the 1970s."
+pool1,obscure,Who was Elizabeth Sabine?,1,1,True,True,True,Elizabeth Sabine (born October 1923 in London – died December 2015 in London – died December 1558.
+pool1,obscure,"What is St Mary's Collegiate Church, Youghal?",1,1,True,True,True,"St Mary's Collegiate and Parish Church, also known as St Mary's Collegiate Church, is a large Anglican church in Youghal, east County Cork, Ireland."
+pool1,obscure,What is Boldon Book?,1,1,True,True,True,"Boldon Book (also known as The Boldon Buke) contains the results of a survey of the bishop of Durham, Bishop of Durham, in 1183, designed to assist the administration of the bishop of Durham, in 1183, and published it ..."
+pool1,obscure,What is Andrew Kenny?,1,1,True,True,False,"Andrews (born Julia Elizabeth Wells, 1 October 1935) is an English actress, singer, author and theatre director."
+pool1,obscure,What is Looping Star (Clacton Pier)?,1,1,True,True,True,"Looping Star is a steel roller coaster located at Clacton Pier in Clacton-on-Sea, Essex manufactured by Pinfari."
+pool1,obscure,What is People's Parliament?,1,1,True,True,False,The People's Parliament for a Parliament for a Parliament for a Protestant people.
+pool1,obscure,Who was Cleo Simmons?,1,1,True,True,False,"Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo Cleo City in 1983 by Joseph Simmons, Darryl McDaniels, and Jason McDaniels, and Jason McDaniels, Darryl McDaniels, and Jason McDaniels, Darryl McDaniels, Darryl McDaniels, Darryl McDaniels, "
+pool1,obscure,What is Baháʼí Faith in the Samoas?,1,1,True,True,False,The Baháłí Faith is a religion in all the countries of Oceania.
+pool1,obscure,What is Gashtiari?,1,1,True,True,False,"Gashtiari (, also Romanized as Gashtiari-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sarhadi-ye Sharqi Rural District, Kohgiluyeh and Boyer-Ahmad Province, Iran."
+pool1,obscure,Who was Mikhail Mirkovich?,1,1,True,True,False,Mikhail Aleksandrovich Mirkovich (Russian: {}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+pool1,obscure,Who was Gord Simpson?,1,1,True,True,True,"Gordon McLean Simpson (May 10, 1928 – July 11, 2019) was a Canadian ice hockey developed by Groening, James L. Brooks and Sam Simon for the Fox Broadcasting Company."
+pool1,obscure,Who was Randy Carr?,1,1,True,True,True,"Randy Carr (August 13, 1956 – March 27, 2002) was an American musician who played drums in the Orange County area of Southern California including 7th Grade, Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicone Silicon"
+pool1,math,Compute 642 + 135,1,1,False,,True,642 + 135 = 777.
+pool1,math,What is 347 * 29?,1,1,False,,True,347 * 29 = 10063.
+pool1,math,Compute 1250 - 487,1,1,False,,True,1250 - 487 = 763.
+pool1,math,What is 144 / 12?,1,1,False,,True,144 / 12 = 12.
+pool1,math,Compute 23 * 17 + 9,1,1,False,,True,23 * 17 + 9 = 400.
+pool1,math,Tom has 12 apples. He gives 5 to his sister and buys 8 more. How many apples does Tom have now?,1,1,False,,False,Tom now has 24 apples.
+pool1,math,A shop sells pencils for 3 dollars each. Sara buys 7 pencils and pays with a 50 dollar bill. How much change does she get?,0,0,False,,False,"<think>The shop sells pencils for 3*7=12 dollars
+The shop sells pencils for 3*12=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollar"
+pool1,math,There are 4 boxes with 18 books in each box. How many books are there in total?,0,0,False,,False,The answer is 12.
+pool1,math,Mike runs 5 miles every day for 2 weeks. How many miles does he run in total?,0,0,False,,False,"<think>First find the total time of the days: 5 miles * 2 weeks = 12 weeks
+Then find the total time of the days: 5 miles * 2 weeks = 12 weeks
+Then find the total time of the days: 12 weeks + 12 weeks = 12 weeks
+Then find the total time of the days: 12 weeks + 12 weeks = 12 weeks
+Then find the total "
+pool1,math,A baker makes 120 cookies and sells 3/4 of them. How many cookies are left?,0,0,False,,False,The answer is 120.
+pool2,fact,Who was Albert Einstein?,1,1,True,True,True,Albert Einstein House at 112 March 1879 – 18 April 1955) was a German-born theoretical physicist best known for developing the theory of relativity.
+pool2,fact,Who was Marie Curie?,1,1,True,True,False,"Maria Salomea Skəodowska Curie (née Skəodowskiej-Curie (Polish: Polish Imarii Skəodowskiej-Curie, Polish: Polish: Polish: Polish Imarii Skəodowskiej-Curie (Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: Polish: "
+pool2,fact,What is the Eiffel Tower?,1,1,True,True,True,The Eiffel Tower ( EYE-f___________________________________________________________________________________________________________________________________________________________________________________________
+pool2,fact,What is the Amazon River?,1,1,True,True,True,"The Amazon River in South America is the largest river in the world by discharge volume of water, and the second-longest or longest river system in the world."
+pool2,fact,Who was Isaac Newton?,1,1,True,True,True,"Isaac Newton (July 29, 1827 [O.S. 25 December 1642] – December 1727 [O.S. 20 March 1726]) was an English polymath who was a mathematician, physicist, astronomer, alchemist, theologian, historian and inventor."
+pool2,fact,What is Mount Everest?,1,1,True,True,True,"Mount Everest (known in Nepali as SagarmŁth_Nepal border at the same time as the COP 27- 20222, in Tibetan as Jomolangma/{homolangma) is the highest mountain on Earth above sea level."
+pool2,fact,Who was William Shakespeare?,1,1,True,True,True,"William Shakespeare (September 23 April 1564 – 23 April 1616) was an English playwright, poet and actor."
+pool2,fact,What is Python (programming language)?,1,1,True,True,True,Python is a programming language for creating Python modules.
+pool2,fact,Who was Leonardo da Vinci?,1,1,True,True,True,"Leonardo di ser Piero da Vinci (15 April 1452 – 2 May 1519), better known as Leonardo da Vinci (disambiguation), an Italian polymath of the High Renaissance who was active as a painter, draughtsman, engineer, sculptor, and architect."
+pool2,fact,What is the Great Wall of China?,1,1,True,True,True,The Great Wall of China is the sixty-eighth release and twenty-sixth soundtrack album by Tangerine Dream.
+pool2,fact,Who was Abraham Lincoln?,1,1,True,True,False,"Abraham Lincoln (May 13, 1809 – April 15, 1865) was the paternal grandfather of the United States, from 1861 until his assassination in 1865."
+pool2,fact,What is photosynthesis?,1,1,True,True,False,Photosynthesis is a system of biological processes by which photosynthesis is used to assemble sugars from carbon dioxide and a hydrogen and electron source such as water.
+pool2,fact,What is Mars?,1,1,True,True,True,"Mars is the fourth planet from the Sun. It is also known as the ""Red Planet"", for its orange-red appearance."
+pool2,fact,Who was Nelson Mandela?,1,1,True,True,True,"Nelson Mandela (18 July 1918 – 5 December 2013) was a South African anti-apartheid revolutionary, politician, and philanthropist, who served as President of South Africa from 1994 to 1999."
+pool2,fact,What is Tokyo?,1,1,True,True,True,"Tokyo, officially the Tokyo Metropolis, is the capital and most populous city of Japan."
+pool2,fact,Who was Charles Darwin?,1,1,True,True,True,"Charles Robert Darwin ( DAR-win; 12 February 1809 – 19 April 1882) was an English naturalist, geologist, and biologist, widely known for his contributions to evolutionary biology."
+pool2,fact,Who were the Beatles?,0,0,False,False,False,The Beatles were the Beatles.
+pool2,fact,What is the Moon?,1,1,True,True,True,The Moon is the only natural satellite of Earth.
+pool2,fact,Who was Pablo Picasso?,1,1,True,True,True,"Pablo Ruiz Picasso (25 October 1881 – 8 April 1973) was a Spanish painter, sculptor, printmaker, and ceramicist who spent most of his adult life in France."
+pool2,fact,Who was Wolfgang Amadeus Mozart?,1,1,True,True,True,Wolfgang Amadeus Mozart (27 January 1756 – 5 December 1791) was a Classical composer and musician.
+pool2,obscure,What is German submarine U-454?,1,1,True,True,True,German submarine U-454 was a Type VIIC U-boat of Nazi Germany's Kriegsmarine during World War II.
+pool2,obscure,What is Aluminium Hormozgan F.C.?,1,1,True,True,True,Aluminum Hormozgan F.C. is an Iranian football club founded in 2006.
+pool2,obscure,Who was Bobby Anderson (American football)?,1,1,True,True,True,"Robert Conrad Anderson (born October 11, 1947) is an American former professional football halfback who played in the National Football League (NFL) for five seasons in the 1970s."
+pool2,obscure,Who was Elizabeth Sabine?,1,1,True,True,True,"Elizabeth Sabine (born October 1923 in London – 1879) was a voice strengthening specialist, whose work to the field of voice was acknowledged when she was the recipient of the Lifetime Achievement Award at the Los Angeles Music Awards in 2003."
+pool2,obscure,"What is St Mary's Collegiate Church, Youghal?",1,1,True,True,True,"The Collegiate and Parish Church of Saint Mary's Collegiate Church, was a secular college of priests based on the seaward side of St Mary's Collegiate Church, is a large Anglican church in Youghal, east County Cork, Ireland."
+pool2,obscure,What is Boldon Book?,1,1,True,True,True,"The Boldon Book (also known as the Boldon Buke) contains the results of a survey of the bishopric of Durham that was completed on the orders of Hugh du Puiset, Bishop of Durham, in 1183, designed to assist the administration of the vast diocesan estates."
+pool2,obscure,What is Andrew Kenny?,1,1,True,True,True,"Andrew Kenny is the main singer/songwriter of The Wooden Birds, which released their debut LP Magnolia in May 2009."
+pool2,obscure,What is Looping Star (Clacton Pier)?,1,1,True,True,True,"Looping Star is a steel roller coaster located at Clacton Pier in Clacton-on-Sea, Essex manufactured by Pinfari."
+pool2,obscure,What is People's Parliament?,1,1,True,True,False,"The People's Parliament for a Parliament for a Parliament for a Protestant people' selected citizens, sitting in a mockup of the House of Commons of the United Kingdom, debated and voted on controversial issues."
+pool2,obscure,Who was Cleo Simmons?,1,1,True,True,True,"Cleo Simmons (born October 21, 1960) is a former American football tight end in the National Football League (NFL) for the Dallas Cowboys."
+pool2,obscure,What is Baháʼí Faith in the Samoas?,1,1,True,True,False,"The Baháłí Faith is a religion, established by Baháłu'lláh in Samoa and American Samoa."
+pool2,obscure,What is Gashtiari?,1,1,True,True,False,"Gashtiari (, also Romanized as Gasht}}}}"
+pool2,obscure,Who was Mikhail Mirkovich?,1,1,True,True,True,"Mikhail Aleksandrovich Mirkovich (September 17, 1836 – March 24 March [19 November] 1711 – 15 April [O.S. 4 April [O.S. 4 April [O.S. 4 April [O.S. 4 April] 1711 – 21 February 1984) was a Russian novelist and writer, who made his debut in 1965."
+pool2,obscure,Who was Gord Simpson?,1,1,True,True,True,"Gordon McLean Simpson (May 10, 1928 – July 11, 2019) was a Canadian ice hockey defenceman who played with the Winnipeg Maroons for 14 years."
+pool2,obscure,Who was Randy Carr?,1,1,True,True,True,"Randy Carr (August 13, 1956 – March 27, 2002) was an American musician who played drums in many rock music groups in the Orange County area of Southern California including 7th Grade, Silicone Silos, 16 Tons, and Social Distortion."
+pool2,math,Compute 642 + 135,1,1,False,,True,642 + 135 = 777.
+pool2,math,What is 347 * 29?,1,1,False,,True,347 * 29 = 10063.
+pool2,math,Compute 1250 - 487,1,1,False,,True,1250 - 487 = 763.
+pool2,math,What is 144 / 12?,1,1,False,,True,144 / 12 = 12.
+pool2,math,Compute 23 * 17 + 9,1,1,False,,True,23 * 17+ 9 = 400.
+pool2,math,Tom has 12 apples. He gives 5 to his sister and buys 8 more. How many apples does Tom have now?,0,0,False,,False,"<think>Tom starts with 12 and gets 5 to his sister and buys 8 more, so I need 12*5 + 5 = 12*5+8 = 12*5+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+8+"
+pool2,math,A shop sells pencils for 3 dollars each. Sara buys 7 pencils and pays with a 50 dollar bill. How much change does she get?,0,0,False,,False,"<think>The shop sells pencils for 3*7=12 dollars
+The shop sells pencils for 3*12=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollars
+The shop sells pencils for 3*1=12 dollar"
+pool2,math,There are 4 boxes with 18 books in each box. How many books are there in total?,0,0,False,,False,The answer is 12.
+pool2,math,Mike runs 5 miles every day for 2 weeks. How many miles does he run in total?,0,0,False,,False,<think>First find the total time of the days: 5 miles * 2 weeks = 12*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2*2
+pool2,math,A baker makes 120 cookies and sells 3/4 of them. How many cookies are left?,0,0,False,,False,The answer is 120.

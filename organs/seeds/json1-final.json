@@ -1,0 +1,101 @@
+{
+ "kind": "tree",
+ "id": "tree-99440e5a9fd1",
+ "name": "json1-final",
+ "description": "JSON / tool-call specialist (from scratch): tool-call argument filling, reading, writing and fixing JSON. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 4,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c3",
+    "c4"
+   ],
+   [
+    "c5",
+    "c6"
+   ],
+   [
+    "c8",
+    "c7"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 9,
+  "next_organ": 3,
+  "lineage": "99440e5a9fd1",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "99440e5a9fd1",
+ "format": "seed-part/1",
+ "file": "json1-final.safetensors",
+ "sha256": "352e955ea3dbcf63",
+ "sha256_full": "352e955ea3dbcf6370a3ee414a445fdd6f36c486ffc526722a244f0b24ee612e",
+ "n_params": 4430728,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 4767,
+ "created": "2026-11-24 15:45:31",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "4x2",
+ "organs": [
+  "o1",
+  "o2"
+ ],
+ "val_mix_ema": 0.6815,
+ "source": "seed_json1 plateau stop at step 4750; STOP left in place; nothing deleted"
+}

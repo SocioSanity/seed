@@ -259,12 +259,15 @@ TOOL_SRC = {"wiki_tool": 0.40, "glaive": 0.153, "instruct": 0.153, "calc": 0.118
 
 class MixData:
     """TinyStories (train.bin) + run4's tool/reasoning files, only the first 99% of each file (the last 1% is the test tail)."""
-    def __init__(self, tok, ts_frac=0.4, data_dir=HERE / "data", run4_dir=r"D:\seed_v4\run4_data"):
+    def __init__(self, tok, ts_frac=0.4, data_dir=HERE / "data", run4_dir=r"D:\seed_v4\run4_data", extra=None):
         self.tok, self.ts_frac, self.eos = tok, ts_frac, tok.token_to_id("<eos>")
         self.ts = np.memmap(Path(data_dir) / "train.bin", dtype=np.uint16, mode="r")
         self.src = []
         for n, w in TOOL_SRC.items():
             p = Path(run4_dir) / f"{n}.txt"; size = p.stat().st_size
+            self.src.append(dict(name=n, w=w, f=open(p, "rb"), cut=int(size * 0.99)))
+        for n, (w, pth) in (extra or {}).items():  # extra specialist data, training region only (first 99%)
+            p = Path(pth); size = p.stat().st_size
             self.src.append(dict(name=n, w=w, f=open(p, "rb"), cut=int(size * 0.99)))
         self.p = np.array([s["w"] for s in self.src]); self.p /= self.p.sum()
 
@@ -300,10 +303,10 @@ def eval_pool(pool, batches, dev):
     return tot / len(batches), torch.stack(ws).mean(0).tolist()
 
 
-def train_router(pool, out=POOL_DIR, max_steps=4000, batch=16, T=512, lr=2e-3, only_keys=None, eval_every=100, patience_rel=0.003, window=500, log=print):
+def train_router(pool, out=POOL_DIR, max_steps=4000, batch=16, T=512, lr=2e-3, only_keys=None, eval_every=100, patience_rel=0.003, window=500, log=print, extra=None):
     """Router-only training (seeds frozen). only_keys=[name] = key calibration for a newly added seed."""
     tok = S.find_tokenizer(next(iter(pool.seeds.values())))
-    data = MixData(tok); rng = np.random.default_rng(0); vr = np.random.default_rng(777)
+    data = MixData(tok, extra=extra); rng = np.random.default_rng(0); vr = np.random.default_rng(777)
     val = {"ts": [data.batch(8, T, vr, "ts") for _ in range(4)], "tool": [data.batch(8, T, vr, "tool") for _ in range(8)]}
     params = [pool.router.keys[n] for n in only_keys] if only_keys else list(pool.router.parameters())
     for p in pool.router.parameters():
@@ -352,7 +355,9 @@ def main():
     ap.add_argument("--max-steps", type=int, default=4000); ap.add_argument("--steps", type=int, default=200)
     ap.add_argument("--prompt", default=None); ap.add_argument("--tools", action="store_true"); ap.add_argument("--n", type=int, default=200)
     ap.add_argument("--temp", type=float, default=0.7)
+    ap.add_argument("--extra", action="append", default=[], help="name:weight:path extra router-training text (first 99%% only)")
     a = ap.parse_args(); d = Path(a.dir); d.mkdir(parents=True, exist_ok=True)
+    extra = {e.split(":", 2)[0]: (float(e.split(":", 2)[1]), e.split(":", 2)[2]) for e in a.extra} or None
     if a.cmd == "init":
         pool = SeedPool(a.budget_mb or 2048, a.device).to(a.device)
         p3 = HERE / "organs" / "seeds" / "run3-trunk-final.json"
@@ -374,13 +379,13 @@ def main():
         logf = open(d / "train.log", "a", encoding="utf-8")
         def lg(s):
             print(s, flush=True); logf.write(f"[{time.strftime('%H:%M:%S')}] {s}\n"); logf.flush()
-        r = train_router(pool, d, max_steps=a.max_steps, log=lg); pool.save(d); lg(json.dumps(r))
+        r = train_router(pool, d, max_steps=a.max_steps, log=lg, extra=extra); pool.save(d); lg(json.dumps(r))
     elif a.cmd == "add":
         pool.add_seed(a.name, resolve_seed_path(a.path, d), a.desc); pool.save(d)
     elif a.cmd == "remove":
         pool.remove_seed(a.name); pool.save(d)
     elif a.cmd == "calibrate":
-        r = train_router(pool, d, max_steps=a.steps, only_keys=[a.name], eval_every=50, lr=1e-2); pool.save(d); print(r)
+        r = train_router(pool, d, max_steps=a.steps, only_keys=[a.name], eval_every=50, lr=1e-2, extra=extra); pool.save(d); print(r)
     elif a.cmd == "chat":
         tok = S.find_tokenizer(next(iter(pool.seeds.values())))
         def reply(text):

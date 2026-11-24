@@ -1,0 +1,4 @@
+model,tool_calls,valid_json_rate,fact_used_wiki,fact_query_ok,fact_answer_ok,math_ok,math_used_calc,obscure_used_wiki,obscure_query_ok,obscure_answer_ok,decoding,bpb_seed_heldout_wiki_tool,bpb_100m_val_wiki_tool,bpb_seed_heldout_glaive,bpb_100m_val_glaive,bpb_seed_heldout_instruct,bpb_100m_val_instruct,bpb_seed_heldout_calc,bpb_100m_val_calc,bpb_seed_heldout_tools_misc,bpb_100m_val_tools_misc,bpb_seed_heldout_gsm8k,bpb_100m_val_gsm8k,bpb_ts_valid_TinyStories
+run4,38,1.0,17,17,11,5,6,15,15,7,greedy,0.7699,0.6178,0.7342,0.7209,1.2148,0.2092,0.2044,0.2002,0.502,0.4876,0.8211,0.8377,1.0306
+pool1,38,1.0,17,17,11,5,6,15,15,7,greedy,0.7803,0.6273,0.7413,0.7298,1.2268,0.2608,0.2293,0.2234,0.4226,0.431,0.8414,0.8604,0.5334
+pool2,39,1.0,19,19,16,5,5,15,15,12,greedy,0.7158,0.5849,0.6704,0.6691,1.2064,0.2771,0.2366,0.2324,0.4192,0.4264,0.8402,0.86,0.5328

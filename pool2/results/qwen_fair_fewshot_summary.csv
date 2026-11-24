@@ -1,0 +1,2 @@
+model,mode,decoding,device,tool_calls,tagged_calls,valid_json_rate,duplicate_calls,forced_now_answer,fact_used_wiki,fact_query_ok,fact_answer_ok,obscure_used_wiki,obscure_query_ok,obscure_answer_ok,math_ok,math_used_calc,seconds
+qwen2.5-coder:3b Q4_K_M,fewshot,greedy,cpu llama.cpp 6 threads,0,0,,0,0,0,0,0,0,0,0,0,0,73

@@ -43,3 +43,4 @@ Thumbs.db
 # Published starter weights (fp16, well under the 50 MB repo limit)
 !organs/**/*.safetensors
 !pool1/router.pt
+!pool2/router.pt

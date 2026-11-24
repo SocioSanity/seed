@@ -1,0 +1,4 @@
+model,step,params,weights_mb_fp32,weights_mb_fp16,ram_delta_mb_cpu,context,tok_s_gpu,tok_s_cpu4
+run4,19822,3718656,14.2,7.1,847,1024,103.0,82.4
+pool1,router,8552320,32.6,16.3,155,1024,55.8,25.1
+pool2,router,17414016,66.4,33.2,69,1024,29.2,13.9

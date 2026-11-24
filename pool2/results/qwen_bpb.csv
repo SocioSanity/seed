@@ -1,0 +1,6 @@
+model,set,source,docs,bytes,tokens,bpb
+qwen2.5-coder-3b-instruct HF fp32,seed_heldout,wiki_tool,60,90612,24085,0.7507
+qwen2.5-coder-3b-instruct HF fp32,100m_val,wiki_tool,60,96734,27342,0.7724
+qwen2.5-coder-3b-instruct HF fp32,seed_heldout,glaive,60,95445,24411,0.3843
+qwen2.5-coder-3b-instruct HF fp32,100m_val,glaive,60,95131,23346,0.3777
+qwen2.5-coder-3b-instruct HF fp32,ts_valid,TinyStories,200,156695,37971,0.5755

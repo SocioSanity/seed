@@ -26,6 +26,40 @@ Built and trained on a desktop with an **NVIDIA GTX 1660 Ti (6 GB)**. Training a
 
 ## Current results
 
+### Seed Pool v2 (v0.3.0): two specialist organs + a fair Qwen comparison
+
+v0.3.0 adds two small specialist organs trained from scratch on the same tokenizer and socket anchor, and hot-adds them to a copy of the pool (`pool2/`, 4 organs, router retrained for 900 steps). The comparison baseline is now **Qwen2.5-Coder-3B** instead of the undertrained 100M.
+
+- **json1** (4.43M, 4×2, step 4,750): tool-call argument filling and reading, writing and fixing JSON — [`organs/seeds/json1-final`](organs/seeds/json1-final.json)
+- **answer1** (4.43M, 4×2, step 4,500): writes a short final answer from `<tool_result>` text — [`organs/seeds/answer1-final`](organs/seeds/answer1-final.json)
+- Data recipes: [`recipes/`](recipes/)
+
+All rows below use greedy decoding and one test run per model. Qwen is the `qwen2.5-coder:3b` Q4_K_M GGUF (llama.cpp) for the functional tests; its bits per byte come from the official HF weights in fp32 (the Q4_K_M file was not scored).
+
+| | pool1 | pool2 | Qwen2.5-Coder-3B, native tool template | Qwen, no tools |
+|---|---|---|---|---|
+| params / weights | 8.55M / 32.6 MB fp32 | 17.4M / 66.4 MB fp32 (33.2 fp16) | 3.09B / 1,840 MB (Q4_K_M) | |
+| tok/s GPU / CPU (4 threads) | 56 / 25 | 29 / 14 | 86 / 6 | |
+| 20 common facts, right answers | 11 | 16 | 20 | 20 |
+| 15 obscure facts (answers only in the local Wikipedia index) | 7 | 12 | 12 | 2 |
+| 10 math | 5 | 5 | 8 | 8 |
+| valid JSON tool calls | 100% (38) | 100% (39) | 100% (88; none use the `<tool_call>` tag) | – |
+| bpb wiki_tool (held out, our format) | 0.780 | **0.716** | 0.751 | |
+| bpb glaive (held out, neutral tool-chat) | 0.741 | 0.670 | **0.384** | |
+| bpb TinyStories | 0.533 | **0.533** | 0.576 | |
+
+Honest caveats:
+
+- The wiki_tool documents are in Seed's own tool-transcript format, which favours the seeds. **Glaive is the neutral test, and Qwen is far better there** (0.384 vs 0.670).
+- Qwen only uses tools through its own chat template. With Seed's format plus a schema and 3 worked examples it ends its turn after `<think>` and makes 0 calls (format sensitivity). With its native template it makes correct calls every time but re-issues the same call instead of answering; 43 of 45 questions needed an extra "now answer" turn that the seeds did not get.
+- pool2's answers mostly copy the first sentence of the right article, sometimes garbled; Qwen's are fluent rewrites. Answer checks are keyword-based.
+- The 15 obscure questions are entities whose titles appear in no training file, with hand-picked answer keys. Small sets: treat ±1 as noise.
+- pool2 runs all four organs on every token, so it is the slowest pool (29 tok/s on GPU).
+
+Router (pool2): json1 carries tool calls (about 0.6–0.7 of the weight), answer1 reads tool results (about 0.75), run4 leads on reasoning (0.72 on math thinking), and run3 on stories (0.90). Full write-up, prompts and per-item results: [pool2/results/SUMMARY.md](pool2/results/SUMMARY.md), [pool2/results/qwen_prompts.md](pool2/results/qwen_prompts.md).
+
+### Seed Pool v1 (v0.2.0)
+
 **run3** (fluent trunk, TinyStories) — starter organ:
 
 - 4.43M parameters (shape 4×2), step 74,300
@@ -43,7 +77,7 @@ Built and trained on a desktop with an **NVIDIA GTX 1660 Ti (6 GB)**. Training a
 
 The all-active pool keeps run4's tool skill and run3's story fluency with no hand-off. On TinyStories, pool 0.533 vs run3 0.536 bits/byte is a tie (no loss of run3's fluency), not an improvement. The router (403k params, 1.5 MB) trained in about 2 minutes and, on its own, leans on run4 for thinking, tool calls and math, and on run3 for stories.
 
-The pool is about 1/12 the weight of the 100M comparison model (16.3 MB vs 199.4 MB fp16) and is faster on both GPU (68 vs 41 tok/s) and CPU (42 vs 16). That 100M checkpoint is only at step 1,350 of 3,662 planned, so it is undertrained. Any "close to the 100M" reading is against this early baseline. Future comparisons will use Qwen 3B coder.
+The pool is about 1/12 the weight of the 100M comparison model (16.3 MB vs 199.4 MB fp16) and is faster on both GPU (68 vs 41 tok/s) and CPU (42 vs 16). That 100M checkpoint is only at step 1,350 of 3,662 planned, so it is undertrained. Any "close to the 100M" reading is against this early baseline. From v0.3.0 the comparison baseline is Qwen2.5-Coder-3B (above).
 
 | | run3 | run4 | pool1 | tiny100m (step 1,350) |
 |---|---|---|---|---|
@@ -108,10 +142,11 @@ python chat.py organs/seeds/run4-tools-reasoning-final.json --prompt "Once upon 
 
 ### Seed Pool
 
-The published registry and router live in `pool1/`. Paths in the registry are relative to the repo root. Override the pool directory with `--dir` or the `SEED_POOL_DIR` environment variable.
+The published registries and routers live in `pool1/` (2 organs) and `pool2/` (4 organs; use `--dir pool2`). Paths in the registry are relative to the repo root. Override the pool directory with `--dir` or the `SEED_POOL_DIR` environment variable.
 
 ```bash
 python seed_pool.py list
+python seed_pool.py --dir pool2 chat --tools --prompt "What is German submarine U-454?"
 python seed_pool.py chat --prompt "Once upon a time"
 python seed_pool.py chat --tools --prompt "Who was Marie Curie?"
 python seed_pool.py add NAME path/to/seed.json
@@ -208,9 +243,12 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 | `ed25519_min.py` | signing helper used by organelle bundles |
 | `make_task.py` | tiny example task generator for organelle tests |
 | `plot.py` | loss / growth chart for a run (optional; needs matplotlib) |
-| `organs/seeds/` | starter organs: run3 trunk and run4 tools+reasoning, fp16 tree parts |
+| `organs/seeds/` | free starter organs: run3 trunk, run4 tools+reasoning, json1, answer1 (fp16 tree parts) |
 | `organs/run4-tools-reasoning-1.0.1` | starter organelle bundle (run4 column + rehearsal cache) |
+| `organs/seeds/json1-final`, `answer1-final` | v0.3.0 specialist organs (JSON / tool calls; answer from search results), fp16 |
 | `pool1/` | trained pool router, registry, and [results / SUMMARY](pool1/results/SUMMARY.md) |
+| `pool2/` | 4-organ pool: router, registry, eval scripts, held-out obscure facts, [results / SUMMARY](pool2/results/SUMMARY.md) |
+| `recipes/` | data builders and training args for json1 and answer1 |
 | `tokenizers/seed-bpe4096-v1/` | the shared 4,096-token byte-level BPE, plus the decode prior |
 | `socket/seed-socket-v1/` | socket metadata and calibration set (see note below) |
 | `comparison/tiny100m/` | loader and docs for the 100M comparison model (weights on the release) |

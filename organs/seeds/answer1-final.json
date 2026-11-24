@@ -1,0 +1,101 @@
+{
+ "kind": "tree",
+ "id": "tree-80c34d72f0fd",
+ "name": "answer1-final",
+ "description": "Answer-from-results specialist (from scratch): short final answer from <tool_result> text. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 4,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c4",
+    "c3"
+   ],
+   [
+    "c6",
+    "c5"
+   ],
+   [
+    "c7",
+    "c8"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 9,
+  "next_organ": 3,
+  "lineage": "80c34d72f0fd",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "80c34d72f0fd",
+ "format": "seed-part/1",
+ "file": "answer1-final.safetensors",
+ "sha256": "71e612147bd275cb",
+ "sha256_full": "71e612147bd275cb8ff40c9bc77e07fbb0db14f348c3ecd4ab13885887eefff2",
+ "n_params": 4430728,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 4560,
+ "created": "2026-11-24 15:45:32",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "4x2",
+ "organs": [
+  "o1",
+  "o2"
+ ],
+ "val_mix_ema": 0.9072,
+ "source": "seed_answer1 plateau stop at step 4500; STOP left in place; nothing deleted"
+}

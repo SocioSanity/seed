@@ -1,0 +1,2 @@
+model,tok_s_gpu,rss_mb_gpu_server,tok_s_cpu4,rss_mb_cpu4_server
+qwen2.5-coder-3b,85.6,2266,6.3,2256
