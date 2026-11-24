@@ -409,9 +409,12 @@ class SeedV4(nn.Module):
                                reduction="none" if per_token else "mean")
 
     @torch.no_grad()
-    def generate(self, idx, n, temp=0.8, top_k=40, top_p=0.95, rep_pen=1.1, stop_id=None):
+    def generate(self, idx, n, temp=0.8, top_k=40, top_p=0.95, rep_pen=1.1, stop_id=None, prior="auto"):
+        pr = self.__dict__.get("decode_prior") if isinstance(prior, str) else prior
         for _ in range(n):
             logits = self(idx[:, -self.ctx:])[:, -1, :].float()
+            if pr is not None:   # brace-bug fix: re-split the collapsed-anchor token group by real frequencies
+                logits[0] += prior_bias(pr, int(idx[0, -1]), logits.size(-1), logits.device)
             if rep_pen and rep_pen != 1.0:
                 seen = idx[0, -128:].unique()
                 lg = logits[0, seen]
@@ -958,6 +961,35 @@ def best_perm(C, fixed=()):
 # --------------------------------------------------------------------------- loading anything (used by chat.py / parts_tool.py)
 
 
+DECODE_PRIOR_PATHS = [Path(r"D:\seed_v4\decode_prior\seed-bpe4096-v1_cluster_prior.pt"),
+                      HERE / "tokenizers" / "seed-bpe4096-v1" / "cluster_prior.pt"]
+
+
+def load_decode_prior(model=None, path=None):
+    """Decode-side fix for the brace bug. The seed-socket-v1 anchor came from a TinyStories-only run, so ~183 tokens never
+    seen there ('{', '}', '>', '_', '=', '[', most raw bytes) have near-identical frozen (un)embedding rows (cos ~0.999) and a
+    socket seed cannot tell them apart: it gets the group's total probability right but splits it evenly, so '{' comes out
+    as a random byte (shown as U+FFFD). The prior (built by build_decode_prior.py from real text) re-splits the group's mass by
+    bigram frequency given the previous token. It only moves probability inside that group."""
+    for p in ([Path(path)] if path else DECODE_PRIOR_PATHS):
+        if p.exists():
+            d = torch.load(p, map_location="cpu", weights_only=False)
+            sha = ((getattr(model, "tokenizer", None) or {}).get("sha256")) if model is not None else None
+            if sha and d.get("tokenizer_sha256") and sha != d["tokenizer_sha256"]:
+                continue
+            return d
+    return None
+
+
+def prior_bias(pr, prev_id, V, device):
+    b = torch.zeros(V, device=device)
+    if "bigram" in pr:
+        b[pr["group_ids"].to(device)] = pr["bigram"][prev_id].to(device).float()
+    else:
+        b[:pr["bias"].numel()] += pr["bias"].to(device)
+    return b
+
+
 def load_model_any(path, use_ema=True, device="cpu"):
     """latest.pt / snapshot .pt (EMA weights by default) or a tree part (.json). Returns (model, info)."""
     path = Path(path)
@@ -975,6 +1007,7 @@ def load_model_any(path, use_ema=True, device="cpu"):
                 if n in c["ema"] and c["ema"][n].shape == p.shape:
                     p.copy_(c["ema"][n].float()); used = True
     step = c.get("S", {}).get("step", c.get("step"))
+    m.decode_prior = load_decode_prior(m)
     return m.to(device).eval(), dict(kind="checkpoint", src=str(path), step=step, ema=used)
 
 
@@ -1920,6 +1953,8 @@ def main():
     def tool_eval():
         """Called at save time with the EMA weights swapped in."""
         import re as _re
+        if model.__dict__.get("decode_prior") is None:
+            model.decode_prior = load_decode_prior(model)
         res = {n_: round(evaluate(model, b_, amp), 4) for n_, b_ in src_val.items()}
         chat = [v_ for n_, v_ in res.items() if "TinyStories" not in n_ and "ts_" not in n_]
         chat_mean = round(float(np.mean(chat)), 4) if chat else float("nan")

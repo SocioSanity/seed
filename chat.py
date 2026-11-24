@@ -27,6 +27,7 @@ def main():
     ap.add_argument("--rep-pen", type=float, default=1.1); ap.add_argument("--seed", type=int, default=None)
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--socket-dir", default=DEFAULT_SOCKET_DIR)
+    ap.add_argument("--no-decode-prior", action="store_true", help="turn off the brace-bug decode fix (raw sampling)")
     a = ap.parse_args()
     torch.set_num_threads(a.threads)
     dev = "cuda" if (a.device == "cuda" or (a.device == "auto" and torch.cuda.is_available())) else "cpu"
@@ -45,6 +46,8 @@ def main():
         model.to(dev)
         added.append(f"organ {man.get('name')}@{man.get('version')} as {oid}")
     model.eval()
+    if a.no_decode_prior:
+        model.decode_prior = None
     tok = find_tokenizer(model, a.tokenizer)
     eos = tok.token_to_id("<eos>")
     print(f"Seed {model.shape_str()} {model.n_params()/1e6:.2f}M params | {info['kind']} step {info['step']} | "

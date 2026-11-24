@@ -38,3 +38,4 @@ Thumbs.db
 # Private keys — never commit
 *.ed25519.key
 *.pem
+!tokenizers/seed-bpe4096-v1/cluster_prior.pt
