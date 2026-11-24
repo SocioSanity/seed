@@ -1,6 +1,6 @@
 # tiny100m comparison model
 
-This is a **comparison-only** 104.5M-parameter model (best EMA at step 1,350). It is not a Seed, does not use `seed-socket-v1`, and is not the product. It is here so you can run the same kind of test Seed Pool v1 was measured against.
+This is a **comparison-only** 104.5M-parameter model (best EMA at step 1,350 of 3,662 planned, so it is undertrained). It is not a Seed, does not use `seed-socket-v1`, and is not the product. It is here so you can run the same kind of test Seed Pool v1 was measured against. Future comparisons will use Qwen 3B coder.
 
 The weights are about 200 MB in fp16, so they are not in the git repo. Download them from the [v0.2.0 release](https://github.com/SocioSanity/seed/releases/tag/v0.2.0):
 
