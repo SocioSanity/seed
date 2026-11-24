@@ -5,6 +5,7 @@
 *.bin
 *.safetensors
 !socket/seed-socket-v1/calib_tokens.safetensors
+!socket/seed-socket-v1/anchor_emb.safetensors
 
 # Run outputs, local libraries, and data
 runs/

@@ -115,9 +115,9 @@ See [ORGANS_README.md](ORGANS_README.md), [SOCKET_SPEC.md](SOCKET_SPEC.md), and 
 
 ## Socket note
 
-The official `seed-socket-v1` frozen anchor (`anchor_emb.safetensors`, about 6.0 MB) is not in this repository — files over 5 MB were left out. `socket/seed-socket-v1/` includes `socket.json` and the small calibration set.
+The official `seed-socket-v1` frozen anchor (`anchor_emb.safetensors`, about 6.0 MB, sha prefix `a8438384b2c1b973`) is included in `socket/seed-socket-v1/` along with `socket.json` and the small calibration set. A checkout is enough to join the v1 organ ecosystem.
 
-To join the existing v1 socket ecosystem you need that official anchor (same sha as in `socket.json`). To start your own socket, run `parts_tool.py make-socket`. Organs are not compatible across different anchors or tokenizer versions.
+To start your own socket, run `parts_tool.py make-socket`. Organs are not compatible across different anchors or tokenizer versions.
 
 ## License
 
