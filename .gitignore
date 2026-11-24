@@ -1,0 +1,39 @@
+# Checkpoints and weights
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+!socket/seed-socket-v1/calib_tokens.safetensors
+
+# Run outputs, local libraries, and data
+runs/
+parts/
+organs/library/
+organs/rejected/
+organs/keys/
+organs/hosts/
+organs/my/
+data/*.bin
+data/meta.json
+data_custom/
+*.log
+*.jsonl
+
+# Python / env
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.python-version
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.bak
+*~
+
+# Private keys — never commit
+*.ed25519.key
+*.pem

@@ -1,0 +1,33 @@
+{
+ "socket": "seed-socket-v1",
+ "width": 384,
+ "vocab": 4096,
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "sha256": "42ca2e21f41c629d"
+ },
+ "anchor": {
+  "file": "anchor_emb.safetensors",
+  "sha256": "a8438384b2c1b973",
+  "source": "run1 latest.pt (EMA, step 17550)",
+  "rule": "token embedding = anchor.emb (frozen); logits = (rmsnorm(x) * anchor.readout_gain) @ anchor.emb^T (tied, both frozen)"
+ },
+ "calib": {
+  "file": "calib_tokens.safetensors",
+  "sha256": "b88d9623800f4512",
+  "n_seq": 16,
+  "T": 128
+ },
+ "norm": "RMSNorm (default eps) with gain fixed at 1 at every cell input (attention and MLP); the readout uses the anchor's frozen readout_gain",
+ "rope": {
+  "style": "interleaved complex",
+  "base": 10000.0,
+  "head_dim": 32
+ },
+ "cell": {
+  "kv_heads": 1,
+  "adapters": "u = h + bin(ain h) on input; o' = o + bout(aout o) on output; low rank",
+  "free": "n_head, mlp, rank are free (host pads smaller organs exactly); head_dim fixed"
+ },
+ "created": "2026-11-23 19:31:40"
+}

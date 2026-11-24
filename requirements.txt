@@ -1,0 +1,10 @@
+# Core (install a CUDA build of torch from https://pytorch.org if you have a GPU)
+torch>=2.0
+numpy>=1.24
+tokenizers>=0.15
+safetensors>=0.4
+psutil>=5.9
+
+# Optional: prep_data.py --data-dir on PDFs, and plot.py charts
+pypdf>=4.0
+matplotlib>=3.7

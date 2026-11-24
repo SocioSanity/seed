@@ -1,0 +1,11 @@
+{
+ "name": "seed-bpe4096",
+ "version": "1",
+ "id": "seed-bpe4096-v1",
+ "sha256": "42ca2e21f41c629d",
+ "vocab_size": 4096,
+ "eos": "<eos>",
+ "eos_id": 3,
+ "note": "Byte-level BPE trained on TinyStoriesV2 (prep_data.py). Never edit: a new tokenizer = a new version.",
+ "created": "2026-11-23 16:15:16"
+}
