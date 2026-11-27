@@ -1,0 +1,10 @@
+[
+  {"name": "python", "path": "datasets/public_py.txt", "weight": 0.10},
+  {"name": "c", "path": "datasets/public_c.txt", "weight": 0.08},
+  {"name": "javascript", "path": "datasets/public_js.txt", "weight": 0.08},
+  {"name": "bash", "path": "datasets/public_sh.txt", "weight": 0.06},
+  {"name": "powershell", "path": "datasets/public_ps.txt", "weight": 0.06},
+  {"name": "math", "path": "datasets/synth_math.txt", "weight": 0.06},
+  {"name": "reason", "path": "datasets/synth_reason.txt", "weight": 0.06},
+  {"name": "json", "path": "datasets/synth_json.txt", "weight": 0.03}
+]

@@ -1,0 +1,104 @@
+{
+ "kind": "tree",
+ "id": "tree-fb338c9ebb6d",
+ "name": "inst1-final",
+ "description": "Instruction-following specialist. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 6,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c4",
+    "c3"
+   ],
+   [
+    "c12",
+    "c11"
+   ],
+   [
+    "c6",
+    "c5"
+   ],
+   [
+    "c7",
+    "c8"
+   ],
+   [
+    "c10",
+    "c9"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 13,
+  "next_organ": 3,
+  "lineage": "fb338c9ebb6d",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "fb338c9ebb6d",
+ "format": "seed-part/1",
+ "file": "inst1-final.safetensors",
+ "sha256": "398b82dfd2b20694",
+ "sha256_full": "398b82dfd2b2069415f89284960929aefa38a460f6bcdd862342e21dc2371044",
+ "n_params": 5859468,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 11298,
+ "created": "2026-11-27 11:36:06",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "6x2",
+ "source": "seed_inst1 final at step 11298; STOP left in place; nothing deleted"
+}

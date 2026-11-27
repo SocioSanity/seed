@@ -259,7 +259,7 @@ TOOL_SRC = {"wiki_tool": 0.40, "glaive": 0.153, "instruct": 0.153, "calc": 0.118
 
 class MixData:
     """TinyStories (train.bin) + run4's tool/reasoning files, only the first 99% of each file (the last 1% is the test tail)."""
-    def __init__(self, tok, ts_frac=0.4, data_dir=HERE / "data", run4_dir=r"D:\seed_v4\run4_data", extra=None):
+    def __init__(self, tok, ts_frac=0.4, data_dir=HERE / "data", run4_dir=os.environ.get("SEED_RUN4_DATA", ""), extra=None):
         self.tok, self.ts_frac, self.eos = tok, ts_frac, tok.token_to_id("<eos>")
         self.ts = np.memmap(Path(data_dir) / "train.bin", dtype=np.uint16, mode="r")
         self.src = []
@@ -396,23 +396,27 @@ def main():
             if not a.tools:
                 return reply(q)
             import re
-            C = None
-            for td in (HERE / "comparison" / "tiny100m", Path(r"D:\tiny100m\src")):
-                if (td / "chat100m.py").exists():
-                    sys.path.insert(0, str(td))
-                    import chat100m as C
-                    break
-            if C is None:
-                raise SystemExit("tool helpers not found (expected comparison/tiny100m/chat100m.py)")
+            try:
+                from tools.runtime import SPECS, run_tool
+            except Exception:
+                C = None
+                for td in (HERE / "comparison" / "tiny100m", Path(r"D:\tiny100m\src")):
+                    if (td / "chat100m.py").exists():
+                        sys.path.insert(0, str(td))
+                        import chat100m as C
+                        break
+                if C is None:
+                    raise SystemExit("tool helpers not found (expected tools/ or comparison/tiny100m/chat100m.py)")
+                SPECS, run_tool = C.SPECS, C.run_tool
             ws = os.environ.get("SEED_WORKSPACE", str(HERE / "workspace"))
             Path(ws).mkdir(parents=True, exist_ok=True)
-            text = "<|system|>You are a helpful assistant. You can call these tools:\n" + "\n".join(json.dumps(v) for v in C.SPECS.values()) + "<|end|>\n"
+            text = "<|system|>You are a helpful assistant. You can call these tools:\n" + "\n".join(json.dumps(v) for v in SPECS.values()) + "<|end|>\n"
             text += f"<|user|>{q}<|end|>\n<|assistant|>"; full = ""
             for _ in range(3):
                 new = reply(text); text += new; full += new
                 mt = re.search(r"<tool_call>(.*?)</tool_call>$", new, re.S)
                 if not mt: break
-                res = C.run_tool(mt.group(1), ws); piece = f"<tool_result>{res}</tool_result>"; text += piece; full += piece
+                res = run_tool(mt.group(1), ws); piece = f"<tool_result>{res}</tool_result>"; text += piece; full += piece
             return full
         if a.prompt:
             print(turn(a.prompt)); return

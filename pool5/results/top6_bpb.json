@@ -1,0 +1,73 @@
+{
+ "variant": "top6",
+ "cfg": {
+  "mode": "single",
+  "heads": 3,
+  "init_k": 6,
+  "step_k": 3
+ },
+ "tau": 0.9,
+ "domains": {
+  "python": {
+   "bpb": 0.4472,
+   "mean_passes": 1.003,
+   "ndocs": 24,
+   "sec": 3.9
+  },
+  "c": {
+   "bpb": 0.649,
+   "mean_passes": 1.131,
+   "ndocs": 24,
+   "sec": 3.8
+  },
+  "js": {
+   "bpb": 1.0417,
+   "mean_passes": 1.166,
+   "ndocs": 24,
+   "sec": 3.8
+  },
+  "bash": {
+   "bpb": 1.1178,
+   "mean_passes": 1.021,
+   "ndocs": 24,
+   "sec": 3.7
+  },
+  "powershell": {
+   "bpb": 0.8088,
+   "mean_passes": 1.09,
+   "ndocs": 24,
+   "sec": 3.8
+  },
+  "alg_real": {
+   "bpb": 1.6281,
+   "mean_passes": 1.38,
+   "ndocs": 24,
+   "sec": 3.8
+  },
+  "alg_synth": {
+   "bpb": 1.3755,
+   "mean_passes": 1.279,
+   "ndocs": 16,
+   "sec": 2.4
+  },
+  "math": {
+   "bpb": 0.174,
+   "mean_passes": 1.073,
+   "ndocs": 16,
+   "sec": 2.5
+  },
+  "reason": {
+   "bpb": 0.075,
+   "mean_passes": 1.058,
+   "ndocs": 16,
+   "sec": 2.0
+  },
+  "colby": {
+   "bpb": 0.9759,
+   "mean_passes": 1.074,
+   "ndocs": 22,
+   "sec": 3.4
+  }
+ },
+ "macro_bpb": 0.8293
+}

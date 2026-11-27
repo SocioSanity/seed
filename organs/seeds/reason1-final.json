@@ -1,0 +1,100 @@
+{
+ "kind": "tree",
+ "id": "tree-0c51e2a0c6d1",
+ "name": "reason1-final",
+ "description": "Step-by-step reasoning specialist: puzzles and GSM8K-style chains. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 4,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c4",
+    "c3"
+   ],
+   [
+    "c6",
+    "c5"
+   ],
+   [
+    "c7",
+    "c8"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 9,
+  "next_organ": 3,
+  "lineage": "0c51e2a0c6d1",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "0c51e2a0c6d1",
+ "format": "seed-part/1",
+ "file": "reason1-final.safetensors",
+ "sha256": "3f499c99afba82e4",
+ "sha256_full": "3f499c99afba82e4cf338d8013e00a73d1e573a942057ddc6ee93d5d521a4f11",
+ "n_params": 4430728,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 9537,
+ "created": "2026-11-27 11:36:00",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "4x2",
+ "organs": [
+  "o1",
+  "o2"
+ ],
+ "source": "seed_reason1 final at step 9537; STOP left in place; nothing deleted"
+}

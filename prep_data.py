@@ -1,8 +1,15 @@
-"""Seed data prep: build a small CPU-friendly BPE tokenizer and token files from TinyStories.
+"""Seed data prep: build token files (and optionally a tokenizer) from TinyStories or your own files.
 
-Reads only the first --train-mb of the TinyStories text (no need to load 2 GB), trains a
-small byte-level BPE (default 4096 tokens; a 32k vocab makes the output layer the slowest
-part of a CPU model), and writes uint16 token files: data/train.bin, data/valid.bin.
+Writes uint16 token files: data/train.bin, data/valid.bin, plus meta.json.
+
+To grow a seed that can join the published Seed Pool, pass the official tokenizer
+instead of training a new one:
+
+    python prep_data.py --data-dir path/to/your_texts --out data \
+        --tokenizer tokenizers/seed-bpe4096-v1/tokenizer.json
+
+Training a fresh BPE (the default when --tokenizer is omitted) produces a seed
+that is *not* compatible with seed-socket-v1 or the published organs.
 """
 import os
 os.environ.setdefault("RAYON_NUM_THREADS", "3")  # keep tokenizer threads low
@@ -69,7 +76,29 @@ def folder_docs(folder, max_mb=500.0, chunk_chars=2000):
     return docs
 
 
-def build_from_folder(folder, out, vocab=4096, valid_every=20):
+def load_or_train_tokenizer(train_docs, out, vocab, tokenizer_path=None):
+    """Load an existing tokenizer (official seed-bpe4096-v1, etc.) or train a new BPE."""
+    out = Path(out)
+    if tokenizer_path:
+        src = Path(tokenizer_path)
+        if not src.is_file():
+            raise SystemExit(f"tokenizer not found: {src}")
+        tok = Tokenizer.from_file(str(src))
+        tok_path = src
+        print("using existing tokenizer", tok_path, "vocab", tok.get_vocab_size())
+        return tok, tok_path
+    tok = Tokenizer(models.BPE(unk_token="<unk>"))
+    tok.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
+    tok.decoder = decoders.ByteLevel()
+    tok.train_from_iterator(train_docs, trainers.BpeTrainer(vocab_size=vocab, special_tokens=SPECIAL, min_frequency=2,
+                                                           initial_alphabet=pre_tokenizers.ByteLevel.alphabet()))
+    tok_path = out / f"tokenizer_{vocab}.json"
+    tok.save(str(tok_path))
+    print("tokenizer saved", tok_path)
+    return tok, tok_path
+
+
+def build_from_folder(folder, out, vocab=4096, valid_every=20, tokenizer_path=None):
     """Tokenizer + train/valid token files from your own files. Returns meta dict."""
     out = Path(out); out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -79,12 +108,7 @@ def build_from_folder(folder, out, vocab=4096, valid_every=20):
     valid = docs[::valid_every] if len(docs) >= valid_every else docs[:1]
     vset = set(id(d) for d in valid)
     train = [d for d in docs if id(d) not in vset] or docs
-    tok = Tokenizer(models.BPE(unk_token="<unk>"))
-    tok.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
-    tok.decoder = decoders.ByteLevel()
-    tok.train_from_iterator(train, trainers.BpeTrainer(vocab_size=vocab, special_tokens=SPECIAL, min_frequency=2,
-                                                       initial_alphabet=pre_tokenizers.ByteLevel.alphabet()))
-    tok_path = out / f"tokenizer_{vocab}.json"; tok.save(str(tok_path))
+    tok, tok_path = load_or_train_tokenizer(train, out, vocab, tokenizer_path)
     eos = tok.token_to_id("<eos>")
     tr, va = encode(tok, train, eos), encode(tok, valid, eos)
     if va.size < 2048:  # small library: hold out the last 5% of tokens instead
@@ -105,7 +129,9 @@ def encode(tok, docs, eos):
         for enc in tok.encode_batch(docs[i:i + 2000]):
             out.extend(enc.ids)
             out.append(eos)
-    return np.asarray(out, dtype=np.uint16)
+    vocab = tok.get_vocab_size()
+    dtype = np.uint16 if vocab <= 65535 else np.uint32
+    return np.asarray(out, dtype=dtype)
 
 
 def main():
@@ -118,27 +144,24 @@ def main():
     ap.add_argument("--vocab", type=int, default=4096)
     ap.add_argument("--out", default="data")
     ap.add_argument("--data-dir", default=None, help="folder of your own .txt/.md/.pdf files to train on instead of TinyStories")
+    ap.add_argument("--tokenizer", default=None, help="use this existing tokenizer.json (e.g. tokenizers/seed-bpe4096-v1/tokenizer.json) instead of training a new BPE. Required for seeds that should join the published pool.")
     a = ap.parse_args()
     if a.data_dir:
-        build_from_folder(a.data_dir, a.out, a.vocab); return
+        build_from_folder(a.data_dir, a.out, a.vocab, tokenizer_path=a.tokenizer); return
     if not a.train_text or not a.valid_text:
         raise SystemExit("pass --train-text and --valid-text, or --data-dir FOLDER")
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     docs = read_docs(a.train_text, a.train_mb)
     print(f"train docs: {len(docs):,}")
-    tok_path = out / f"tokenizer_{a.vocab}.json"
-    if tok_path.exists():
-        tok = Tokenizer.from_file(str(tok_path)); print("reusing", tok_path)
+    if a.tokenizer:
+        tok, tok_path = load_or_train_tokenizer(docs, out, a.vocab, a.tokenizer)
     else:
-        tok = Tokenizer(models.BPE(unk_token="<unk>"))
-        tok.pre_tokenizer = pre_tokenizers.ByteLevel(add_prefix_space=False)
-        tok.decoder = decoders.ByteLevel()
-        tr = trainers.BpeTrainer(vocab_size=a.vocab, special_tokens=SPECIAL, min_frequency=2,
-                                 initial_alphabet=pre_tokenizers.ByteLevel.alphabet())
-        n_tok_docs = int(len(docs) * min(1.0, a.tok_mb / a.train_mb))
-        tok.train_from_iterator(docs[:n_tok_docs], tr)
-        tok.save(str(tok_path)); print("tokenizer saved", tok_path)
+        tok_path = out / f"tokenizer_{a.vocab}.json"
+        if tok_path.exists():
+            tok = Tokenizer.from_file(str(tok_path)); print("reusing", tok_path)
+        else:
+            tok, tok_path = load_or_train_tokenizer(docs[:int(len(docs) * min(1.0, a.tok_mb / a.train_mb))], out, a.vocab, None)
     eos = tok.token_to_id("<eos>")
     tr_ids = encode(tok, docs, eos); tr_ids.tofile(out / "train.bin")
     vdocs = read_docs(a.valid_text, a.valid_mb)

@@ -10,3 +10,9 @@ To build `train.bin` and `valid.bin` from TinyStories or your own files (those b
 python prep_data.py --train-text path/to/TinyStoriesV2-GPT4-train.txt --valid-text path/to/TinyStoriesV2-GPT4-valid.txt --out data
 python prep_data.py --data-dir path/to/your_texts --out data
 ```
+
+To stay compatible with the published pool and `seed-socket-v1`, pass the official tokenizer:
+
+```bash
+python prep_data.py --data-dir path/to/your_texts --out data --tokenizer tokenizers/seed-bpe4096-v1/tokenizer.json
+```

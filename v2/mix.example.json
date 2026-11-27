@@ -1,0 +1,52 @@
+[
+  {
+    "name": "fineweb_edu",
+    "path": "datasets/fineweb_edu_train.txt",
+    "val_path": "datasets/fineweb_edu_valid.txt",
+    "weight": 0.35,
+    "sep": "blank",
+    "license": "ODC-BY 1.0 (HuggingFaceFW/fineweb-edu)"
+  },
+  {
+    "name": "wikipedia",
+    "path": "datasets/wikipedia_en.txt",
+    "holdout_frac": 0.01,
+    "weight": 0.25,
+    "sep": "none",
+    "license": "CC BY-SA 4.0 (wikimedia/wikipedia)"
+  },
+  {
+    "name": "smoltalk",
+    "path": "datasets/smoltalk_train.txt",
+    "val_path": "datasets/smoltalk_valid.txt",
+    "weight": 0.15,
+    "sep": "blank",
+    "license": "Apache-2.0 (HuggingFaceTB/smoltalk)"
+  },
+  {
+    "name": "tinystories",
+    "path": "datasets/TinyStoriesV2-GPT4-train.txt",
+    "val_path": "datasets/TinyStoriesV2-GPT4-valid.txt",
+    "weight": 0.13,
+    "sep": "eot",
+    "license": "CDLA-Sharing-1.0 (roneneldan/TinyStories)"
+  },
+  {
+    "name": "philosophy_pd",
+    "path": "datasets/philosophy_pd.txt",
+    "holdout_frac": 0.02,
+    "weight": 0.06,
+    "sep": "none",
+    "max_digit_frac": 0.2,
+    "license": "Public domain (Project Gutenberg)"
+  },
+  {
+    "name": "gutenberg_pd",
+    "path": "datasets/gutenberg_pd.txt",
+    "holdout_frac": 0.02,
+    "weight": 0.06,
+    "sep": "none",
+    "max_digit_frac": 0.2,
+    "license": "Public domain (Project Gutenberg)"
+  }
+]

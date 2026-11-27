@@ -1,0 +1,218 @@
+{
+  "started": "2026-11-27 10:51:16",
+  "target_total_bytes": 104857600,
+  "sources": [
+    {
+      "path": "curated_chat_code_examples",
+      "domain": "math_json_tools",
+      "bytes": 1276,
+      "mb": 0.001,
+      "docs": 1,
+      "note": "self-authored special-token / chat / code examples"
+    },
+    {
+      "path": "D:\\datasets\\wiki_fresh\\wikipedia_fresh_20231101.txt",
+      "domain": "english",
+      "bytes": 20971520,
+      "mb": 20.0,
+      "docs": 71155,
+      "skipped_filter": 0,
+      "file_size_mb": 1987.783,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "D:\\datasets\\TinyStoriesV2-GPT4-train.txt",
+      "domain": "english",
+      "bytes": 8388608,
+      "mb": 8.0,
+      "docs": 10472,
+      "skipped_filter": 0,
+      "file_size_mb": 2124.551,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "D:\\datasets\\philosophy_pd\\philosophy_pd.txt",
+      "domain": "english",
+      "bytes": 4194304,
+      "mb": 4.0,
+      "docs": 7937,
+      "skipped_filter": 0,
+      "file_size_mb": 26.078,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "D:\\datasets\\books_extra\\gutenberg_incoming.txt",
+      "domain": "english",
+      "bytes": 4194285,
+      "mb": 4.0,
+      "docs": 234,
+      "skipped_filter": 0,
+      "file_size_mb": 34.265,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "run4_data\\instruct.txt",
+      "domain": "english",
+      "bytes": 5242880,
+      "mb": 5.0,
+      "docs": 5761,
+      "skipped_filter": 0,
+      "file_size_mb": 60.352,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "D:\\datasets\\smoltalk\\smoltalk_train.txt",
+      "domain": "english",
+      "bytes": 4194304,
+      "mb": 4.0,
+      "docs": 1230,
+      "skipped_filter": 0,
+      "file_size_mb": 1693.128,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "seed_py1\\data\\public_py.txt",
+      "domain": "code",
+      "bytes": 8388608,
+      "mb": 8.0,
+      "docs": 806,
+      "skipped_filter": 0,
+      "file_size_mb": 187.118,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "seed_py1_scale\\data\\clean_py.txt",
+      "domain": "code",
+      "bytes": 3145728,
+      "mb": 3.0,
+      "docs": 785,
+      "skipped_filter": 0,
+      "file_size_mb": 7.139,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "seed_py1_scale\\data\\mbpp_chat.txt",
+      "domain": "code",
+      "bytes": 614400,
+      "mb": 0.586,
+      "docs": 997,
+      "skipped_filter": 0,
+      "file_size_mb": 0.52,
+      "train_fraction": 1.0
+    },
+    {
+      "path": "real_data\\real_algo.txt",
+      "domain": "code",
+      "bytes": 409600,
+      "mb": 0.391,
+      "docs": 291,
+      "skipped_filter": 0,
+      "file_size_mb": 10.899,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "public_code\\rebuild_20261126\\seed_c1\\public_train.txt",
+      "domain": "code",
+      "bytes": 8388608,
+      "mb": 8.0,
+      "docs": 1285,
+      "skipped_filter": 335,
+      "file_size_mb": 293.791,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "public_code\\rebuild_20261126\\seed_js1\\public_train.txt",
+      "domain": "code",
+      "bytes": 8388608,
+      "mb": 8.0,
+      "docs": 2213,
+      "skipped_filter": 43,
+      "file_size_mb": 269.381,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "public_code\\rebuild_20261126\\seed_sh1\\public_train.txt",
+      "domain": "code",
+      "bytes": 6291456,
+      "mb": 6.0,
+      "docs": 3223,
+      "skipped_filter": 58,
+      "file_size_mb": 27.899,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "public_code\\rebuild_20261126\\seed_ps1\\public_train.txt",
+      "domain": "code",
+      "bytes": 6291456,
+      "mb": 6.0,
+      "docs": 1628,
+      "skipped_filter": 26,
+      "file_size_mb": 47.312,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "run4_data\\gsm8k.txt",
+      "domain": "math_json_tools",
+      "bytes": 4194304,
+      "mb": 4.0,
+      "docs": 6033,
+      "skipped_filter": 0,
+      "file_size_mb": 5.094,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "run4_data\\calc.txt",
+      "domain": "math_json_tools",
+      "bytes": 4194304,
+      "mb": 4.0,
+      "docs": 6634,
+      "skipped_filter": 0,
+      "file_size_mb": 31.01,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "seed_math1\\data\\synth_math.txt",
+      "domain": "math_json_tools",
+      "bytes": 2097152,
+      "mb": 2.0,
+      "docs": 2226,
+      "skipped_filter": 0,
+      "file_size_mb": 137.121,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "seed_json1\\data\\synth_json.txt",
+      "domain": "math_json_tools",
+      "bytes": 3145728,
+      "mb": 3.0,
+      "docs": 4543,
+      "skipped_filter": 0,
+      "file_size_mb": 80.793,
+      "train_fraction": 0.8
+    },
+    {
+      "path": "run4_data\\tools_misc.txt",
+      "domain": "math_json_tools",
+      "bytes": 2097152,
+      "mb": 2.0,
+      "docs": 1554,
+      "skipped_filter": 0,
+      "file_size_mb": 19.53,
+      "train_fraction": 0.8
+    }
+  ],
+  "domains": {
+    "math_json_tools": 15729916,
+    "english": 47185901,
+    "code": 41918464
+  },
+  "finished": "2026-11-27 10:51:31",
+  "elapsed_sec": 14.98,
+  "corpus_bytes": 104834281,
+  "corpus_mb": 99.978,
+  "domain_mb": {
+    "math_json_tools": 15.001,
+    "english": 45.0,
+    "code": 39.977
+  }
+}

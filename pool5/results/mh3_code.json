@@ -1,0 +1,35 @@
+{
+ "variant": "mh3",
+ "sampling": false,
+ "tau": 0.9,
+ "pass_chat": 0,
+ "pass_complete": 0,
+ "pass_best": 0,
+ "n": 20,
+ "sec": 417.5,
+ "tok_s": 19.4,
+ "mean_passes": 1.387,
+ "pass_dist": [
+  0,
+  5185,
+  2759,
+  193
+ ],
+ "seed_runs": 37580,
+ "routing": {
+  "py1": 7957,
+  "alg1": 7019,
+  "inst1": 5754,
+  "js1": 5520,
+  "sh1": 4624,
+  "c1": 3070,
+  "ps1": 1610,
+  "run4": 1135,
+  "json1": 536,
+  "run3": 208,
+  "reason1": 84,
+  "plan2": 44,
+  "math1": 12,
+  "fix1": 7
+ }
+}

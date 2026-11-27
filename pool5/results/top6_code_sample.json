@@ -1,0 +1,32 @@
+{
+ "variant": "top6",
+ "sampling": true,
+ "tau": 0.9,
+ "pass_chat": 0,
+ "pass_complete": 0,
+ "pass_best": 0,
+ "n": 20,
+ "sec": 395.9,
+ "tok_s": 16.0,
+ "mean_passes": 1.003,
+ "pass_dist": [
+  0,
+  6411,
+  19,
+  0
+ ],
+ "seed_runs": 38637,
+ "routing": {
+  "py1": 6430,
+  "alg1": 6430,
+  "c1": 5954,
+  "sh1": 5878,
+  "inst1": 4423,
+  "ps1": 3085,
+  "json1": 2411,
+  "js1": 2314,
+  "reason1": 1248,
+  "run4": 455,
+  "fix1": 9
+ }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Seed v2.0 Tokenizer",
+  "version": "2.0.0",
+  "algorithm": "ByteLevel BPE",
+  "pre_tokenizer": "Sequence([Split(Qwen2.5/GPT-4-style Isolated regex, behavior=isolated), ByteLevel(add_prefix_space=False, trim_offsets=True, use_regex=False)])",
+  "pre_tokenizer_regex": "(?i:'s|'t|'re|'ve|'m|'ll|'d)|[^\\s\\p{L}\\p{N}]\\p{L}+|[ ]\\p{L}+|\\p{L}+|\\p{N}| ?[^\\s\\p{L}\\p{N}]+|[\\t]+|[ ]{8}|[ ]{4}|[ ]{2}|[ ]|\\r\\n|\\r|\\n|\\s+",
+  "decoder": "ByteLevel(add_prefix_space=False, trim_offsets=True, use_regex=False)",
+  "target_vocab_size": 150000,
+  "actual_vocab_size": 150000,
+  "special_tokens": [
+    "<pad>",
+    "<unk>",
+    "<bos>",
+    "<eos>",
+    "<|system|>",
+    "<|user|>",
+    "<|assistant|>",
+    "<|tool|>",
+    "<|tool_result|>",
+    "<|think|>",
+    "<|/think|>",
+    "<|code|>",
+    "<|end|>"
+  ],
+  "min_frequency": 2,
+  "byte_fallback": true,
+  "unknowns_expected": 0,
+  "training_started": "2026-11-27 10:51:31",
+  "training_finished": "2026-11-27 10:51:42",
+  "training_seconds": 10.65,
+  "python": "python.exe",
+  "tokenizers_package": "0.23.3",
+  "corpus_path": "train_corpus.txt",
+  "corpus_mb": 99.978,
+  "domain_mb": {
+    "math_json_tools": 15.001,
+    "english": 45.0,
+    "code": 39.977
+  },
+  "license_policy": "Commercial-safe only: Wikipedia, TinyStories, public-domain English (Project Gutenberg / philosophy_pd), and permissive MIT/Apache/BSD/CC-BY/PSF code/math/instruction corpora already used for Seed v4. Drive books and non-permissive sources excluded. Code docs with 'All rights reserved' and no permissive license keyword were skipped.",
+  "notes": "Best parts of Dionysus 150k (exact 150k ByteLevel BPE, 0 UNK via initial byte alphabet, lossless roundtrip) plus Seed v2.0 upgrades: digit splitting, clean indent runs, chat/tool special tokens, and a balanced English+code+math corpus.",
+  "decode_api": "tokenizer.decode(ids, skip_special_tokens=False) is required for lossless roundtrip because HuggingFace tokenizers default to skipping special tokens. Chat/control markers are reserved at ids 0-12."
+}

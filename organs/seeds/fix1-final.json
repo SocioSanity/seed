@@ -1,0 +1,104 @@
+{
+ "kind": "tree",
+ "id": "tree-670a4124e616",
+ "name": "fix1-final",
+ "description": "Run-and-fix specialist: writes Python, calls python_exec, and patches from the traceback. Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 6,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c4",
+    "c3"
+   ],
+   [
+    "c12",
+    "c11"
+   ],
+   [
+    "c6",
+    "c5"
+   ],
+   [
+    "c8",
+    "c7"
+   ],
+   [
+    "c9",
+    "c10"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 13,
+  "next_organ": 3,
+  "lineage": "670a4124e616",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "670a4124e616",
+ "format": "seed-part/1",
+ "file": "fix1-final.safetensors",
+ "sha256": "0978ef013926fb01",
+ "sha256_full": "0978ef013926fb0152b517f96dd3fe2bb5998aed2bbc5eff66dcd7979a3b981e",
+ "n_params": 5859468,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 9547,
+ "created": "2026-11-27 11:36:05",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "6x2",
+ "source": "seed_fix1 final at step 9547; STOP left in place; nothing deleted"
+}

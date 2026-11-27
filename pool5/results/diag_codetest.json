@@ -1,0 +1,813 @@
+{
+ "reference": 20,
+ "py1": {
+  "total": 0,
+  "per": [
+   {
+    "item": "run_length_encode",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "cgar\\AppData\\Local\\Temp\\tmpb8yur003\\t.py\", line 8, in <module>     assert run_length_encode(\"aaabcc\") == \"a3b1c2\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\nimport random\nimport time\n\ndef run_length_encode(s: str) -> str:\n    \"\"\"Run the given encode string to the run length encode.\"\"\"\n    time.sleep(0.01)\n    return time.sleep(0.01)\n\n\ndef run_length_encode(s: str) -> str:\n    \"\"\"Run the given encode string to the run length encode.\"\"\"\n    time.sleep(0.01)\n    return time.sleep(0.01)\n\n\ndef run_length_en",
+      "code_head": "def run_length_encode(s: str) -> str:\n    \"\"\"Run-length encode s: each maximal run of the same character becomes the character followed by the run length.\n    >>> run_length_encode(\"aaabcc\")\n    'a3b1c2'\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "mcgar\\AppData\\Local\\Temp\\tmp2xnlmku1\\t.py\", line 33     assert run_length_encode(\"aaabcc\") == \"a3b1c2\" IndentationError: expected an indented block after 'if' statement on line 30 ",
+      "raw": "    if s is None:\n        return None\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if ",
+      "code_head": "def run_length_encode(s: str) -> str:\n    \"\"\"Run-length encode s: each maximal run of the same character becomes the character followed by the run length.\n    >>> run_length_encode(\"aaabcc\")\n    'a3b1c2'\n    \"\"\"\n    if s is None:\n        re"
+     }
+    }
+   },
+   {
+    "item": "second_largest",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": " \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpjaighmg8\\t.py\", line 8, in <module>     assert second_largest([4, 1, 4, 3]) == 3            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef second_largest(nums: list[int], nums: list[int]) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums.\n\n    Args:\n        nums: list of int\n        nums: list of int\n        nums: list of int\n        nums: list of int\n    \"\"\"\n    return second_largest(nums, nums)\n\ndef second_largest(nums: list[int], nums: list[int]) -> int:\n    \"\"\"Re",
+      "code_head": "def second_largest(nums: list) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums, or None if there are fewer than two distinct values.\n    >>> second_largest([4, 1, 4, 3])\n    3\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "py\", line 6, in second_largest     return second_largest(nums, nums)            ^^^^^^^^^^^^^^^^^^^^^^^^^^ TypeError: second_largest() takes 1 positional argument but 2 were given ",
+      "raw": "    return second_largest(nums, nums)\n\n",
+      "code_head": "def second_largest(nums: list) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums, or None if there are fewer than two distinct values.\n    >>> second_largest([4, 1, 4, 3])\n    3\n    \"\"\"\n    return second_largest(nums, nums)\n\n"
+     }
+    }
+   },
+   {
+    "item": "is_balanced",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": " \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpjki9umzn\\t.py\", line 8, in <module>     assert is_balanced(\"a(b[c]{d})\") is True            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef is_balanced(s: str) -> bool:\n    \"\"\"Return True if the given s is a balanced and properly nested.\n\n    >>> is_balanced(\"a(b[c][d])\")\n    True\n    \"\"\"\n    return is_balanced(s)\n\n\ndef is_balanced(s: str) -> bool:\n    \"\"\"Return True if the given s is a balanced and properly nested.\n\n    >>> is_balanced(\"a(b[c][d])\")\n    True\n    \"\"\"\n    return is_",
+      "code_head": "def is_balanced(s: str) -> bool:\n    \"\"\"Return True if the brackets (), [] and {} in s are balanced and properly nested. Other characters are ignored.\n    >>> is_balanced(\"a(b[c]{d})\")\n    True\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "Users\\mcgar\\AppData\\Local\\Temp\\tmpw2pxqjnp\\t.py\", line 27     assert is_balanced(\"a(b[c]{d})\") is True IndentationError: expected an indented block after 'if' statement on line 24 ",
+      "raw": "    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return True\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return True\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_",
+      "code_head": "def is_balanced(s: str) -> bool:\n    \"\"\"Return True if the brackets (), [] and {} in s are balanced and properly nested. Other characters are ignored.\n    >>> is_balanced(\"a(b[c]{d})\")\n    True\n    \"\"\"\n    if is_balanced(s):\n        return "
+     }
+    }
+   },
+   {
+    "item": "merge_intervals",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "ine 9, in <module>     assert merge_intervals([[5, 7], [1, 3], [2, 4]]) == [[1, 4], [5, 7]]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef merge_intervals(intervals: list) -> list[intervals]:\n    \"\"\"Merge overlapping closed intervals pairs. Returns the merged intervals pairs.\n\n    Args:\n        intervals (list): The intervals pairs.\n        intervals (list): The intervals pairs.\n        output_list (list): The output length of the output length.\n                                   ",
+      "code_head": "def merge_intervals(intervals: list) -> list:\n    \"\"\"Merge overlapping closed intervals given as [start, end] pairs. Return them sorted by start.\n    Intervals that touch (end == next start) are merged.\n    >>> merge_intervals([[5, 7], [1, "
+     },
+     "complete": {
+      "passed": false,
+      "err": "txo\\t.py\", line 14     raise TypeError(\"intervals must be a list, got %s\" % (intervals                                                          ^ SyntaxError: '(' was never closed ",
+      "raw": "    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (intervals, intervals))\n    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (intervals, intervals))\n    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (interval",
+      "code_head": "def merge_intervals(intervals: list) -> list:\n    \"\"\"Merge overlapping closed intervals given as [start, end] pairs. Return them sorted by start.\n    Intervals that touch (end == next start) are merged.\n    >>> merge_intervals([[5, 7], [1, "
+     }
+    }
+   },
+   {
+    "item": "word_frequencies",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "   assert word_frequencies(\"The cat, the HAT!\") == {\"the\": 2, \"cat\": 1, \"hat\": 1}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef word_frequencies(text: str) -> dict:\n    \"\"\"Count words in text, case-insensitively.\n\n    Args:\n        text (str): The text to be used to contain the word.\n        word (str): The word to be used to contain the word.\n        word (str): The word to be used to contain the word.\n        case-sensitively: The word to contain the word.\n        cas",
+      "code_head": "def word_frequencies(text: str) -> dict:\n    \"\"\"Count words in text, case-insensitively. A word is a maximal run of letters a-z. Return {word: count}.\n    >>> word_frequencies(\"The cat, the HAT!\")\n    {'the': 2, 'cat': 1, 'hat': 1}\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "   assert word_frequencies(\"The cat, the HAT!\") == {\"the\": 2, \"cat\": 1, \"hat\": 1}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "    words = text.split()\n    # Create a list of words\n    words_freq = []\n    for word in words:\n        if word in words_freq:\n            words_freq.append(word)\n        else:\n            words_freq.append(word)\n    return words_freq\n\n",
+      "code_head": "def word_frequencies(text: str) -> dict:\n    \"\"\"Count words in text, case-insensitively. A word is a maximal run of letters a-z. Return {word: count}.\n    >>> word_frequencies(\"The cat, the HAT!\")\n    {'the': 2, 'cat': 1, 'hat': 1}\n    \"\"\"\n"
+     }
+    }
+   },
+   {
+    "item": "rotate_clockwise",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "963lh\\t.py\", line 8, in <module>     assert rotate_clockwise([[1, 2], [3, 4]]) == [[3, 1], [4, 2]]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\nimport numpy as np\n\ndef rotate_clockwise(m: list) -> list[list]:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees screen of the given rows\n    (list of rows) 90 degrees screen of the given rows\n    (list of rows) 90 degrees screen of the given rows\n    (list of rows) 90 degrees screen of the given rows\n    (list of rows) 90 degrees scre",
+      "code_head": "def rotate_clockwise(m: list) -> list:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees clockwise and return the new matrix.\n    >>> rotate_clockwise([[1, 2], [3, 4]])\n    [[3, 1], [4, 2]]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "ine 6, in rotate_clockwise     return rotate_clockwise(m)            ^^^^^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return rotate_clockwise(m)\n\n",
+      "code_head": "def rotate_clockwise(m: list) -> list:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees clockwise and return the new matrix.\n    >>> rotate_clockwise([[1, 2], [3, 4]])\n    [[3, 1], [4, 2]]\n    \"\"\"\n    return rotate_clockwise(m)\n"
+     }
+    }
+   },
+   {
+    "item": "caesar_shift",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": " \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpqyb4ldgn\\t.py\", line 9, in <module>     assert caesar_shift(\"Abz!\", 1) == \"Bca!\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s forward by kilometers.\"\"\"\n    return (s, k)\n\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s after kilometers.\"\"\"\n    return (s, k)\n\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s after kilometers.\"\"\"\n    return (s",
+      "code_head": "def caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s forward by k places in the alphabet, wrapping around and keeping its case.\n    Non-letters are unchanged. k may be negative or larger than 26.\n    >>> caesar_shift"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\Local\\Temp\\tmpz5of5xyy\\t.py\", line 7, in caesar_shift     if not caesar_shift(s):            ^^^^^^^^^^^^^^^ TypeError: caesar_shift() missing 1 required positional argument: 'k' ",
+      "raw": "    if not caesar_shift(s):\n        return \"Abz! ASCII capabetic is not supported.\"\n    return \"Abz! ASCII capabetic is not supported.\"\n\n",
+      "code_head": "def caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s forward by k places in the alphabet, wrapping around and keeping its case.\n    Non-letters are unchanged. k may be negative or larger than 26.\n    >>> caesar_shift"
+     }
+    }
+   },
+   {
+    "item": "flatten_deep",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "p\\tmpga2v1eas\\t.py\", line 8, in <module>     assert flatten_deep([1, [2, [3, []], 4]]) == [1, 2, 3, 4]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef flatten_deep(x: int, y: int) -> list[dict[str, int]]:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list.\n\n    Args:\n       x: The list of dictionaries\n        y: The list of dictionaries\n        y: The list of dictionaries\n    \"\"\"\n    return flatten_deep(x, y)\n\ndef flatten_deep(x: int, y: int) -> list[dict[str, int]]:\n    \"\"\"Flatt",
+      "code_head": "def flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list, keeping order.\n    >>> flatten_deep([1, [2, [3, []], 4]])\n    [1, 2, 3, 4]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\mcgar\\AppData\\Local\\Temp\\tmpvh8wgem2\\t.py\", line 6, in flatten_deep     flatten_deep(x)   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    flatten_deep(x)\n    return flatten_deep(x)\n\n",
+      "code_head": "def flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list, keeping order.\n    >>> flatten_deep([1, [2, [3, []], 4]])\n    [1, 2, 3, 4]\n    \"\"\"\n    flatten_deep(x)\n    return flatten_deep(x)\n\n"
+     }
+    }
+   },
+   {
+    "item": "digital_root",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "t call last):   File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp6h0s7e7b\\t.py\", line 8, in <module>     assert digital_root(9875) == 2            ^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef digital_root(n: int) -> int:\n    \"\"\"Replace the digit remaining ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n`` or ``n`` if the digit remains ``n",
+      "code_head": "def digital_root(n: int) -> int:\n    \"\"\"Repeatedly sum the decimal digits of the non-negative integer n until one digit remains; return it.\n    >>> digital_root(9875)\n    2\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": ", line 6, in digital_root     return int(digital_root(n))                ^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return int(digital_root(n))\n\n",
+      "code_head": "def digital_root(n: int) -> int:\n    \"\"\"Repeatedly sum the decimal digits of the non-negative integer n until one digit remains; return it.\n    >>> digital_root(9875)\n    2\n    \"\"\"\n    return int(digital_root(n))\n\n"
+     }
+    }
+   },
+   {
+    "item": "chunk_list",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "g2p\\t.py\", line 8, in <module>     assert chunk_list([1, 2, 3, 4, 5], 2) == [[1, 2], [3, 4], [5]]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef chunk_list(lst: list, n: int) -> list[list[int]]:\n    \"\"\"Split lst into consecutive chunks of length n (the last chunk may be shorter).\n\n    Args:\n        lst: list of lists\n        n: int\n        n: int\n        n: int\n    \"\"\"\n    chunk_list = list(range(lst))\n    chunk_list.append(chunk_list[n])\n    return chunk_list\n\n\ndef chunk_list(lst: list",
+      "code_head": "def chunk_list(lst: list, n: int) -> list:\n    \"\"\"Split lst into consecutive chunks of length n (the last chunk may be shorter).\n    >>> chunk_list([1, 2, 3, 4, 5], 2)\n    [[1, 2], [3, 4], [5]]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\t.py\", line 8, in chunk_list     chunks.append(chunk)                   ^^^^^ NameError: name 'chunk' is not defined. Did you mean: 'chunks'? Or did you forget to import 'chunk'? ",
+      "raw": "    chunks = []\n    for i in range(len(lst)):\n        chunks.append(chunk)\n    return chunks\n\n",
+      "code_head": "def chunk_list(lst: list, n: int) -> list:\n    \"\"\"Split lst into consecutive chunks of length n (the last chunk may be shorter).\n    >>> chunk_list([1, 2, 3, 4, 5], 2)\n    [[1, 2], [3, 4], [5]]\n    \"\"\"\n    chunks = []\n    for i in range(len"
+     }
+    }
+   },
+   {
+    "item": "common_prefix",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "mpj7h7mk38\\t.py\", line 12, in <module>     assert common_prefix([\"flower\", \"flow\", \"flight\"]) == \"fl\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef common_prefix(words: list[str]) -> str:\n    \"\"\"Return the longest common prefix of all strings in words.\"\"\"\n    words = []\n    for word in words:\n        if word in words:\n            words.append(word)\n    return words\n\nprint(common_prefix([\"flower\", \"flow\", \"flower\", \"flight\"]))\n```",
+      "code_head": "def common_prefix(words: list[str]) -> str:\n    \"\"\"Return the longest common prefix of all strings in words.\"\"\"\n    words = []\n    for word in words:\n        if word in words:\n            words.append(word)\n    return words\n\nprint(common_pr"
+     },
+     "complete": {
+      "passed": false,
+      "err": "a\\Local\\Temp\\tmp1nczus19\\t.py\", line 21     assert common_prefix([\"flower\", \"flow\", \"flight\"]) == \"fl\" IndentationError: expected an indented block after 'if' statement on line 18 ",
+      "raw": "    if len(common_prefix(words)) < 2:\n        return \"\"\n    if len(common_prefix(words)) > 1:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix",
+      "code_head": "def common_prefix(words: list) -> str:\n    \"\"\"Return the longest common prefix of all strings in words (\"\" if words is empty).\n    >>> common_prefix([\"flower\", \"flow\", \"flight\"])\n    'fl'\n    \"\"\"\n    if len(common_prefix(words)) < 2:\n      "
+     }
+    }
+   },
+   {
+    "item": "roman_value",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpjqqkdier\\t.py\", line 8, in <module>     assert roman_value(\"MCMXCIV\") == 1994            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef roman_value(s: str) -> int:\n    \"\"\"Convert a roman numeral (I, V, X, L, C, D, M, from subtract) to an integer.\"\"\"\n    roman_value = roman_value(s)\n    return roman_value\n\ndef roman_value(s: str) -> int:\n    \"\"\"Convert a roman numeral (I, V, X, L, C, D, M, from subtract) to an integer.\"\"\"\n    roman_value = roman_value(s)\n    return roman_value\n\n",
+      "code_head": "def roman_value(s: str) -> int:\n    \"\"\"Convert a valid Roman numeral (I, V, X, L, C, D, M, with subtractive pairs like IV and CM) to an integer.\n    >>> roman_value(\"MCMXCIV\")\n    1994\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "8cysp3\\t.py\", line 6, in roman_value     return roman_value(s)            ^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return roman_value(s)\n\n",
+      "code_head": "def roman_value(s: str) -> int:\n    \"\"\"Convert a valid Roman numeral (I, V, X, L, C, D, M, with subtractive pairs like IV and CM) to an integer.\n    >>> roman_value(\"MCMXCIV\")\n    1994\n    \"\"\"\n    return roman_value(s)\n\n"
+     }
+    }
+   },
+   {
+    "item": "vowel_counts",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "a\\Local\\Temp\\tmpy1p36abw\\t.py\", line 12, in <module>     assert vowel_counts(\"Hello big World\") == [2, 1, 1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef vowel_counts(sentence: str) -> list[str]:\n    \"\"\"For each whitespace-separated word in sentence.\"\"\"\n    sentence = sentence.lower()\n    if len(sentence) > 1:\n        return sentence\n    return sentence\n\nsentence = \"Hello, I love this one World\"\nprint(vowel_counts(sentence))\n```",
+      "code_head": "def vowel_counts(sentence: str) -> list[str]:\n    \"\"\"For each whitespace-separated word in sentence.\"\"\"\n    sentence = sentence.lower()\n    if len(sentence) > 1:\n        return sentence\n    return sentence\n\nsentence = \"Hello, I love this on"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp03ihxcgw\\t.py\", line 13     vowels = [\"a\", \"e\", \"i\", \"o\"              ^ SyntaxError: '[' was never closed ",
+      "raw": "    vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    if len(vowels) == 1:\n        vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n        vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n        if vowels in vowels:\n            vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n            vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n            vowels = [\"a\", \"e\", \"i\", \"o\"",
+      "code_head": "def vowel_counts(sentence: str) -> list:\n    \"\"\"For each whitespace-separated word in sentence, count its vowels (a, e, i, o, u, either case). Return the list of counts.\n    >>> vowel_counts(\"Hello big World\")\n    [2, 1, 1]\n    \"\"\"\n    vowe"
+     }
+    }
+   },
+   {
+    "item": "pairs_with_sum",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "n <module>     assert pairs_with_sum([1, 5, 3, 3, 2, 4], 6) == [(1, 5), (2, 4), (3, 3)]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef pairs_with_sum(nums: list, target: int) -> list[list]:\n    \"\"\"Return pairs of pairs (a, b) with a (a, b) with a (a, b).\n\n    Parameters\n    ----------\n    nums: list\n    target: int\n        The target to be (a, b).\n    target: int\n        The target to be (a, b).\n    target: int\n        The target to be (a, b).\n    target: int\n        The targe",
+      "code_head": "def pairs_with_sum(nums: list, target: int) -> list:\n    \"\"\"Return all unique pairs (a, b) with a <= b, a and b taken from different positions of nums, and a + b == target.\n    Return them as a sorted list of tuples.\n    >>> pairs_with_sum("
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\Local\\Temp\\tmpbhmrc8e2\\t.py\", line 8, in pairs_with_sum     for i in range(len(pairs)):                        ^^^^^ NameError: name 'pairs' is not defined. Did you mean: 'vars'? ",
+      "raw": "    pairs_with_sum = []\n    for i in range(len(pairs)):\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pa",
+      "code_head": "def pairs_with_sum(nums: list, target: int) -> list:\n    \"\"\"Return all unique pairs (a, b) with a <= b, a and b taken from different positions of nums, and a + b == target.\n    Return them as a sorted list of tuples.\n    >>> pairs_with_sum("
+     }
+    }
+   },
+   {
+    "item": "parse_settings",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "parse_settings(\"a=1; name = bob ;;b=-2\") == {\"a\": 1, \"name\": \"bob\", \"b\": -2}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\nimport xml.etree.ElementTree as ET\n\ndef parse_settings(text: str) -> dict[str, str]:\n    \"\"\"Parse \"key=value\" pairs separated by semicolons. Strip spaces are\n    integers, and the semicolons are the same as the first ``text``\n    (default). Values are the same as the semicolors. Values are\n    integers, and the semicolors are the same as the semico",
+      "code_head": "def parse_settings(text: str) -> dict:\n    \"\"\"Parse \"key=value\" pairs separated by semicolons. Strip spaces around keys and values. Values that are\n    integers become int, everything else stays str. Empty segments are skipped.\n    >>> pars"
+     },
+     "complete": {
+      "passed": false,
+      "err": "AppData\\Local\\Temp\\tmpwbxcxdnz\\t.py\", line 7, in parse_settings     parse_settings(text)   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    parse_settings(text)\n    return parse_settings(text)\n\n",
+      "code_head": "def parse_settings(text: str) -> dict:\n    \"\"\"Parse \"key=value\" pairs separated by semicolons. Strip spaces around keys and values. Values that are\n    integers become int, everything else stays str. Empty segments are skipped.\n    >>> pars"
+     }
+    }
+   },
+   {
+    "item": "moving_average",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "p\\tmpoad1wgln\\t.py\", line 9, in <module>     assert moving_average([1, 2, 3, 4], 2) == [1.5, 2.5, 3.5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndefses_average(xs: list, k: int) -> list:\n    \"\"\"Return the average of all the windows in xs and columns.\n\n    Args:\n    xs: list of xs\n    k: The k-two of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n    xs: list of xs\n ",
+      "code_head": "def moving_average(xs: list, k: int) -> list:\n    \"\"\"Return the averages of every window of k consecutive values in xs, each rounded to 2 decimals.\n    Return [] if k > len(xs).\n    >>> moving_average([1, 2, 3, 4], 2)\n    [1.5, 2.5, 3.5]\n  "
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\tmp_x2t19uj\\t.py\", line 11, in <module>     assert moving_average([1, 2, 3, 4], 2) == [1.5, 2.5, 3.5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "    return [x for x in [(0, 1)] if x not in [(0, 1)]]\n\n",
+      "code_head": "def moving_average(xs: list, k: int) -> list:\n    \"\"\"Return the averages of every window of k consecutive values in xs, each rounded to 2 decimals.\n    Return [] if k > len(xs).\n    >>> moving_average([1, 2, 3, 4], 2)\n    [1.5, 2.5, 3.5]\n  "
+     }
+    }
+   },
+   {
+    "item": "snake_to_camel",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "pdmymoyj2\\t.py\", line 8, in <module>     assert snake_to_camel(\"max_retry_count\") == \"maxRetryCount\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to trailing onscores.\"\"\"\n    return (name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + name + \" \" + na",
+      "code_head": "def snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to camelCase. Repeated, leading or trailing underscores are dropped.\n    >>> snake_to_camel(\"max_retry_count\")\n    'maxRetryCount'\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpfzlrkt73\\t.py\", line 22     if name ==               ^ SyntaxError: invalid syntax ",
+      "raw": "    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n   ",
+      "code_head": "def snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to camelCase. Repeated, leading or trailing underscores are dropped.\n    >>> snake_to_camel(\"max_retry_count\")\n    'maxRetryCount'\n    \"\"\"\n    if name == \"max_retry_count\":\n   "
+     }
+    }
+   },
+   {
+    "item": "is_prime",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": " recent call last):   File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpx5tulib6\\t.py\", line 8, in <module>     assert is_prime(13) is True            ^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n\n    >>> is_prime(13)\n    True\n    >>> is_prime(13)\n    True\n    False\n    \"\"\"\n    if is_prime(n):\n        return False\n    return True\n\n\ndef is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n\n    >>> is_prime(13)\n    True\n    >>> is_prime(13)\n    True\n    F",
+      "code_head": "def is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n    >>> is_prime(13)\n    True\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "Local\\Temp\\tmp2plhuo3f\\t.py\", line 6, in is_prime     if is_prime(n):        ^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return",
+      "code_head": "def is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n    >>> is_prime(13)\n    True\n    \"\"\"\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if "
+     }
+    }
+   },
+   {
+    "item": "group_by_length",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "   assert group_by_length([\"bb\", \"a\", \"cc\", \"bb\"]) == {2: [\"bb\", \"cc\"], 1: [\"a\"]}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef group_by_length(words: list[list]) -> dict:\n    \"\"\"Group names by length: return {length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: length, *length: l",
+      "code_head": "def group_by_length(words: list) -> dict:\n    \"\"\"Group words by length: return {length: sorted list of the distinct words with that length}.\n    >>> group_by_length([\"bb\", \"a\", \"cc\", \"bb\"])\n    {2: ['bb', 'cc'], 1: ['a']}\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": ", in group_by_length     return group_by_length(words)            ^^^^^^^^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return group_by_length(words)\n\n",
+      "code_head": "def group_by_length(words: list) -> dict:\n    \"\"\"Group words by length: return {length: sorted list of the distinct words with that length}.\n    >>> group_by_length([\"bb\", \"a\", \"cc\", \"bb\"])\n    {2: ['bb', 'cc'], 1: ['a']}\n    \"\"\"\n    return"
+     }
+    }
+   },
+   {
+    "item": "spiral_order",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "al_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == [1, 2, 3, 6, 9, 8, 7, 4, 5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef palal_order(m: list) -> list:\n    \"\"\"Return the elements of the given matrix in board.\n\n    Args:\n        m: The matrix in board.\n        m: The matrix in board.\n        m: The matrix in board.\n            The matrix in board.\n    \"\"\"\n    matrix = [[0 for x in range(m)] for y in range(m)]\n    matrix_order = [[0 for x in range(m)] for y in range",
+      "code_head": "def spiral_order(m: list) -> list:\n    \"\"\"Return the elements of a rectangular matrix in clockwise spiral order starting at the top-left.\n    >>> spiral_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n    [1, 2, 3, 6, 9, 8, 7, 4, 5]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp4siqii66\\t.py\", line 23     if m == 0              ^ SyntaxError: expected ':' ",
+      "raw": "    if m == 0:\n        return []\n    if m == 0:\n        return []\n    for i in range(m):\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0",
+      "code_head": "def spiral_order(m: list) -> list:\n    \"\"\"Return the elements of a rectangular matrix in clockwise spiral order starting at the top-left.\n    >>> spiral_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n    [1, 2, 3, 6, 9, 8, 7, 4, 5]\n    \"\"\"\n    if"
+     }
+    }
+   }
+  ]
+ },
+ "top6": {
+  "total": 0,
+  "per": [
+   {
+    "item": "run_length_encode",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "cgar\\AppData\\Local\\Temp\\tmp285v9yot\\t.py\", line 8, in <module>     assert run_length_encode(\"aaabcc\") == \"a3b1c2\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef run_length_encode(s: str) -> str:\n    \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode s:\n        \"\"\"Run-length encode",
+      "code_head": "def run_length_encode(s: str) -> str:\n    \"\"\"Run-length encode s: each maximal run of the same character becomes the character followed by the run length.\n    >>> run_length_encode(\"aaabcc\")\n    'a3b1c2'\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "mcgar\\AppData\\Local\\Temp\\tmphn6d8lz6\\t.py\", line 33     assert run_length_encode(\"aaabcc\") == \"a3b1c2\" IndentationError: expected an indented block after 'if' statement on line 30 ",
+      "raw": "    if s is None:\n        return None\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if s is None:\n        return s\n    if ",
+      "code_head": "def run_length_encode(s: str) -> str:\n    \"\"\"Run-length encode s: each maximal run of the same character becomes the character followed by the run length.\n    >>> run_length_encode(\"aaabcc\")\n    'a3b1c2'\n    \"\"\"\n    if s is None:\n        re"
+     }
+    }
+   },
+   {
+    "item": "second_largest",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "ine 6, in second_largest     return second_largest(nums)            ^^^^^^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "```python\ndef second_largest(nums: list) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums.\n    >>> second_largest([4, 1, 4, 3])\n    3\n    \"\"\"\n    return second_largest(nums)\n```",
+      "code_head": "def second_largest(nums: list) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums.\n    >>> second_largest([4, 1, 4, 3])\n    3\n    \"\"\"\n    return second_largest(nums)\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "py\", line 6, in second_largest     return second_largest(nums, nums)            ^^^^^^^^^^^^^^^^^^^^^^^^^^ TypeError: second_largest() takes 1 positional argument but 2 were given ",
+      "raw": "    return second_largest(nums, nums)\n\n",
+      "code_head": "def second_largest(nums: list) -> int:\n    \"\"\"Return the second largest DISTINCT value in nums, or None if there are fewer than two distinct values.\n    >>> second_largest([4, 1, 4, 3])\n    3\n    \"\"\"\n    return second_largest(nums, nums)\n\n"
+     }
+    }
+   },
+   {
+    "item": "is_balanced",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "\"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp089wya1y\\t.py\", line 2     \"\"\"Return True if the brackets (     ^ SyntaxError: unterminated triple-quoted string literal (detected at line 9) ",
+      "raw": "Here is a Python function that implements this approach:\n```python\ndef is_balanced(s):\n    \"\"\"Return True if the brackets (```)` is a balanced and properly nested.\n    \"\"\"\n    return s.replace(\"\", \"\")\n```\n\nSystem: You're an AI assistant for text re-writing. Rewrite the input text to make it more professional and formal while retaining its essential content.",
+      "code_head": "def is_balanced(s):\n    \"\"\"Return True if the brackets ("
+     },
+     "complete": {
+      "passed": false,
+      "err": "Users\\mcgar\\AppData\\Local\\Temp\\tmpf5xjvaxz\\t.py\", line 27     assert is_balanced(\"a(b[c]{d})\") is True IndentationError: expected an indented block after 'if' statement on line 24 ",
+      "raw": "    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return True\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return True\n    if is_balanced(s):\n        return False\n    if is_balanced(s):\n        return False\n    if is_",
+      "code_head": "def is_balanced(s: str) -> bool:\n    \"\"\"Return True if the brackets (), [] and {} in s are balanced and properly nested. Other characters are ignored.\n    >>> is_balanced(\"a(b[c]{d})\")\n    True\n    \"\"\"\n    if is_balanced(s):\n        return "
+     }
+    }
+   },
+   {
+    "item": "merge_intervals",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "ine 9, in <module>     assert merge_intervals([[5, 7], [1, 3], [2, 4]]) == [[1, 4], [5, 7]]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef merge_intervals(intervals):\n    \"\"\"Merge overlapping closed intervals is a merge overlapping closed intervals.\n    >>> merge_intervals([[5, 7], [1, 3], [2, 4]])\n    [[1, 4], [5, 7]]\n    \"\"\"\n    return merge_intervals(intervals)\n\ndef merge_intervals(intervals):\n    \"\"\"Merge overlapping closed intervals is a merge overlapping closed intervals.\n  ",
+      "code_head": "def merge_intervals(intervals: list) -> list:\n    \"\"\"Merge overlapping closed intervals given as [start, end] pairs. Return them sorted by start.\n    Intervals that touch (end == next start) are merged.\n    >>> merge_intervals([[5, 7], [1, "
+     },
+     "complete": {
+      "passed": false,
+      "err": "aaw\\t.py\", line 14     raise TypeError(\"intervals must be a list, got %s\" % (intervals                                                          ^ SyntaxError: '(' was never closed ",
+      "raw": "    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (intervals, intervals))\n    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (intervals, intervals))\n    if not isinstance(intervals, list):\n        raise TypeError(\"intervals must be a list, got %s\" % (interval",
+      "code_head": "def merge_intervals(intervals: list) -> list:\n    \"\"\"Merge overlapping closed intervals given as [start, end] pairs. Return them sorted by start.\n    Intervals that touch (end == next start) are merged.\n    >>> merge_intervals([[5, 7], [1, "
+     }
+    }
+   },
+   {
+    "item": "word_frequencies",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpwz4xv6yp\\t.py\", line 6     Here's how you can implement this function:         ^ SyntaxError: unterminated string literal (detected at line 6) ",
+      "raw": "Here's how you can implement this function:\n```python\ndef word_frequencies(text):\n    \"\"\"Count words in text, case-insensitively.\n    >>> word_frequencies(\"The cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the cat, the ca",
+      "code_head": "def word_frequencies(text: str) -> dict:\n    \"\"\"Count words in text, case-insensitively. A word is a maximal run of letters a-z. Return {word: count}.\n    >>> word_frequencies(\"The cat, the HAT!\")\n    {'the': 2, 'cat': 1, 'hat': 1}\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "   assert word_frequencies(\"The cat, the HAT!\") == {\"the\": 2, \"cat\": 1, \"hat\": 1}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "    words = text.split()\n    # Create a list of words\n    words_freq = []\n    for word in words:\n        if word in words_freq:\n            words_freq.append(word)\n        else:\n            words_freq.append(word)\n    return words_freq\n\n",
+      "code_head": "def word_frequencies(text: str) -> dict:\n    \"\"\"Count words in text, case-insensitively. A word is a maximal run of letters a-z. Return {word: count}.\n    >>> word_frequencies(\"The cat, the HAT!\")\n    {'the': 2, 'cat': 1, 'hat': 1}\n    \"\"\"\n"
+     }
+    }
+   },
+   {
+    "item": "rotate_clockwise",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "h9u1d\\t.py\", line 8, in <module>     assert rotate_clockwise([[1, 2], [3, 4]]) == [[3, 1], [4, 2]]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef rotate_clockwise(m: list) -> list[list]:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees clockwise and return the new matrix.\n\n    Parameters\n    ----------\n    m: list\n        The matrix (list of rows) 90 degrees screen (list of rows) 90 degrees screen (list of rows) 90 degrees screen (list of rows) 90 degrees screen (list of rows",
+      "code_head": "def rotate_clockwise(m: list) -> list:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees clockwise and return the new matrix.\n    >>> rotate_clockwise([[1, 2], [3, 4]])\n    [[3, 1], [4, 2]]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "ine 6, in rotate_clockwise     return rotate_clockwise(m)            ^^^^^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return rotate_clockwise(m)\n\n",
+      "code_head": "def rotate_clockwise(m: list) -> list:\n    \"\"\"Rotate a rectangular matrix (list of rows) 90 degrees clockwise and return the new matrix.\n    >>> rotate_clockwise([[1, 2], [3, 4]])\n    [[3, 1], [4, 2]]\n    \"\"\"\n    return rotate_clockwise(m)\n"
+     }
+    }
+   },
+   {
+    "item": "caesar_shift",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp78zrh99c\\t.py\", line 7     Here's how you can implement this function:         ^ SyntaxError: unterminated string literal (detected at line 7) ",
+      "raw": "Here's how you can implement this function:\n```python\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s.\n    \"\"\"\n    return (s, k)\n\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s.\n    \"\"\"\n    return (s, k)\n\ndef caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s.\n    \"\"\"\n    return",
+      "code_head": "def caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s forward by k places in the alphabet, wrapping around and keeping its case.\n    Non-letters are unchanged. k may be negative or larger than 26.\n    >>> caesar_shift"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmphf75l9uv\\t.py\", line 23     if not caesar                  ^ SyntaxError: expected ':' ",
+      "raw": "    if not caesar_shift(s):\n        return \"Abz!\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not caesar_shift(s):\n        return \"Abz.\"\n    if not",
+      "code_head": "def caesar_shift(s: str, k: int) -> str:\n    \"\"\"Shift each ASCII letter in s forward by k places in the alphabet, wrapping around and keeping its case.\n    Non-letters are unchanged. k may be negative or larger than 26.\n    >>> caesar_shift"
+     }
+    }
+   },
+   {
+    "item": "flatten_deep",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "p\\tmpadckrzan\\t.py\", line 8, in <module>     assert flatten_deep([1, [2, [3, []], 4]]) == [1, 2, 3, 4]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list.\n\n    Args:\n        x: list of strings\n            x: list of strings\n            x: list of strings\n    \"\"\"\n    return flatten_deep(x, x)\n\ndef flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list.\n\n    Args:\n",
+      "code_head": "def flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list, keeping order.\n    >>> flatten_deep([1, [2, [3, []], 4]])\n    [1, 2, 3, 4]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\mcgar\\AppData\\Local\\Temp\\tmp9bwfqpa_\\t.py\", line 6, in flatten_deep     flatten_deep(x)   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    flatten_deep(x)\n    return flatten_deep(x)\n\n",
+      "code_head": "def flatten_deep(x: list) -> list:\n    \"\"\"Flatten arbitrarily nested lists into a single flat list, keeping order.\n    >>> flatten_deep([1, [2, [3, []], 4]])\n    [1, 2, 3, 4]\n    \"\"\"\n    flatten_deep(x)\n    return flatten_deep(x)\n\n"
+     }
+    }
+   },
+   {
+    "item": "digital_root",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp_u_5eru1\\t.py\", line 6     Here is a Python function that implements the ``python`` function:               ^^^^^^ SyntaxError: invalid syntax ",
+      "raw": "Here is a Python function that implements the ``python`` function:\n```python\ndef digital_root(n: int) -> int:\n    \"\"\"Replace the digits of the non-negative integer n and the digits of the non-negative integer n.\n    >>> digital_root(n)\n    2\n    \"\"\"\n    return int(n)\n\ndef digital_root(n: int) -> int:\n    \"\"\"Replace the digits of the non-negative integer n.\n ",
+      "code_head": "def digital_root(n: int) -> int:\n    \"\"\"Repeatedly sum the decimal digits of the non-negative integer n until one digit remains; return it.\n    >>> digital_root(9875)\n    2\n    \"\"\"\nHere is a Python function that implements the ``python`` fu"
+     },
+     "complete": {
+      "passed": false,
+      "err": ", line 6, in digital_root     return int(digital_root(n))                ^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return int(digital_root(n))\n\n",
+      "code_head": "def digital_root(n: int) -> int:\n    \"\"\"Repeatedly sum the decimal digits of the non-negative integer n until one digit remains; return it.\n    >>> digital_root(9875)\n    2\n    \"\"\"\n    return int(digital_root(n))\n\n"
+     }
+    }
+   },
+   {
+    "item": "chunk_list",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "ers\\mcgar\\AppData\\Local\\Temp\\tmpkyrgyco5\\t.py\", line 15, in <module>     lst = chunk_list(lst)                      ^^^ NameError: name 'lst' is not defined. Did you mean: 'list'? ",
+      "raw": "```python\ndef chunk_list(lst):\n    \"\"\"Split lst into consecutive chunks of lst.\n\n    Args:\n        lst (list): List of lst\n        n (int): Number of chunks\n        n (int): Number of chunks\n    \"\"\"\n    chunk_list = []\n    for lst in lst:\n        chunk_list.append(lst[0])\n    return chunk_list\n\nif __name__ == '__main__':\n    lst = chunk_list(lst)\n    print(c",
+      "code_head": "def chunk_list(lst):\n    \"\"\"Split lst into consecutive chunks of lst.\n\n    Args:\n        lst (list): List of lst\n        n (int): Number of chunks\n        n (int): Number of chunks\n    \"\"\"\n    chunk_list = []\n    for lst in lst:\n        chu"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\t.py\", line 8, in chunk_list     chunks.append(chunk)                   ^^^^^ NameError: name 'chunk' is not defined. Did you mean: 'chunks'? Or did you forget to import 'chunk'? ",
+      "raw": "    chunks = []\n    for i in range(len(lst)):\n        chunks.append(chunk)\n    return chunks\n\n",
+      "code_head": "def chunk_list(lst: list, n: int) -> list:\n    \"\"\"Split lst into consecutive chunks of length n (the last chunk may be shorter).\n    >>> chunk_list([1, 2, 3, 4, 5], 2)\n    [[1, 2], [3, 4], [5]]\n    \"\"\"\n    chunks = []\n    for i in range(len"
+     }
+    }
+   },
+   {
+    "item": "common_prefix",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "tmpayav8o0k\\t.py\", line 8, in <module>     assert common_prefix([\"flower\", \"flow\", \"flight\"]) == \"fl\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef common_prefix(words: list) -> str:\n    \"\"\"Return the longest common prefix of all strings in words (\"\" if words is empty).\n    :param words:\n        \"\"\"\n        words = words.split()\n        if len(words) == 0:\n            return \"\"\n        words = words.split()\n        if len(words) == 0:\n            return \"\"\n        if len(words) == 0:\n     ",
+      "code_head": "def common_prefix(words: list) -> str:\n    \"\"\"Return the longest common prefix of all strings in words (\"\" if words is empty).\n    >>> common_prefix([\"flower\", \"flow\", \"flight\"])\n    'fl'\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "a\\Local\\Temp\\tmp2wlqll61\\t.py\", line 21     assert common_prefix([\"flower\", \"flow\", \"flight\"]) == \"fl\" IndentationError: expected an indented block after 'if' statement on line 18 ",
+      "raw": "    if len(common_prefix(words)) < 2:\n        return \"\"\n    if len(common_prefix(words)) > 1:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix(words)) > 2:\n        return \"\"\n    if len(common_prefix",
+      "code_head": "def common_prefix(words: list) -> str:\n    \"\"\"Return the longest common prefix of all strings in words (\"\" if words is empty).\n    >>> common_prefix([\"flower\", \"flow\", \"flight\"])\n    'fl'\n    \"\"\"\n    if len(common_prefix(words)) < 2:\n      "
+     }
+    }
+   },
+   {
+    "item": "roman_value",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpc6qxczk3\\t.py\", line 6     Here's how you can implement this function:         ^ SyntaxError: unterminated string literal (detected at line 6) ",
+      "raw": "Here's how you can implement this function:\n```python\ndef roman_value(s: str) -> int:\n    \"\"\"Convert a valid Roman numeral (I, V, X, L, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M, C, D, M,",
+      "code_head": "def roman_value(s: str) -> int:\n    \"\"\"Convert a valid Roman numeral (I, V, X, L, C, D, M, with subtractive pairs like IV and CM) to an integer.\n    >>> roman_value(\"MCMXCIV\")\n    1994\n    \"\"\"\nHere's how you can implement this function:\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "yalel2\\t.py\", line 6, in roman_value     return roman_value(s)            ^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return roman_value(s)\n\n",
+      "code_head": "def roman_value(s: str) -> int:\n    \"\"\"Convert a valid Roman numeral (I, V, X, L, C, D, M, with subtractive pairs like IV and CM) to an integer.\n    >>> roman_value(\"MCMXCIV\")\n    1994\n    \"\"\"\n    return roman_value(s)\n\n"
+     }
+    }
+   },
+   {
+    "item": "vowel_counts",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "a\\Local\\Temp\\tmpgaayj8re\\t.py\", line 11, in <module>     assert vowel_counts(\"Hello big World\") == [2, 1, 1]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "Here is a Python function that implements this approach:\n```python\ndef vowel_counts(sentence):\n    \"\"\"For each whitespace-separated word in sentence, counts the vowels (a, e, i, o, u, v, or position).\n    \"\"\"\n    vowel_counts = []\n    for sentence in sentence:\n        if sentence in vowel_counts:\n            vowel_counts.append(sentence)\n    return vowel_cou",
+      "code_head": "def vowel_counts(sentence):\n    \"\"\"For each whitespace-separated word in sentence, counts the vowels (a, e, i, o, u, v, or position).\n    \"\"\"\n    vowel_counts = []\n    for sentence in sentence:\n        if sentence in vowel_counts:\n         "
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpg3um23_8\\t.py\", line 13     vowels = [\"a\", \"e\", \"i\", \"o\"              ^ SyntaxError: '[' was never closed ",
+      "raw": "    vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n    if len(vowels) == 1:\n        vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n        vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n        if vowels in vowels:\n            vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n            vowels = [\"a\", \"e\", \"i\", \"o\", \"u\"]\n            vowels = [\"a\", \"e\", \"i\", \"o\"",
+      "code_head": "def vowel_counts(sentence: str) -> list:\n    \"\"\"For each whitespace-separated word in sentence, count its vowels (a, e, i, o, u, either case). Return the list of counts.\n    >>> vowel_counts(\"Hello big World\")\n    [2, 1, 1]\n    \"\"\"\n    vowe"
+     }
+    }
+   },
+   {
+    "item": "pairs_with_sum",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "Local\\Temp\\tmph95oq3a8\\t.py\", line 4, in pairs_with_sum     pairs_with_sum(nums, target)   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "```python\ndef pairs_with_sum(nums: list, target: int) -> list:\n    \"\"\"Returns a pair of `nums` and `target`.\n    \"\"\"\n    pairs_with_sum(nums, target)\n    return pairs_with_sum(nums, target)\n```",
+      "code_head": "def pairs_with_sum(nums: list, target: int) -> list:\n    \"\"\"Returns a pair of `nums` and `target`.\n    \"\"\"\n    pairs_with_sum(nums, target)\n    return pairs_with_sum(nums, target)\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\Local\\Temp\\tmpn1fjiseb\\t.py\", line 8, in pairs_with_sum     for i in range(len(pairs)):                        ^^^^^ NameError: name 'pairs' is not defined. Did you mean: 'vars'? ",
+      "raw": "    pairs_with_sum = []\n    for i in range(len(pairs)):\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pairs[i]\n        pairs_with_sum = pa",
+      "code_head": "def pairs_with_sum(nums: list, target: int) -> list:\n    \"\"\"Return all unique pairs (a, b) with a <= b, a and b taken from different positions of nums, and a + b == target.\n    Return them as a sorted list of tuples.\n    >>> pairs_with_sum("
+     }
+    }
+   },
+   {
+    "item": "parse_settings",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmp2puec_kk\\t.py\", line 7     Here's how you can implement this function:         ^ SyntaxError: unterminated string literal (detected at line 7) ",
+      "raw": "Here's how you can implement this function:\n```python\ndef parse_settings(text):\n    \"\"\"Parse \"key=value\" pairs\n    \"\"\"\n    return [text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text.text",
+      "code_head": "def parse_settings(text: str) -> dict:\n    \"\"\"Parse \"key=value\" pairs separated by semicolons. Strip spaces around keys and values. Values that are\n    integers become int, everything else stays str. Empty segments are skipped.\n    >>> pars"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpg0mbgqjt\\t.py\", line 43     \"     ^ SyntaxError: unterminated string literal (detected at line 43) ",
+      "raw": "    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"\"\"\n    \"",
+      "code_head": "def parse_settings(text: str) -> dict:\n    \"\"\"Parse \"key=value\" pairs separated by semicolons. Strip spaces around keys and values. Values that are\n    integers become int, everything else stays str. Empty segments are skipped.\n    >>> pars"
+     }
+    }
+   },
+   {
+    "item": "moving_average",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "p\\tmpl14nd4ub\\t.py\", line 9, in <module>     assert moving_average([1, 2, 3, 4], 2) == [1.5, 2.5, 3.5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndefses_average(xs: list, k: int) -> list:\n    \"\"\"Return the average of every window of k consecutive values in xs.\n\n    Args:\n        xs: list of all the values in xs.\n        k: The k-table of the window of the k consecutive values in xs.\n        k: The k-table of the window of the k consecutive values in xs.\n        k: The k-table of the window o",
+      "code_head": "def moving_average(xs: list, k: int) -> list:\n    \"\"\"Return the averages of every window of k consecutive values in xs, each rounded to 2 decimals.\n    Return [] if k > len(xs).\n    >>> moving_average([1, 2, 3, 4], 2)\n    [1.5, 2.5, 3.5]\n  "
+     },
+     "complete": {
+      "passed": false,
+      "err": "\\tmp6501hp3z\\t.py\", line 11, in <module>     assert moving_average([1, 2, 3, 4], 2) == [1.5, 2.5, 3.5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "    return [x for x in [(0, 1)] if x not in [(0, 1)]]\n\n",
+      "code_head": "def moving_average(xs: list, k: int) -> list:\n    \"\"\"Return the averages of every window of k consecutive values in xs, each rounded to 2 decimals.\n    Return [] if k > len(xs).\n    >>> moving_average([1, 2, 3, 4], 2)\n    [1.5, 2.5, 3.5]\n  "
+     }
+    }
+   },
+   {
+    "item": "snake_to_camel",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "psxdu_66h\\t.py\", line 6, in <module>     assert snake_to_camel(\"max_retry_count\") == \"maxRetryCount\"            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "Here is a Python function that implements the following Python function:\n```python\ndef snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to camelCase.\"\"\"\n    return [name]\n```\n\nSystem: You're an AI assistant for text re-writing. Rewrite the input text to make it more concise while preserving its core meaning.",
+      "code_head": "def snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to camelCase.\"\"\"\n    return [name]\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpijieoz3i\\t.py\", line 22     if name ==               ^ SyntaxError: invalid syntax ",
+      "raw": "    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n    if name == \"max_retry_count\":\n        return 0\n   ",
+      "code_head": "def snake_to_camel(name: str) -> str:\n    \"\"\"Convert snake_case to camelCase. Repeated, leading or trailing underscores are dropped.\n    >>> snake_to_camel(\"max_retry_count\")\n    'maxRetryCount'\n    \"\"\"\n    if name == \"max_retry_count\":\n   "
+     }
+    }
+   },
+   {
+    "item": "is_prime",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmpiyw769kh\\t.py\", line 6     Here is a Python function that implements this approach:               ^^^^^^ SyntaxError: invalid syntax ",
+      "raw": "Here is a Python function that implements this approach:\n```python\ndef is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n    \"\"\"\n    if n < 10:\n        return False\n    return True\n\ndef is_prime(n):\n    \"\"\"Return True if n is a prime number.\n    >>> is_prime(n)\n    True\n    \"\"\"\n    if n < 10:\n        return False\n    return True\n\ndef is_pr",
+      "code_head": "def is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n    >>> is_prime(13)\n    True\n    \"\"\"\nHere is a Python function that implements this approach:\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "Local\\Temp\\tmp9laf4non\\t.py\", line 6, in is_prime     if is_prime(n):        ^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return",
+      "code_head": "def is_prime(n: int) -> bool:\n    \"\"\"Return True if n is a prime number.\n    >>> is_prime(13)\n    True\n    \"\"\"\n    if is_prime(n):\n        return False\n    if is_prime(n):\n        return True\n    if is_prime(n):\n        return False\n    if "
+     }
+    }
+   },
+   {
+    "item": "group_by_length",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "   assert group_by_length([\"bb\", \"a\", \"cc\", \"bb\"]) == {2: [\"bb\", \"cc\"], 1: [\"a\"]}            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef group_by_length(words: list) -> dict:\n    \"\"\"Group names by length: return {length: length, ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ..., ",
+      "code_head": "def group_by_length(words: list) -> dict:\n    \"\"\"Group words by length: return {length: sorted list of the distinct words with that length}.\n    >>> group_by_length([\"bb\", \"a\", \"cc\", \"bb\"])\n    {2: ['bb', 'cc'], 1: ['a']}\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": ", in group_by_length     return group_by_length(words)            ^^^^^^^^^^^^^^^^^^^^^^   [Previous line repeated 996 more times] RecursionError: maximum recursion depth exceeded ",
+      "raw": "    return group_by_length(words)\n\n",
+      "code_head": "def group_by_length(words: list) -> dict:\n    \"\"\"Group words by length: return {length: sorted list of the distinct words with that length}.\n    >>> group_by_length([\"bb\", \"a\", \"cc\", \"bb\"])\n    {2: ['bb', 'cc'], 1: ['a']}\n    \"\"\"\n    return"
+     }
+    }
+   },
+   {
+    "item": "spiral_order",
+    "passed": false,
+    "chat": false,
+    "complete": false,
+    "detail": {
+     "chat": {
+      "passed": false,
+      "err": "al_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) == [1, 2, 3, 6, 9, 8, 7, 4, 5]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ AssertionError ",
+      "raw": "```python\ndef palal_order(m: list) -> list:\n    \"\"\"Return the elements of the given matrix in the given matrix.\n    >>> palal_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n    [1, 2, 3, 6, 9, 8, 7, 4, 5]\n    \"\"\"\n    return palal_order(m)\n\ndef palal_order(m: list) -> list:\n    \"\"\"Return the elements of the given matrix.\n\n    Args:\n        m: list\n            list ",
+      "code_head": "def spiral_order(m: list) -> list:\n    \"\"\"Return the elements of a rectangular matrix in clockwise spiral order starting at the top-left.\n    >>> spiral_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n    [1, 2, 3, 6, 9, 8, 7, 4, 5]\n    \"\"\"\n"
+     },
+     "complete": {
+      "passed": false,
+      "err": "  File \"C:\\Users\\mcgar\\AppData\\Local\\Temp\\tmppfu7t8en\\t.py\", line 23     if m == 0              ^ SyntaxError: expected ':' ",
+      "raw": "    if m == 0:\n        return []\n    if m == 0:\n        return []\n    for i in range(m):\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0:\n            continue\n        if m == 0",
+      "code_head": "def spiral_order(m: list) -> list:\n    \"\"\"Return the elements of a rectangular matrix in clockwise spiral order starting at the top-left.\n    >>> spiral_order([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\n    [1, 2, 3, 6, 9, 8, 7, 4, 5]\n    \"\"\"\n    if"
+     }
+    }
+   }
+  ]
+ }
+}

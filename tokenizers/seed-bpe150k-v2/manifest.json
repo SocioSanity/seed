@@ -1,0 +1,67 @@
+{
+  "name": "Seed v2.0 Tokenizer",
+  "version": "2.0.0",
+  "vocabulary_size": 150000,
+  "algorithm": "ByteLevel BPE",
+  "special_tokens": [
+    "<pad>",
+    "<unk>",
+    "<bos>",
+    "<eos>",
+    "<|system|>",
+    "<|user|>",
+    "<|assistant|>",
+    "<|tool|>",
+    "<|tool_result|>",
+    "<|think|>",
+    "<|/think|>",
+    "<|code|>",
+    "<|end|>"
+  ],
+  "unknown_tokens": 0,
+  "roundtrip_failures": 0,
+  "single_digit_splitting": true,
+  "training_seconds": 10.65,
+  "training_finished": "2026-11-27 10:51:42",
+  "corpus_mb": 99.978,
+  "domain_mb": {
+    "math_json_tools": 15.001,
+    "english": 45.0,
+    "code": 39.977
+  },
+  "files": {
+    "tokenizer.json": {
+      "path": "tokenizers/seed-bpe150k-v2/tokenizer.json",
+      "bytes": 10868319,
+      "sha256": "fc67f00b300e872734502b96eeee00440be6266bfe83338a164acfb7ca847d73"
+    },
+    "vocab.json": {
+      "path": "tokenizers/seed-bpe150k-v2/vocab.json",
+      "bytes": 2532548,
+      "sha256": "057308d70e1881ece166c3ed2453fc716c8d0f650f049de6035d296d8a4c222e"
+    },
+    "merges.txt": {
+      "path": "tokenizers/seed-bpe150k-v2/merges.txt",
+      "bytes": 1438969,
+      "sha256": "3cebad4b7e33884dbf19fecc36965d535d57c032c1ae99573d417c7cd6f3bb7f"
+    },
+    "metadata.json": {
+      "path": "tokenizers/seed-bpe150k-v2/metadata.json",
+      "bytes": 2173,
+      "sha256": "55fb5c1801007ff99a7b59c17c986a0e5408fa0b240c04e8c259d618564eedd1"
+    },
+    "benchmark.json": {
+      "path": "tokenizers/seed-bpe150k-v2/benchmark.json",
+      "bytes": 19144,
+      "sha256": "0ce460dc0886e6956e171aa2cfb97392a1d8ec29d7845917ef0b8956bf599222"
+    },
+    "corpus_breakdown.json": {
+      "path": "tokenizers/seed-bpe150k-v2/corpus_breakdown.json",
+      "bytes": 5647,
+      "sha256": "5c8f1a999876acf011402126477ee20faa6c9c91a75b06a0f6823caeca70f810"
+    }
+  },
+  "sha256_tokenizer_json": "fc67f00b300e872734502b96eeee00440be6266bfe83338a164acfb7ca847d73",
+  "status": "trained",
+  "created": "2026-11-27 10:55:57"
+}

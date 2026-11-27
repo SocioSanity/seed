@@ -1,0 +1,121 @@
+{
+ "kind": "tree",
+ "id": "tree-59ef3f95e212",
+ "name": "py1-final",
+ "description": "Python writer specialist (~10M, 8x3). Whole frozen seed, EMA weights, fp16.",
+ "structure": {
+  "arch": "seed-v4-final",
+  "vocab": 4096,
+  "d": 384,
+  "ctx": 1024,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 32,
+   "mlp": 192,
+   "socket": true,
+   "rank": 8
+  },
+  "tie": true,
+  "softcap": 30.0,
+  "L": 8,
+  "K": 3,
+  "organ_ids": [
+   "o1",
+   "o2",
+   "o3"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2",
+    "c3"
+   ],
+   [
+    "c6",
+    "c4",
+    "c5"
+   ],
+   [
+    "c8",
+    "c9",
+    "c7"
+   ],
+   [
+    "c11",
+    "c12",
+    "c10"
+   ],
+   [
+    "c15",
+    "c13",
+    "c14"
+   ],
+   [
+    "c18",
+    "c17",
+    "c16"
+   ],
+   [
+    "c20",
+    "c19",
+    "c21"
+   ],
+   [
+    "c23",
+    "c22",
+    "c24"
+   ]
+  ],
+  "protected_cells": [],
+  "adapt_cells": [],
+  "organ_meta": {},
+  "plugin_cells": [],
+  "socket": "seed-socket-v1",
+  "anchor": {
+   "id": "seed-socket-v1",
+   "sha256": "a8438384b2c1b973"
+  },
+  "next_cell": 25,
+  "next_organ": 4,
+  "lineage": "59ef3f95e212",
+  "tokenizer": {
+   "id": "seed-bpe4096-v1",
+   "name": "seed-bpe4096",
+   "version": "1",
+   "sha256": "42ca2e21f41c629d",
+   "dir": "tokenizers/seed-bpe4096-v1"
+  }
+ },
+ "sig": {
+  "d": 384,
+  "n_head": 4,
+  "head_dim": 32,
+  "mlp": 192,
+  "vocab": 4096,
+  "arch": "seed-v4-final",
+  "rope": "interleaved",
+  "socket": "seed-socket-v1"
+ },
+ "tokenizer": {
+  "id": "seed-bpe4096-v1",
+  "name": "seed-bpe4096",
+  "version": "1",
+  "sha256": "42ca2e21f41c629d",
+  "dir": "tokenizers/seed-bpe4096-v1"
+ },
+ "lineage": "59ef3f95e212",
+ "format": "seed-part/1",
+ "file": "py1-final.safetensors",
+ "sha256": "6d8a60efef031f11",
+ "sha256_full": "6d8a60efef031f11427c1ffb866c4a4feec675ef0c3a5a531f1d1d46fc9da998",
+ "n_params": 10142616,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 9527,
+ "created": "2026-11-27 11:36:02",
+ "license": "Apache-2.0",
+ "socket": "seed-socket-v1",
+ "shape": "8x3",
+ "source": "seed_py1 final at step 9527; STOP left in place; nothing deleted"
+}

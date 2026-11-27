@@ -44,3 +44,7 @@ Thumbs.db
 !organs/**/*.safetensors
 !pool1/router.pt
 !pool2/router.pt
+!pool5/router.pt
+!pool5/router_base.pt
+!pool5/router_loop.pt
+!pool5/variants/**/*.pt

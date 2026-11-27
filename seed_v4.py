@@ -577,6 +577,32 @@ def split_params(model):
     return muon, adam_decay, adam_nodecay
 
 
+
+def _sync_opt_devices(opt):
+    """Put every optimiser state tensor on its param's device and keep the AdamW `fused` flag correct.
+    Fused AdamW (used on CUDA) requires `step` AND the moments to live on the param device; a plain
+    foreach AdamW keeps `step` on CPU. load_state_dict() restores the checkpoint's param_groups (so a
+    CPU-saved, fused=False checkpoint silently disables fused on GPU and leaves `step` on CPU), and
+    build_opts() carries state over by clone() which preserves the old device. After growth that mixes a
+    CPU `step` with CUDA params inside one fused step -> RuntimeError. Call this after every load/migrate."""
+    want_fused = (DEV.type == "cuda")
+    for g in opt.param_groups:
+        is_adamw = "fused" in g
+        if is_adamw:
+            g["fused"] = want_fused
+        for q in g["params"]:
+            st = opt.state.get(q)
+            if not st:
+                continue
+            for k, v in list(st.items()):
+                if not torch.is_tensor(v):
+                    continue
+                if is_adamw and k == "step":
+                    st[k] = v.to(device=q.device, dtype=torch.float32) if want_fused else v.detach().to("cpu")
+                elif v.device != q.device:
+                    st[k] = v.to(q.device)
+
+
 def build_opts(model, a, old=None, reset=()):
     """New optimisers; state of surviving params carried over by identity (params in `reset` start fresh)."""
     mu, ad, an = split_params(model)
@@ -594,6 +620,7 @@ def build_opts(model, a, old=None, reset=()):
                     st = old_o.state.get(p)
                     if st and id(p) not in rs:
                         new_o.state[p] = {k: (v.clone() if torch.is_tensor(v) else v) for k, v in st.items()}
+    _sync_opt_devices(muon); _sync_opt_devices(adam)
     return muon, adam
 
 # --------------------------------------------------------------------------- EMA
@@ -1806,6 +1833,7 @@ def main():
         model.load_state_dict(c["model"])
         for o, sd in zip(opts, c["opts"]):
             o.load_state_dict(sd)
+            _sync_opt_devices(o)
         for o, base in zip(opts, (a.muon_lr, a.adam_lr)):
             for g in o.param_groups:
                 g["base_lr"] = base

@@ -26,6 +26,58 @@ Built and trained on a desktop with an **NVIDIA GTX 1660 Ti (6 GB)**. Training a
 
 ## Current results
 
+### Seed Pool 5 (v0.4.0): 16 specialist organs and a looping router
+
+Pool 5 is a 16-organ pool of frozen Seed v4 specialists on the shared `seed-bpe4096-v1` tokenizer and `seed-socket-v1` anchor. Together they are about **88.7M parameters** and **338.5 MB** of fp32 weights (about 169 MB in the published fp16 organs). That still fits comfortably under the **2 GB weight cap** on a GTX 1660 Ti.
+
+The seeds:
+
+| organ | params | shape | what it is for |
+|---|---|---|---|
+| `run3` | 4.43M | 4×2 | fluent English / TinyStories trunk |
+| `run4` | 3.72M | 6×1 | tools + reasoning (`wiki_search`, `calculator`) |
+| `json1` | 4.43M | 4×2 | JSON and tool-call argument filling |
+| `answer1` | 4.43M | 4×2 | short answers from `<tool_result>` text |
+| `math1` | 4.43M | 4×2 | math word problems → plan + calculator calls |
+| `reason1` | 4.43M | 4×2 | step-by-step puzzles and GSM8K-style chains |
+| `plan1` | 4.43M | 4×2 | word-problem planner |
+| `plan2` | 10.14M | 8×3 | larger word-problem planner |
+| `py1` | 10.14M | 8×3 | Python writer |
+| `fix1` | 5.86M | 6×2 | run-and-fix with `python_exec` |
+| `inst1` | 5.86M | 6×2 | instruction following |
+| `c1` | 4.43M | 4×2 | C writer |
+| `js1` | 4.43M | 4×2 | JavaScript writer |
+| `sh1` | 5.86M | 6×2 | Bash / shell writer |
+| `ps1` | 5.86M | 6×2 | PowerShell writer |
+| `alg1` | 5.86M | 6×2 | language-agnostic algorithmic reasoning |
+
+A confidence-gated **1–3 pass looping router** picks a sparse active set per token, then takes another pass (adding more organs) only when it is not confident. Three variants were trained on the same 16 seeds. The winner is the **single-head Top-6** router (`pool5/`, `init_k=6`, `step_k=3`).
+
+| variant | macro BPB (lower is better) | greedy tok/s (GPU) | coding eval (20 Python tasks) |
+|---|---|---|---|
+| **single-head Top-6 (winner)** | **0.8293** | **17.2** | 0/20 chat, 0/20 complete |
+| single-head Top-3 | 0.8375 | 26.7 | 0/20 |
+| multi-head Top-3 (3 heads) | 0.8959 | 19.4 | 0/20 |
+
+Top-6 domain bits per byte (held-out, lower is better):
+
+| python | C | JS | bash | PowerShell | math | reason | alg (real / synth) | Colby texts |
+|---|---|---|---|---|---|---|---|---|
+| 0.447 | 0.649 | 1.042 | 1.118 | 0.809 | 0.174 | 0.075 | 1.628 / 1.376 | 0.976 |
+
+What worked: the pool is fast enough for interactive use on a 1660 Ti, English is fluent (the run3 trunk is still in the mix), and domain BPB is strong on math, reasoning, and the code/shell languages the specialists were trained on.
+
+What we diagnosed honestly: on a **strict 20-task Python coding eval**, both the Top-6 pool and the `py1` organ alone scored **0/20**. The 4,096-token BPE, the ~4–10M per-seed size cap, and router prose bleed (non-Python organs still getting weight on coding prompts) are the bottleneck we are targeting next — not a claim that the architecture failed. See [pool5/results/SUMMARY.md](pool5/results/SUMMARY.md).
+
+```bash
+python seed_pool.py --dir pool5 list
+python seed_pool.py --dir pool5 chat --tools --prompt "What is 17 * 19?"
+```
+
+### Coming soon: Seed v2.0
+
+Seed v2.0 starts from that diagnosis. A new custom **150,000-vocab** code-and-English ByteLevel BPE is already in the repo at [`tokenizers/seed-bpe150k-v2/`](tokenizers/seed-bpe150k-v2/): single-digit splitting, intact indent tokens, and 13 chat / tool / think special tokens. The plan is a **shared, factorized embedding** so a 150k vocab does not eat the whole budget, then dynamically grown specialist seeds scaling toward a **~500M-parameter pool** that still fits under the **2 GB weight cap** on a GTX 1660 Ti — starting with English fluency training to a validation loss under **1.0**.
+
 ### Seed Pool v2 (v0.3.0): two specialist organs + a fair Qwen comparison
 
 v0.3.0 adds two small specialist organs trained from scratch on the same tokenizer and socket anchor, and hot-adds them to a copy of the pool (`pool2/`, 4 organs, router retrained for 900 steps). The comparison baseline is now **Qwen2.5-Coder-3B** instead of the undertrained 100M.
@@ -142,47 +194,127 @@ python chat.py organs/seeds/run4-tools-reasoning-final.json --prompt "Once upon 
 
 ### Seed Pool
 
-The published registries and routers live in `pool1/` (2 organs) and `pool2/` (4 organs; use `--dir pool2`). Paths in the registry are relative to the repo root. Override the pool directory with `--dir` or the `SEED_POOL_DIR` environment variable.
+The published registries and routers live in `pool1/` (2 organs), `pool2/` (4 organs), and `pool5/` (16 organs, looping Top-6 winner). Paths in the registry are relative to the repo root. Override the pool directory with `--dir` or the `SEED_POOL_DIR` environment variable.
 
 ```bash
-python seed_pool.py list
+python seed_pool.py --dir pool5 list
+python seed_pool.py --dir pool5 chat --tools --prompt "What is 17 * 19?"
 python seed_pool.py --dir pool2 chat --tools --prompt "What is German submarine U-454?"
-python seed_pool.py chat --prompt "Once upon a time"
-python seed_pool.py chat --tools --prompt "Who was Marie Curie?"
-python seed_pool.py add NAME path/to/seed.json
-python seed_pool.py remove NAME
+python seed_pool.py --dir pool1 chat --prompt "Once upon a time"
+python seed_pool.py --dir pool5 add NAME path/to/seed.json
+python seed_pool.py --dir pool5 remove NAME
 ```
 
-`--tools` uses the tool helpers in `comparison/tiny100m` (calculator and `read_file`; Wikipedia search is optional if you have a local index).
+`--tools` uses the runtimes in [`tools/`](tools/README.md): `calculator`, `read_file`, `python_exec`, and optional `wiki_search` (set `SEED_WIKI` to a local introductions index).
 
-### Train
+### Grow your own seed (single consumer GPU)
 
-The standard tokenizer is included at `tokenizers/seed-bpe4096-v1`. Point the trainer at text with `--mix`, or at `train.bin` / `valid.bin` from `prep_data.py` with `--data`.
+This is the supported path for training a new specialist and adding it to a pool. The dynamic-growth trainer is `seed_v4.py`. It starts small (2 layers × 1 cell by default) and grows cells and layers automatically under a weights cap and a VRAM cap. The defaults fit a **GTX 1660 Ti (6 GB)**; they also run on CPU (slower).
+
+**Use the official tokenizer and socket** if you want the new seed to plug into the published pool. Training a fresh BPE with `prep_data.py` (no `--tokenizer`) produces a seed that will not load on `seed-socket-v1`.
 
 ```bash
-# GPU, one hour, a folder or text file of training data
-python seed_v4.py --out runs/myrun --device cuda --minutes 60 --mix path/to/text.txt
+# 1) Install (Python 3.10+; developed on 3.12)
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
+pip install -r requirements.txt
+# If you have an NVIDIA GPU, install a CUDA build of PyTorch from https://pytorch.org
+# (this project was trained with torch 2.6.0+cu124).
 
-# CPU
-python seed_v4.py --out runs/myrun --device cpu --minutes 45 --threads 3 --mix path/to/text.txt
+# 2) Tokenize your text with the official 4,096-token tokenizer
+python prep_data.py --data-dir path/to/your_texts --out data \
+    --tokenizer tokenizers/seed-bpe4096-v1/tokenizer.json
+# Or, from TinyStories files:
+# python prep_data.py --train-text TinyStoriesV2-GPT4-train.txt \
+#     --valid-text TinyStoriesV2-GPT4-valid.txt --out data \
+#     --tokenizer tokenizers/seed-bpe4096-v1/tokenizer.json
+
+# 3) Grow the seed. Caps keep weights under 2 GB and process VRAM around 5 GB.
+#    Add a specialty corpus with --mix (plain .txt). Use --resume to continue later.
+python seed_v4.py --out runs/myseed --device cuda --resume --data data \
+    --tokenizer-dir tokenizers/seed-bpe4096-v1 \
+    --socket-dir socket/seed-socket-v1 \
+    --vram-cap-mb 5000 --mem-cap-mb 2048 \
+    --minutes 1440 --mix path/to/specialty.txt
+
+# Windows helper with the same defaults:
+# powershell -ExecutionPolicy Bypass -File scripts/run_seed_v4.ps1 -Out runs\myseed -Minutes 1440 -Device cuda -Data data -Mix path\to\specialty.txt
+
+# CPU instead of GPU:
+# python seed_v4.py --out runs/myseed --device cpu --threads 3 --minutes 180 --data data \
+#     --tokenizer-dir tokenizers/seed-bpe4096-v1 --socket-dir socket/seed-socket-v1
 ```
 
-A PowerShell launcher with configurable paths lives at `scripts/run_seed_v4.ps1`.
-
-Prepare TinyStories (or similar) into token files:
+Stop a run cleanly by creating the file `runs/myseed/STOP` (it saves, then exits). Resume with `--resume` and the same `--out`. The trainer writes `runs/myseed/latest.pt` and `train.log` as it goes.
 
 ```bash
-python prep_data.py --train-text path/to/TinyStoriesV2-GPT4-train.txt --valid-text path/to/TinyStoriesV2-GPT4-valid.txt --out data
-python seed_v4.py --out runs/myrun --device cuda --minutes 60 --data data
+# 4) Export a shareable fp16 organ (weights only, no optimizer; typically 8-20 MB)
+python scripts/export_seed.py runs/myseed/latest.pt organs/seeds/myseed \
+    --name myseed --description "what this seed learned"
+
+# 5) Add it to a pool. Seeds stay frozen; only the small router is trained.
+python seed_pool.py --dir pool5 add myseed organs/seeds/myseed.json --desc "what this seed learned"
+python seed_pool.py --dir pool5 calibrate myseed --steps 200
+# Or retrain the dense (all-active) router from seed_pool.py:
+# python seed_pool.py --dir pool5 train --max-steps 900
+
+# 6) Chat
+python seed_pool.py --dir pool5 chat --tools --prompt "Your question"
 ```
 
-Or train on your own folder of `.txt`, `.md`, or `.pdf` files:
+The looping router used by Pool 5 lives in `pool5/eval/pool5_loop.py`. Retraining it needs your own mix of domain text; see [pool5/results/SUMMARY.md](pool5/results/SUMMARY.md).
+
+### Link seeds and route them with looped Top-6
+
+Pool 5's published router is a **confidence-gated looping Top-6** (`--mode single --init-k 6 --step-k 3`). Use this whenever you want the winning architecture, including after you drop in a new seed.
 
 ```bash
-python prep_data.py --data-dir path/to/your_texts --out data
+# 1) Put organs in a pool registry (paths are relative to the repo root)
+python scripts/pool_register.py --dir pool5 list
+python scripts/pool_register.py --dir pool5 add myseed organs/seeds/myseed.json --desc "what it learned"
+# or: python seed_pool.py --dir pool5 add myseed organs/seeds/myseed.json --desc "what it learned"
+
+# 2) Retrain the looping router on the new seed set
+#    (required after add/remove: router keys are per-name)
+#    Copy pool5/mix.example.json and point each path at your local .txt files.
+python pool5/eval/pool5_loop.py base --dir pool5 --mode single --init-k 6 --step-k 3 --mix-json pool5/mix.json
+python pool5/eval/pool5_loop.py loop --dir pool5 --minutes 15 --mix-json pool5/mix.json
+
+# 3) Chat with the looped Top-6 router (greedy, tau=0.9, tools on)
+python pool5/eval/pool5_loop.py chat --dir pool5 --tools --prompt "What is 17 * 19?"
 ```
 
-Stop a run cleanly by creating the file `runs/myrun/STOP` (it saves, then exits). Resume with `--resume` and the same `--out`.
+`base` trains the sparse context router (seeds stay frozen). `loop` trains the 1–3 pass confidence head on top (the base router stays frozen). The published winner weights are `pool5/router_base.pt` and `pool5/router_loop.pt`. Other variants from the same 16 seeds are under `pool5/variants/`.
+
+### Grow your own seed (v2.0, 150k tokenizer)
+
+Seed v2.0 is a new trainer for the official **150,000-vocab** ByteLevel BPE. It uses a **factorized, tied embedding** (`--e-dim 128`, table is `150000 × 128`) and residual width `--d 512`. It starts at 4 layers × 2 cells and grows under the same 2 GB weight cap. It is **not** compatible with Pool 5 or `seed-socket-v1` — those stay on the 4k tokenizer.
+
+The official tokenizer is at [`tokenizers/seed-bpe150k-v2/`](tokenizers/seed-bpe150k-v2/). `tokenizer.json` SHA-256 is `fc67f00b300e872734502b96eeee00440be6266bfe83338a164acfb7ca847d73`. Do not train a new 150k BPE if you want to share v2.0 seeds.
+
+```bash
+# 1) Copy the example mix and point every "path" (and val_path) at your own local .txt files.
+#    The listed sources are public datasets (FineWeb-Edu, Wikipedia, SmolTalk, TinyStories,
+#    Project Gutenberg). The files themselves are not in the repo.
+cp v2/mix.example.json v2/mix.json
+# then edit v2/mix.json
+
+# 2) Grow an English (or specialist) seed. Stops when mixed val CE < 1.0 (default --target-ce).
+#    Works on a 1660 Ti (6 GB) with the caps below; a 4090 or H100 can raise --batch / --ctx.
+python v2/seed_v2.py --tokenizer tokenizers/seed-bpe150k-v2/tokenizer.json \
+    --mix-json v2/mix.json --out runs/v2-eng1 --device cuda --resume \
+    --d 512 --e-dim 128 --target-ce 1.0 \
+    --vram-cap-mb 4800 --mem-cap-mb 2048
+
+# Windows helper:
+# powershell -ExecutionPolicy Bypass -File scripts/run_seed_v2.ps1 -Out runs\v2-eng1 -MixJson v2\mix.json
+
+# 3) Stop cleanly with runs/v2-eng1/STOP (saves, then exits). Resume with the same --out and --resume.
+```
+
+See [v2/README.md](v2/README.md) and [tokenizers/seed-bpe150k-v2/](tokenizers/seed-bpe150k-v2/).
+
 
 ### Harvest and transplant organelles (experimental)
 
@@ -233,26 +365,35 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 
 | path | what |
 |---|---|
-| `seed_v4.py` | trainer, model, and parts format (the engine) |
+| `seed_v4.py` | dynamic-growth trainer, model, and parts format (the engine; includes the GPU optimizer-device fix) |
 | `seed_v3_gpu.py` | data-pipeline helper imported by `seed_v4.py` (not the current trainer) |
 | `seed_organs.py` | organelle bundles, sockets, signing, rehearsal caches |
 | `parts_tool.py` | export, harvest, train, import, verify, and publish organelles (import is experimental) |
-| `seed_pool.py` | Seed Pool v1: router over organs (whole frozen seeds) |
+| `seed_pool.py` | Seed Pool: dense router over organs (whole frozen seeds); train / calibrate / chat |
+| `tools/` | tool runtimes: calculator, wiki_search, read_file, python_exec — [README](tools/README.md) |
 | `chat.py` | talk to a checkpoint, a tree, or a seed plus organelles |
-| `prep_data.py` | build a tokenizer and `train.bin` / `valid.bin` |
+| `prep_data.py` | build `train.bin` / `valid.bin` (pass `--tokenizer` to use the official 4k vocab) |
+| `scripts/export_seed.py` | export a v4 checkpoint as a shareable fp16 organ |
+| `scripts/pool_register.py` | add / list / remove seeds in a pool `registry.json` |
+| `scripts/run_seed_v4.ps1` | configurable Windows launcher for the v4 trainer |
+| `scripts/run_seed_v2.ps1` | Windows launcher for the v2.0 150k trainer |
+| `v2/seed_v2.py` | Seed v2.0 dynamic-growth trainer (150k tokenizer, factorized embeddings) |
+| `v2/mix.example.json` | example English mix; point the paths at your own local `.txt` files |
+| `scripts/build_decode_prior.py` | builds the brace decode prior |
 | `ed25519_min.py` | signing helper used by organelle bundles |
 | `make_task.py` | tiny example task generator for organelle tests |
 | `plot.py` | loss / growth chart for a run (optional; needs matplotlib) |
-| `organs/seeds/` | free starter organs: run3 trunk, run4 tools+reasoning, json1, answer1 (fp16 tree parts) |
+| `organs/seeds/` | free organs: the Pool 5 set (16 fp16 tree parts) plus earlier starters |
 | `organs/run4-tools-reasoning-1.0.1` | starter organelle bundle (run4 column + rehearsal cache) |
-| `organs/seeds/json1-final`, `answer1-final` | v0.3.0 specialist organs (JSON / tool calls; answer from search results), fp16 |
-| `pool1/` | trained pool router, registry, and [results / SUMMARY](pool1/results/SUMMARY.md) |
-| `pool2/` | 4-organ pool: router, registry, eval scripts, held-out obscure facts, [results / SUMMARY](pool2/results/SUMMARY.md) |
-| `recipes/` | data builders and training args for json1 and answer1 |
+| `pool1/` | 2-organ pool: router, registry, [results / SUMMARY](pool1/results/SUMMARY.md) |
+| `pool2/` | 4-organ pool: router, registry, eval scripts, [results / SUMMARY](pool2/results/SUMMARY.md) |
+| `pool5/` | 16-organ pool: looping Top-6 winner (`router_base.pt` + `router_loop.pt`), variants, [results / SUMMARY](pool5/results/SUMMARY.md) |
+| `pool5/eval/pool5_loop.py` | train and chat with the confidence-gated looping Top-6 router |
+| `recipes/` | data builders and training args for the specialist organs |
 | `tokenizers/seed-bpe4096-v1/` | the shared 4,096-token byte-level BPE, plus the decode prior |
+| `tokenizers/seed-bpe150k-v2/` | Seed v2.0 150k tokenizer (coming soon; not used by Pool 5) |
 | `socket/seed-socket-v1/` | socket metadata and calibration set (see note below) |
 | `comparison/tiny100m/` | loader and docs for the 100M comparison model (weights on the release) |
-| `scripts/run_seed_v4.ps1` | configurable Windows launcher |
 
 ## Socket note
 
