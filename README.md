@@ -6,6 +6,12 @@ An **organ** is a whole frozen seed, trained on one skill or tool, then added to
 
 Inside a seed, the older per-column units (one cell in every layer, plus a rank-8 adapter, shipped as a `seed-organ/1.1` bundle with a rehearsal cache) are **organelles**. The on-disk format and filenames are unchanged so existing loaders still work. Transplanting organelles with `parts_tool.py import` is experimental and is known to fail when the donor is a whole seed; the pool is the supported way to combine organs. See [ORGANS_README.md](ORGANS_README.md) and [SOCKET_SPEC.md](SOCKET_SPEC.md).
 
+---
+
+**Grow your own seed.** A complete beginner-friendly walkthrough — preparing data, launching the trainer, monitoring a run, pausing and resuming, exporting, and sharing a specialist — is in **[GROW_YOUR_OWN.md](GROW_YOUR_OWN.md)**. Start with Option A (Seed v2.0, 150k tokenizer) unless you need a seed that plugs into the published Pool 5 router.
+
+---
+
 ## How it works
 
 - A **seed** is a small growing transformer (Seed v4). Width is a whole number of organelles.
@@ -209,6 +215,8 @@ python seed_pool.py --dir pool5 remove NAME
 
 ### Grow your own seed (single consumer GPU)
 
+The full step-by-step guide (data, flags, export, router wiring, and sharing rules) is **[GROW_YOUR_OWN.md](GROW_YOUR_OWN.md)**.
+
 This is the supported path for training a new specialist and adding it to a pool. The dynamic-growth trainer is `seed_v4.py`. It starts small (2 layers × 1 cell by default) and grows cells and layers automatically under a weights cap and a VRAM cap. The defaults fit a **GTX 1660 Ti (6 GB)**; they also run on CPU (slower).
 
 **Use the official tokenizer and socket** if you want the new seed to plug into the published pool. Training a fresh BPE with `prep_data.py` (no `--tokenizer`) produces a seed that will not load on `seed-socket-v1`.
@@ -289,6 +297,8 @@ python pool5/eval/pool5_loop.py chat --dir pool5 --tools --prompt "What is 17 * 
 
 ### Grow your own seed (v2.0, 150k tokenizer)
 
+The full step-by-step guide is **[GROW_YOUR_OWN.md](GROW_YOUR_OWN.md)** (Option A).
+
 Seed v2.0 is a new trainer for the official **150,000-vocab** ByteLevel BPE. It uses a **factorized, tied embedding** (`--e-dim 128`, table is `150000 × 128`) and residual width `--d 512`. It starts at 4 layers × 2 cells and grows under the same 2 GB weight cap. It is **not** compatible with Pool 5 or `seed-socket-v1` — those stay on the 4k tokenizer.
 
 The official tokenizer is at [`tokenizers/seed-bpe150k-v2/`](tokenizers/seed-bpe150k-v2/). `tokenizer.json` SHA-256 is `fc67f00b300e872734502b96eeee00440be6266bfe83338a164acfb7ca847d73`. Do not train a new 150k BPE if you want to share v2.0 seeds.
@@ -365,6 +375,7 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 
 | path | what |
 |---|---|
+| [`GROW_YOUR_OWN.md`](GROW_YOUR_OWN.md) | step-by-step guide to train, export, and share your own seeds (v2.0 and Pool 5) |
 | `seed_v4.py` | dynamic-growth trainer, model, and parts format (the engine; includes the GPU optimizer-device fix) |
 | `seed_v3_gpu.py` | data-pipeline helper imported by `seed_v4.py` (not the current trainer) |
 | `seed_organs.py` | organelle bundles, sockets, signing, rehearsal caches |
