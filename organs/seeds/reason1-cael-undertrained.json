@@ -1,0 +1,161 @@
+{
+ "kind": "tree",
+ "id": "tree-d46c50b8ed34",
+ "name": "reason1-cael-undertrained",
+ "status": "undertrained",
+ "experimental": true,
+ "description": "UNDERTRAINED / experimental Seed v2.0 reasoning seed. CPU fp32 training on CAEL Verified Reasoning (CC BY 4.0) with a modest GSM8K / SmolTalk / FineWeb-Edu mix. 10.63M params, shape 4x2; a deepen trial at step 16800 was rejected. Learns template surface more than procedure \u2014 not a finished organ, not Pool 5 compatible, and not the same organ as organs/seeds/reason1-final (Seed v4, 4096 tokenizer). EMA weights, published as fp16.",
+ "structure": {
+  "arch": "seed-v2.0",
+  "vocab": 8192,
+  "d": 512,
+  "ctx": 512,
+  "ckw": {
+   "n_head": 4,
+   "head_dim": 64,
+   "mlp": 512
+  },
+  "e_dim": 128,
+  "softcap": 0.0,
+  "ce_chunk": 512,
+  "L": 4,
+  "K": 2,
+  "organ_ids": [
+   "o1",
+   "o2"
+  ],
+  "protected_organs": [],
+  "cids": [
+   [
+    "c1",
+    "c2"
+   ],
+   [
+    "c3",
+    "c4"
+   ],
+   [
+    "c5",
+    "c6"
+   ],
+   [
+    "c7",
+    "c8"
+   ]
+  ],
+  "protected_cells": [],
+  "next_cell": 9,
+  "next_organ": 3,
+  "lineage": "d46c50b8ed34",
+  "tokenizer": {
+   "id": "seed-bpe8192-r1",
+   "name": "seed-bpe8192-r1",
+   "version": "1",
+   "vocab": 8192,
+   "dir": "tokenizers/seed-bpe8192-r1",
+   "sha256": "edba7163850c77d2",
+   "sha256_full": "edba7163850c77d284ae40a7f0aeaab981cfef2b7c0d300e23e5718bd0da445a",
+   "eos_id": 3,
+   "note": "CPU-sized specialist tokenizer (same pre-tokenizer as seed-bpe150k-v2, 8192 vocab). Not the official 150k v2 tokenizer; not compatible with Pool 5 or seed-bpe4096-v1."
+  }
+ },
+ "tokenizer": {
+  "id": "seed-bpe8192-r1",
+  "name": "seed-bpe8192-r1",
+  "version": "1",
+  "vocab": 8192,
+  "dir": "tokenizers/seed-bpe8192-r1",
+  "sha256": "edba7163850c77d2",
+  "sha256_full": "edba7163850c77d284ae40a7f0aeaab981cfef2b7c0d300e23e5718bd0da445a",
+  "eos_id": 3,
+  "note": "CPU-sized specialist tokenizer (same pre-tokenizer as seed-bpe150k-v2, 8192 vocab). Not the official 150k v2 tokenizer; not compatible with Pool 5 or seed-bpe4096-v1."
+ },
+ "lineage": "d46c50b8ed34",
+ "format": "seed-v2-part/1",
+ "arch": "seed-v2.0",
+ "file": "reason1-cael-undertrained.safetensors",
+ "sha256": "fce1b46c079492db",
+ "sha256_full": "fce1b46c079492db8c2b0c578135b9497264a061ec0055c458916ab467e10ec8",
+ "n_params": 10626056,
+ "dtype": "fp16",
+ "ema": true,
+ "step": 17000,
+ "metrics": {
+  "step": 17000,
+  "val_ce": 1.0305345136847253,
+  "val_bpb": 0.4777140265459573,
+  "val_ce_ema": 0.9742886344101399,
+  "val_bpb_ema": 0.45164071691093405,
+  "per_source_ema": {
+   "cael_arithmetic": [
+    0.2557,
+    0.1357
+   ],
+   "cael_dates_times": [
+    0.3355,
+    0.1796
+   ],
+   "cael_composite": [
+    0.2496,
+    0.1422
+   ],
+   "cael_logic": [
+    0.537,
+    0.1926
+   ],
+   "cael_conflicting": [
+    0.2511,
+    0.0977
+   ],
+   "cael_memory": [
+    0.201,
+    0.0886
+   ],
+   "cael_unanswerable": [
+    0.2473,
+    0.0936
+   ],
+   "cael_arc_grids": [
+    0.5049,
+    0.5189
+   ],
+   "gsm8k": [
+    2.4151,
+    1.1367
+   ],
+   "smoltalk": [
+    3.8728,
+    1.4291
+   ],
+   "fineweb_edu": [
+    5.0585,
+    2.1083
+   ]
+  },
+  "shape": "4x2",
+  "params": 10626048,
+  "best_is_ema": true
+ },
+ "shape": "4x2",
+ "ctx": 512,
+ "d": 512,
+ "e_dim": 128,
+ "created": "2026-11-28 08:33:49",
+ "license": "Apache-2.0",
+ "socket": null,
+ "compatible_with": [
+  "v2/seed_v2.py",
+  "v2/chat_v2.py"
+ ],
+ "not_compatible_with": [
+  "chat.py",
+  "seed_pool.py",
+  "Pool 5",
+  "seed-socket-v1",
+  "seed-bpe4096-v1",
+  "seed-bpe150k-v2"
+ ],
+ "source": "D:\\seed_v2\\reason1\\best_ce.pt (EMA) at step 17000; run stopped at step 17011 via STOP; STOP archived, nothing deleted",
+ "data_sources": "DATA_SOURCES.md",
+ "model_card": "organs/seeds/reason1-cael-undertrained.md"
+}

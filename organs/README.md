@@ -10,6 +10,7 @@ An **organ** is a whole frozen seed used in a Seed Pool. An **organelle** is the
 | `seeds/run4-tools-reasoning-final.json` (+ `.safetensors`) | run4 tools + reasoning, starter **organ**, fp16 (6×1, step 19,822) |
 | `run4-tools-reasoning-1.0.1.json` (+ `.safetensors`) | run4 **organelle bundle** (`seed-organ/1.1`) with a rehearsal cache |
 | `seeds/math1-final` … `alg1-final` | Pool 5 specialist organs (math, reason, plan, Python, fix, instruct, C, JS, Bash, PowerShell, algorithms), fp16 |
+| `seeds/reason1-cael-undertrained` | **UNDERTRAINED / experimental** Seed v2.0 CAEL reasoning seed (10.63M, 4x2, 8192 BPE). Not Pool 5 compatible, and not `reason1-final`. See the [model card](seeds/reason1-cael-undertrained.md). |
 
 Load an organ:
 
@@ -30,4 +31,6 @@ python seed_pool.py --dir pool5 add myseed organs/seeds/run4-tools-reasoning-fin
 python parts_tool.py import organs/run4-tools-reasoning-1.0.1 --host path/to/host.pt --out runs/merged.pt
 ```
 
-The weights are fp16 safetensors. `chat.py`, `seed_pool.py`, and `parts_tool.py` cast them back to fp32 on load. See [ORGANS_README.md](../ORGANS_README.md) and [SOCKET_SPEC.md](../SOCKET_SPEC.md) for the formats.
+The weights are fp16 safetensors. `chat.py`, `seed_pool.py`, and `parts_tool.py` cast Seed v4 organs back to fp32 on load. See [ORGANS_README.md](../ORGANS_README.md) and [SOCKET_SPEC.md](../SOCKET_SPEC.md) for the v4 formats.
+
+`reason1-cael-undertrained` is a Seed v2.0 organ (`format: seed-v2-part/1`). Load it with `python v2/chat_v2.py organs/seeds/reason1-cael-undertrained.json`, not `chat.py`.

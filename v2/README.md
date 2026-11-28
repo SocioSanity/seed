@@ -14,3 +14,12 @@ python v2/seed_v2.py --tokenizer tokenizers/seed-bpe150k-v2/tokenizer.json \
 ```
 
 Create `runs/v2-eng1/STOP` to save and exit. Resume with the same `--out` and `--resume`.
+
+## Experimental organ: reason1-cael-undertrained
+
+An **UNDERTRAINED / experimental** CPU reasoning seed lives at [`organs/seeds/reason1-cael-undertrained`](../organs/seeds/reason1-cael-undertrained.md). It is Seed v2.0 (10.63M, 4x2) but uses the specialist tokenizer [`tokenizers/seed-bpe8192-r1/`](../tokenizers/seed-bpe8192-r1/), not the official 150k BPE. It is not drop-in compatible with Pool 5 or with a 150k v2 pool.
+
+```bash
+python v2/chat_v2.py organs/seeds/reason1-cael-undertrained.json
+python scripts/export_seed_v2.py path/to/best_ce.pt organs/seeds/myseed --tokenizer-dir tokenizers/seed-bpe8192-r1
+```

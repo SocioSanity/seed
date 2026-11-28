@@ -1,0 +1,24 @@
+{
+ "id": "seed-bpe8192-r1",
+ "algorithm": "ByteLevel BPE",
+ "vocab": 8192,
+ "special_tokens": [
+  "<pad>",
+  "<unk>",
+  "<bos>",
+  "<eos>",
+  "<|system|>",
+  "<|user|>",
+  "<|assistant|>",
+  "<|tool|>",
+  "<|tool_result|>",
+  "<|think|>",
+  "<|/think|>",
+  "<|code|>",
+  "<|end|>"
+ ],
+ "pre_tokenizer": "same isolated-split + ByteLevel sequence as seed-bpe150k-v2 (digits split individually)",
+ "tokenizer_json_sha256": "edba7163850c77d284ae40a7f0aeaab981cfef2b7c0d300e23e5718bd0da445a",
+ "trained_on": "5% sample of CAEL train (formatted Q/A), GSM8K train (duplicated once), plus 40 MB of SmolTalk and FineWeb-Edu",
+ "used_by": "organs/seeds/reason1-cael-undertrained"
+}

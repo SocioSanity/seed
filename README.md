@@ -84,6 +84,8 @@ python seed_pool.py --dir pool5 chat --tools --prompt "What is 17 * 19?"
 
 Seed v2.0 starts from that diagnosis. A new custom **150,000-vocab** code-and-English ByteLevel BPE is already in the repo at [`tokenizers/seed-bpe150k-v2/`](tokenizers/seed-bpe150k-v2/): single-digit splitting, intact indent tokens, and 13 chat / tool / think special tokens. The plan is a **shared, factorized embedding** so a 150k vocab does not eat the whole budget, then dynamically grown specialist seeds scaling toward a **~500M-parameter pool** that still fits under the **2 GB weight cap** on a GTX 1660 Ti — starting with English fluency training to a validation loss under **1.0**.
 
+An early **UNDERTRAINED / experimental** CPU reasoning seed is in the repo as [`reason1-cael-undertrained`](organs/seeds/reason1-cael-undertrained.md): 10.63M params, shape 4x2, trained about 11 hours on [CAEL Verified Reasoning](https://huggingface.co/datasets/vynly/cael-verified-reasoning) (CC BY 4.0, data 1.1.1). It uses its own 8192-token BPE, is not Pool 5 compatible, and is not the Pool 5 organ `reason1-final`. A deepen trial was rejected; exact-match on human-written GSM8K was 0/100 at the early (step 500) eval. It is a starting point for a later 25-50M reasoning seed, not a finished organ. See the [model card](organs/seeds/reason1-cael-undertrained.md).
+
 ### Seed Pool v2 (v0.3.0): two specialist organs + a fair Qwen comparison
 
 v0.3.0 adds two small specialist organs trained from scratch on the same tokenizer and socket anchor, and hot-adds them to a copy of the pool (`pool2/`, 4 organs, router retrained for 900 steps). The comparison baseline is now **Qwen2.5-Coder-3B** instead of the undertrained 100M.
@@ -385,16 +387,20 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 | `chat.py` | talk to a checkpoint, a tree, or a seed plus organelles |
 | `prep_data.py` | build `train.bin` / `valid.bin` (pass `--tokenizer` to use the official 4k vocab) |
 | `scripts/export_seed.py` | export a v4 checkpoint as a shareable fp16 organ |
+| `scripts/export_seed_v2.py` | export a Seed v2.0 checkpoint as a shareable fp16 organ |
 | `scripts/pool_register.py` | add / list / remove seeds in a pool `registry.json` |
 | `scripts/run_seed_v4.ps1` | configurable Windows launcher for the v4 trainer |
 | `scripts/run_seed_v2.ps1` | Windows launcher for the v2.0 150k trainer |
 | `v2/seed_v2.py` | Seed v2.0 dynamic-growth trainer (150k tokenizer, factorized embeddings) |
+| `v2/chat_v2.py` | chat with a Seed v2.0 organ or checkpoint |
+| `recipes/reason1_cael/` | data prep, tokenizer, mix, and eval for the experimental CAEL reasoning seed |
+| `tokenizers/seed-bpe8192-r1/` | 8192 BPE used only by `reason1-cael-undertrained` (not the official 150k v2 tokenizer) |
 | `v2/mix.example.json` | example English mix; point the paths at your own local `.txt` files |
 | `scripts/build_decode_prior.py` | builds the brace decode prior |
 | `ed25519_min.py` | signing helper used by organelle bundles |
 | `make_task.py` | tiny example task generator for organelle tests |
 | `plot.py` | loss / growth chart for a run (optional; needs matplotlib) |
-| `organs/seeds/` | free organs: the Pool 5 set (16 fp16 tree parts) plus earlier starters |
+| `organs/seeds/` | free organs: the Pool 5 set (16 fp16 tree parts) plus earlier starters, and the experimental v2 organ [`reason1-cael-undertrained`](organs/seeds/reason1-cael-undertrained.md) |
 | `organs/run4-tools-reasoning-1.0.1` | starter organelle bundle (run4 column + rehearsal cache) |
 | `pool1/` | 2-organ pool: router, registry, [results / SUMMARY](pool1/results/SUMMARY.md) |
 | `pool2/` | 4-organ pool: router, registry, eval scripts, [results / SUMMARY](pool2/results/SUMMARY.md) |
@@ -415,7 +421,7 @@ To start your own socket, run `parts_tool.py make-socket`. Organelles are not co
 
 ## Datasets and citations
 
-Seed's reasoning seed is trained on **CAEL Verified Reasoning** by Vovala14 (CAEL), licensed CC BY 4.0: https://huggingface.co/datasets/vynly/cael-verified-reasoning. Full attribution and BibTeX are in [DATA_SOURCES.md](DATA_SOURCES.md).
+The **UNDERTRAINED / experimental** Seed v2.0 organ [`reason1-cael-undertrained`](organs/seeds/reason1-cael-undertrained.md) is trained mainly on **CAEL Verified Reasoning** by Vovala14 (CAEL), licensed CC BY 4.0: https://huggingface.co/datasets/vynly/cael-verified-reasoning (data revision 1.1.1). The mix also uses GSM8K (MIT), SmolTalk (Apache-2.0), and FineWeb-Edu (ODC-BY 1.0). Full attribution and BibTeX are in [DATA_SOURCES.md](DATA_SOURCES.md). This is not the Pool 5 organ `reason1-final`.
 
 ## License
 

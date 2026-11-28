@@ -1,0 +1,13 @@
+# Flags used for the published reason1-cael-undertrained CPU run (Seed v2.0, dynamic growth).
+# Create runs/reason1/STOP to save and exit. Supervisor: see D:\seed_v2\reason1\supervise.ps1 on the training machine (not in this repo).
+python v2/seed_v2.py
+  --out runs/reason1
+  --mix-json path/to/mix.json
+  --tokenizer tokenizers/seed-bpe8192-r1/tokenizer.json
+  --device cpu --threads 4 --priority below_normal
+  --ctx 512 --batch 4 --accum 2 --ce-chunk 512
+  --e-dim 128 --d 512
+  --start-layers 4 --start-cells 2
+  --max-layers 16 --max-cells 6 --max-params 100e6 --mem-cap-mb 2048
+  --target-ce 0.01 --eval-every 250 --val-seqs 150 --save-every 500
+  --resume

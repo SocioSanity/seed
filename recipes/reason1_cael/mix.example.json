@@ -1,0 +1,13 @@
+[
+  {"name": "cael_arithmetic", "path": "path/to/cael/text/train_arithmetic.txt", "val_path": "path/to/cael/text/val_arithmetic.txt", "weight": 0.18, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_dates_times", "path": "path/to/cael/text/train_dates_times.txt", "val_path": "path/to/cael/text/val_dates_times.txt", "weight": 0.15, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_composite", "path": "path/to/cael/text/train_composite.txt", "val_path": "path/to/cael/text/val_composite.txt", "weight": 0.14, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_logic", "path": "path/to/cael/text/train_logic.txt", "val_path": "path/to/cael/text/val_logic.txt", "weight": 0.14, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_conflicting", "path": "path/to/cael/text/train_conflicting_sources.txt", "val_path": "path/to/cael/text/val_conflicting_sources.txt", "weight": 0.08, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_memory", "path": "path/to/cael/text/train_memory.txt", "val_path": "path/to/cael/text/val_memory.txt", "weight": 0.06, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_unanswerable", "path": "path/to/cael/text/train_unanswerable.txt", "val_path": "path/to/cael/text/val_unanswerable.txt", "weight": 0.02, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "cael_arc_grids", "path": "path/to/cael/text/train_arc_grids.txt", "val_path": "path/to/cael/text/val_arc_grids.txt", "weight": 0.05, "sep": "eot", "license": "CC BY 4.0 (vynly/cael-verified-reasoning, Vovala14 / CAEL)"},
+  {"name": "gsm8k", "path": "path/to/gsm8k/gsm8k_train.txt", "val_path": "path/to/gsm8k/gsm8k_test.txt", "weight": 0.04, "sep": "eot", "license": "MIT (openai/gsm8k)"},
+  {"name": "smoltalk", "path": "path/to/smoltalk/smoltalk_train.txt", "val_path": "path/to/smoltalk/smoltalk_valid.txt", "weight": 0.08, "sep": "blank", "license": "Apache-2.0 (HuggingFaceTB/smoltalk)"},
+  {"name": "fineweb_edu", "path": "path/to/fineweb_edu/fineweb_edu_train.txt", "val_path": "path/to/fineweb_edu/fineweb_edu_valid.txt", "weight": 0.06, "sep": "blank", "license": "ODC-BY 1.0 (HuggingFaceFW/fineweb-edu)"}
+]
