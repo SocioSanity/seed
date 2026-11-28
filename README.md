@@ -403,6 +403,7 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 | `recipes/` | data builders and training args for the specialist organs |
 | `tokenizers/seed-bpe4096-v1/` | the shared 4,096-token byte-level BPE, plus the decode prior |
 | `tokenizers/seed-bpe150k-v2/` | Seed v2.0 150k tokenizer (coming soon; not used by Pool 5) |
+| `DATA_SOURCES.md` | third-party dataset attribution and BibTeX (CAEL Verified Reasoning, CC BY 4.0) |
 | `socket/seed-socket-v1/` | socket metadata and calibration set (see note below) |
 | `comparison/tiny100m/` | loader and docs for the 100M comparison model (weights on the release) |
 
@@ -411,6 +412,10 @@ See [comparison/tiny100m/README.md](comparison/tiny100m/README.md) for the layou
 The official `seed-socket-v1` frozen anchor (`anchor_emb.safetensors`, about 6.0 MB, sha prefix `a8438384b2c1b973`) is included in `socket/seed-socket-v1/` along with `socket.json` and the small calibration set. A checkout is enough to join the v1 organelle ecosystem.
 
 To start your own socket, run `parts_tool.py make-socket`. Organelles are not compatible across different anchors or tokenizer versions.
+
+## Datasets and citations
+
+Seed's reasoning seed is trained on **CAEL Verified Reasoning** by Vovala14 (CAEL), licensed CC BY 4.0: https://huggingface.co/datasets/vynly/cael-verified-reasoning. Full attribution and BibTeX are in [DATA_SOURCES.md](DATA_SOURCES.md).
 
 ## License
 
